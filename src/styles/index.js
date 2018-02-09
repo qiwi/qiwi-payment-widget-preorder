@@ -6,6 +6,7 @@ body {
     padding: 0;
     font-size: 16px;
     font-family: "MuseoSansCyrl", 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+    font-weight: 500;
     color: #000000;
     display: flex;
     flex-direction: column;

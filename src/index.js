@@ -11,7 +11,7 @@ injectGlobal`${styles}`;
 
 const prerender = function() {
     const sheet = new ServerStyleSheet();
-    
+
     const html = renderToString(sheet.collectStyles(<App />));
 
     const styles = sheet.getStyleTags();
