@@ -1,8 +1,15 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import registerServiceWorker from './registerServiceWorker';
+//import ReactDOM from 'react-dom';
+import ReactDOMServer from 'react-dom/server';
 
-ReactDOM.render(<App />, document.getElementById('root'));
-registerServiceWorker();
+//import './styles/index.css';
+
+import App from './App';
+
+
+const prerender = function() {
+    return ReactDOMServer.renderToString(<App />);
+};
+
+export default prerender;
+//ReactDOM.render(<App />, document.getElementById('root'));
