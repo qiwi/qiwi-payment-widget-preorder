@@ -1,10 +1,11 @@
-@import 'fonts.css';
+import fonts from './fonts';
 
+const common = `
 body {
     margin: 0;
     padding: 0;
     font-size: 16px;
-    font-family: 'Museo', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+    font-family: "MuseoSansCyrl", 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
     color: #000000;
     display: flex;
     flex-direction: column;
@@ -18,4 +19,10 @@ body {
     transform: translateY(-50%);
     left: 0;
     right: 0;
-}
+}`;
+
+const styles = `
+${fonts} 
+${common}`;
+
+export default styles;

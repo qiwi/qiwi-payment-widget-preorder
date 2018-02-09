@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import withStyles from 'isomorphic-style-loader/lib/withStyles';
-import styles from './styles/index.css';
 
 import Card from './components/Card';
 import CardHeader from './components/CardHeader';
 import Title from './components/Title';
 import Desc from './components/Desc';
+
 
 class App extends Component {
     render() {
@@ -27,4 +26,4 @@ class App extends Component {
     }
 }
 
-export default withStyles(styles)(App);
+export default App;

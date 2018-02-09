@@ -1,5 +1,5 @@
-@font-face {
-    font-family: "Museo";
+export default `@font-face {
+    font-family: "MuseoSansCyrl";
     src: url('../fonts/MuseoSansCyrl/museosanscyrillic-100-cyrillic/MuseoSansCyrl-100-webfont.eot');
     src: /* url('../fonts/MuseoSansCyrl/museosanscyrillic-100-cyrillic/MuseoSansCyrl-100-webfont.eot?#iefix') format('embedded-opentype'), */
     url('../fonts/MuseoSansCyrl/museosanscyrillic-100-cyrillic/MuseoSansCyrl-100-webfont.woff2') format('woff2'),
@@ -11,7 +11,7 @@
 }
 
 @font-face {
-    font-family: "Museo";
+    font-family: "MuseoSansCyrl";
     src: url('../fonts/MuseoSansCyrl/museosanscyrillic-300-cyrillic/MuseoSansCyrl-300-webfont.eot');
     src: /* url('../fonts/MuseoSansCyrl/museosanscyrillic-300-cyrillic/MuseoSansCyrl-300-webfont.eot?#iefix') format('embedded-opentype'), */
     url('../fonts/MuseoSansCyrl/museosanscyrillic-300-cyrillic/MuseoSansCyrl-300-webfont.woff2') format('woff2'),
@@ -23,7 +23,7 @@
 }
 
 @font-face {
-    font-family: "Museo";
+    font-family: "MuseoSansCyrl";
     src: url('../fonts/MuseoSansCyrl/museosanscyrillic-500-cyrillic/MuseoSansCyrl-500-webfont.eot');
     src: /* url('../fonts/MuseoSansCyrl/museosanscyrillic-500-cyrillic/MuseoSansCyrl-500-webfont.eot?#iefix') format('embedded-opentype'), */
     url('../fonts/MuseoSansCyrl/museosanscyrillic-500-cyrillic/museosanscyrl-500-webfont.woff2') format('woff2'),
@@ -35,7 +35,7 @@
 }
 
 @font-face {
-    font-family: "Museo";
+    font-family: "MuseoSansCyrl";
     src: url('../fonts/MuseoSansCyrl/museosanscyrillic-700-cyrillic/MuseoSansCyrl-700-webfont.eot');
     src: /* url('../fonts/MuseoSansCyrl/museosanscyrillic-700-cyrillic/MuseoSansCyrl-700-webfont.eot?#iefix') format('embedded-opentype'),
  */    url('../fonts/MuseoSansCyrl/museosanscyrillic-700-cyrillic/MuseoSansCyrl-700-webfont.woff2') format('woff2'),
@@ -47,7 +47,7 @@
 }
 
 @font-face {
-    font-family: "Museo";
+    font-family: "MuseoSansCyrl";
     src: url('../fonts/MuseoSansCyrl/museosanscyrillic-900-cyrillic/MuseoSansCyrl-900-webfont.eot');
     src: /* url('../fonts/MuseoSansCyrl/museosanscyrillic-900-cyrillic/MuseoSansCyrl-900-webfont.eot?#iefix') format('embedded-opentype'), */
     url('../fonts/MuseoSansCyrl/museosanscyrillic-900-cyrillic/MuseoSansCyrl-900-webfont.woff2') format('woff2'),
@@ -56,4 +56,4 @@
     font-weight: 900;
     font-style: normal;
 
-}
+}`;

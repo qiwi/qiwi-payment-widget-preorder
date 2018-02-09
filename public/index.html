@@ -20,6 +20,9 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>QIWI PREORDER</title>
+    <%=
+        require('../src').default().styles
+    %>
     <!-- Google Tag Manager -->
     <script>(function (w, d, s, l, i) {
         w[l] = w[l] || []; w[l].push({
@@ -41,7 +44,7 @@
         Включите JavaScript.
     </noscript>
     <div id="root"><%=
-        require('../src').default()
+        require('../src').default().html
       %></div>
     <!--
       This HTML file is a template.
