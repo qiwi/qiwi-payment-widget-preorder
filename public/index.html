@@ -21,7 +21,7 @@
     -->
     <title>QIWI PREORDER</title>
     <%=
-        require('../src').default().styles
+        require('../src/prerender.js').default().styles
     %>
     <!-- Google Tag Manager -->
     <script>(function (w, d, s, l, i) {
@@ -44,7 +44,7 @@
         Включите JavaScript.
     </noscript>
     <div id="root"><%=
-        require('../src').default().html
+        require('../src/prerender.js').default().html
       %></div>
     <!--
       This HTML file is a template.

@@ -14,6 +14,7 @@ const fontFace = (fontWeight) => {
     `;
 };
 
+
 const fonts = fontWeights
     .map((weight) => {
         return fontFace(weight);
