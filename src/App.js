@@ -1,47 +1,72 @@
 import React, { Component } from 'react';
 
+import Preorder from './modules/Preorder';
+
+import Preselect from './views/Preselect';
+import Form from './views/Form';
+
 import Card from './components/Card';
 import TechnologiesPics from './components/TechnologiesPics';
 import MethodPayments from './components/MethodPayments';
+
+const preorder = new Preorder();
 
 class App extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            view: 'preselect'
+            view: 'preselect',
+            merchantInfo: {}
         };
     }
 
-    toAmountForm = () => {
+    async componentDidMount() {
+        const merchantInfo = await preorder.getMerchantInfo();
+
+        document.title = merchantInfo.merchant_name;
+
         this.setState({
-            view: 'amountForm'
+            merchantInfo
+        });
+    }
+
+    toForm = () => {
+        this.setState({
+            view: 'form'
         });
     };
 
     render() {
+        const defaultSum = [100, 200, 300];
+
         const views = {
             preselect: (
-                <div>
-                    preselect
-                    <button
-                        onClick={this.toAmountForm}>
-                        Перевести
-                    </button>
-                </div>
+                <Preselect
+                    toForm={this.toForm}
+                    sumAmont={
+                        this.state.merchantInfo.merchant_payment_sum_amount ||
+                        defaultSum
+                    }
+                    redirect={preorder.redirect}
+                />
             ),
-            amountForm: <div>amountForm</div>
+            form: <Form redirect={preorder.redirect}/>
         };
 
         return (
             <div className="app">
                 <Card width="438" className="centered">
                     <Card.Header>
-                        <Card.Title>Фонд Константина Хабенского</Card.Title>
+                        <Card.Title>
+                            {this.state.merchantInfo.merchant_name ||
+                                'Наименование организации'}
+                        </Card.Title>
                         <Card.Desc>
-                            Фонд занимается организацией помощи детям с
-                            онкологическими и другими тяжёлыми заболеваниями
-                            головного мозга
+                            {
+                                this.state.merchantInfo
+                                    .merchant_widget_description
+                            }
                         </Card.Desc>
                     </Card.Header>
                     <Card.Body>
