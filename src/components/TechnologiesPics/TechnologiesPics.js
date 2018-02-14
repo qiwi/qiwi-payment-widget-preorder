@@ -9,7 +9,7 @@ import visa from './assets/v-visa.svg';
 
 const StyledTechnologiesPics = styled.span`
     & img {
-        margin-right: 8px;
+        margin: 5px 8px 0 0;
         vertical-align: middle;
     }
 `;

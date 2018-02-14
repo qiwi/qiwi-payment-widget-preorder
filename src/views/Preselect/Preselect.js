@@ -3,13 +3,17 @@ import React, { Component } from 'react';
 import Button from '../../components/Button';
 import styled from 'styled-components';
 
-const StyledPreselect = styled.div`
+const PreselectText = styled.div`
     font-family: MuseoSansCyrl;
     font-size: 16px;
     font-weight: 500;
     line-height: 1.31;
     text-align: center;
     color: #000000;
+
+    @media (max-width: 450px) {
+        display: none;
+    }
 `;
 
 const PreselectButton = styled(Button)`
@@ -18,13 +22,22 @@ const PreselectButton = styled(Button)`
     &:nth-child(2n + 1) {
         margin-right: 24px;
     }
+
+    @media (max-width: 450px) {
+        margin: 8px 0 0;
+        width: 100%;
+
+        &:nth-child(2n + 1) {
+            margin-right: 0;
+        }
+    }
 `;
 
 class Preselect extends Component {
     render() {
         return (
-            <StyledPreselect>
-                Пожалуйста, выберите сумму:
+            <div>
+                <PreselectText>Пожалуйста, выберите сумму:</PreselectText>
                 <div>
                     {this.props.sumAmont.map((sum, index) => {
                         return (
@@ -42,7 +55,7 @@ class Preselect extends Component {
                         Другая сумма
                     </PreselectButton>
                 </div>
-            </StyledPreselect>
+            </div>
         );
     }
 }

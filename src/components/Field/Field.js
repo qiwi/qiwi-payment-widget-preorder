@@ -27,7 +27,7 @@ const Bar = styled.div`
 
 const StyledField = styled.div`
     position: relative;
-    width: ${(props) => props.width};
+    width: 100%;
     height: 50px;
 
     & label {

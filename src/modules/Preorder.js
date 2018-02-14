@@ -28,13 +28,6 @@ export default class Preorder {
     _makeRequest() {
         let url = 'https://my.qiwi.com/partners_api/merchant_widget_info';
 
-        /* if (
-            process.env.NODE_ENV === 'development' ||
-            process.env.NODE_ENV === 'test'
-        ) {
-            url = 'http://s3705.qiwi.com/partners_api/merchant_widget_info';
-        } */
-
         let param = `merchant_public_key=${this._merchantId}`;
 
         if (this._merchantAlias && !this._merchantId) {
@@ -66,8 +59,10 @@ export default class Preorder {
 
                 return data.result;
             } catch (err) {
-                console.warn('Widget is disabled by: ', err);
+                throw err;
             }
+        } else {
+            throw new Error('No public key or alias in url');
         }
     }
 

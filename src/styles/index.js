@@ -11,16 +11,13 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-}
+    background-color: #ffffff;
 
-.centered {
-    margin: 0 auto;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    left: 0;
-    right: 0;
-}`;
+    @media (max-width: 450px) {
+        background-color: rgb(247,247,247);
+    }
+}
+`;
 
 const styles = `
 ${fonts} 
