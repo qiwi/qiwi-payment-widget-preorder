@@ -49,10 +49,14 @@ class Form extends Component {
         return message;
     }
 
-    inputHandler = (e) => {
-        let number = e.target.value.replace(/[^0-9,.]/g, '').substring(0, 9);
+    formattingAmount = (amount) => {
+        let number = amount.replace(/[^0-9,.]/g, '').substring(0, 9);
 
-        const value = number ? parseFloat(number, 10) : number;
+        return number ? parseFloat(number, 10) : number;
+    };
+
+    fieldHandler = (e) => {
+        const value = this.formattingAmount(e.target.value);
 
         this.setState({
             value
@@ -64,7 +68,8 @@ class Form extends Component {
             <div>
                 <FieldWrapper>
                     <Field
-                        onInput={this.inputHandler}
+                        onInput={this.fieldHandler}
+                        onChange={this.fieldHandler}
                         value={this.state.value}
                     />
                 </FieldWrapper>
