@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import warningPic from './assets/warning.svg';
 import circlePin from './assets/circle.svg';

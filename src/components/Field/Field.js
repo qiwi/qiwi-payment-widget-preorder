@@ -112,18 +112,24 @@ const Message = styled.div`
     font-size: 11px;
     font-weight: 300;
     text-align: left;
-    opacity: 0;
 `;
 
 class Field extends Component {
     render() {
         return (
-            <StyledField width={this.props.width} >
-                <input type="number" id="donation-amount" required onChange={this.props.onChange} value={this.props.value}/>
+            <StyledField width={this.props.width}>
+                <input
+                    type="number"
+                    id="donation-amount"
+                    required
+                    onChange={this.props.onChange}
+                    value={this.props.value}
+                    onInput={this.props.onInput}
+                />
                 <label htmlFor="donation-amount">Cумма</label>
                 <Currency>₽</Currency>
                 <Bar />
-                <Message id="error-message">Введите сумму</Message>
+                <Message error={this.props.error}>{this.props.error}</Message>
             </StyledField>
         );
     }

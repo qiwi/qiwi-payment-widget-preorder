@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import Card from '../components/Card';
-import Loader from "../components/Loader";
 
 export const PreorderCard = styled(Card)`
     margin: 0 auto;

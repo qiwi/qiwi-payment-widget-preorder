@@ -55,7 +55,17 @@ class Form extends Component {
         return number ? parseFloat(number, 10) : number;
     };
 
-    fieldHandler = (e) => {
+    errorHandler = (e) => {
+        let message = '';
+
+        message = this.errorMessage(e.target.value);
+
+        this.setState({
+            message
+        });
+    };
+
+    onInput = (e) => {
         const value = this.formattingAmount(e.target.value);
 
         this.setState({
@@ -68,9 +78,10 @@ class Form extends Component {
             <div>
                 <FieldWrapper>
                     <Field
-                        onInput={this.fieldHandler}
-                        onChange={this.fieldHandler}
+                        onInput={this.onInput}
+                        onChange={this.errorHandler}
                         value={this.state.value}
+                        error={this.state.message}
                     />
                 </FieldWrapper>
                 <div>
@@ -78,7 +89,9 @@ class Form extends Component {
                         width="159px"
                         color="#ff8c00"
                         disabled={!this.state.value}
-                        onClick={() => this.props.redirect(this.state.value)}>
+                        onClick={() => {
+                            this.props.redirect(this.state.value);
+                        }}>
                         Продолжить
                     </FormButton>
                 </div>
