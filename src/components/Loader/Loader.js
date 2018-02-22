@@ -26,13 +26,13 @@ const LoaderPic = styled.img`
 `;
 
 const spin = keyframes`
-  from {
-    transform: rotate(0deg);
-  }
+    from {
+        transform: rotate(0deg);
+    }
 
-  to {
-    transform: rotate(360deg);
-  }
+    to {
+        transform: rotate(360deg);
+    }
 `;
 
 const Spinner = styled(LoaderPic)`
@@ -43,7 +43,7 @@ const Loader = ({ error }) => (
     <StyledLoader>
         {error ? (
             <div>
-                <LoaderPic src={warningPic} /> Что-то пошло не так
+                <LoaderPic src={warningPic} /> Вы перешли по неправильной ссылке
             </div>
         ) : (
             <div>

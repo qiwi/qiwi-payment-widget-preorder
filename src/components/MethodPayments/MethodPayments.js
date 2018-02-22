@@ -11,6 +11,10 @@ const StyledMethodPayments = styled.div`
     color: #000000;
     margin-top: 32px;
 
+    @media (max-width: 450px) {
+        font-size: 13px;
+    }
+
     & img {
         margin-top: 12px;
     }

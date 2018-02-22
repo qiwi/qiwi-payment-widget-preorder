@@ -123,6 +123,7 @@ class Field extends Component {
                     id="donation-amount"
                     required
                     onChange={this.props.onChange}
+                    onBlur={this.props.onBlur}
                     value={this.props.value}
                     onInput={this.props.onInput}
                 />

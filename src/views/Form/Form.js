@@ -45,6 +45,12 @@ class Form extends Component {
         if (parseFloat(value) > 500000) {
             message = 'Максимальная сумма 500 000 ₽';
         }
+        if (message) {
+            window.dataLayer.push({
+                event: 'validation.error',
+                eventAction: message
+            });
+        }
 
         return message;
     }

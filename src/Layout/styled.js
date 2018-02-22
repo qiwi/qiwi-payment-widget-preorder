@@ -1,19 +1,26 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import Card from '../components/Card';
 
+const show = keyframes`
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+`;
+
 export const PreorderCard = styled(Card)`
-    margin: 0 auto;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    left: 0;
-    right: 0;
+    margin: 2% auto;
+    animation: ${show} 1s linear forwards;
+    opacity: 0;
 
     @media (max-width: 450px) {
-        top: 0;
-        transform: translateY(0);
+        margin: 0 auto;
         width: 100%;
         border: 0;
+        border-radius: 0;
     }
 `;
 
@@ -48,6 +55,6 @@ export const HelpLink = styled.a`
         top: 0;
         left: 0;
         position: relative;
-        margin: 10px auto 0;
+        margin: 20px auto 0;
     }
 `;
