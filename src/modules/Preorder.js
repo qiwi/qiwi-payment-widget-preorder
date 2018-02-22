@@ -39,6 +39,11 @@ export default class Preorder {
         })
             .then((response) => {
                 if (response.status >= 400) {
+                    window.dataLayer.push({
+                        event: 'load.error',
+                        eventAction: 'Mechant name load error'
+                    });
+
                     throw new Error('LoadError');
                 }
                 return response;

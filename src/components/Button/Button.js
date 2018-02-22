@@ -21,6 +21,10 @@ const Button = styled.button`
     &:focus {
         outline: none;
     }
+
+    &:disabled {
+        opacity: 0.7;
+    }
 `;
 
 export default Button;
