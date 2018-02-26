@@ -5,9 +5,9 @@ const fontFace = (fontWeight) => {
         @font-face {
             font-family: "MuseoSansCyrl";
             src:  
-                url('${require(`../fonts/MuseoSansCyrl/museosanscyrillic-${fontWeight}-cyrillic/MuseoSansCyrl-${fontWeight}-webfont.woff2`)}') format('woff2'),
-                url('${require(`../fonts/MuseoSansCyrl/museosanscyrillic-${fontWeight}-cyrillic/MuseoSansCyrl-${fontWeight}-webfont.woff`)}') format('woff') ,
-                url('${require(`../fonts/MuseoSansCyrl/museosanscyrillic-${fontWeight}-cyrillic/MuseoSansCyrl-${fontWeight}-webfont.ttf`)}') format('truetype') ;
+                url('${require(`../font/MuseoSansCyrl/museosanscyrillic-${fontWeight}-cyrillic/MuseoSansCyrl-${fontWeight}-webfont.woff2`)}') format('woff2'),
+                url('${require(`../font/MuseoSansCyrl/museosanscyrillic-${fontWeight}-cyrillic/MuseoSansCyrl-${fontWeight}-webfont.woff`)}') format('woff') ,
+                url('${require(`../font/MuseoSansCyrl/museosanscyrillic-${fontWeight}-cyrillic/MuseoSansCyrl-${fontWeight}-webfont.ttf`)}') format('truetype') ;
             font-weight: ${fontWeight};
             font-style: normal;
         }
