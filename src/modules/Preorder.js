@@ -71,7 +71,7 @@ export default class Preorder {
         }
     }
 
-    redirect = (amount) => {
+    redirect = (amount, isDirect) => {
         const extra_widget_refferer = this._getHostName(document.referrer);
 
         const public_key = this._merchantInfo.merchant_public_key;
@@ -89,7 +89,13 @@ export default class Preorder {
                 extra_widget_refferer
             };
 
-            window.open(this._makeLinkCheckout(checkoutParams), '_blank');
+            let link = this._makeLinkCheckout(checkoutParams);
+
+            if (isDirect) {
+                window.location.href = link;
+            } else {
+                window.open(link, '_blank');
+            }
         }
     };
 }

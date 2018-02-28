@@ -36,9 +36,9 @@ class Form extends Component {
         if (!/^[0-9]{1,6}([,.][0-9]{1,2})?$/.test(value)) {
             message = 'Некорректная сумма';
         }
-        if (!value) {
+        /* if (!value) {
             message = 'Введите сумму';
-        }
+        } */
         if (parseFloat(value) < 1) {
             message = 'Минимальная сумма 1 ₽';
         }
@@ -64,10 +64,13 @@ class Form extends Component {
     errorHandler = (e) => {
         let message = '';
 
-        message = this.errorMessage(e.target.value);
+        const value = this.formattingAmount(e.target.value);
+
+        message = this.errorMessage(value);
 
         this.setState({
-            message
+            message,
+            value
         });
     };
 
@@ -80,23 +83,24 @@ class Form extends Component {
     };
 
     render() {
+        const { value, message } = this.state;
+
         return (
             <div>
                 <FieldWrapper>
                     <Field
-                        onInput={this.onInput}
                         onChange={this.errorHandler}
-                        value={this.state.value}
-                        error={this.state.message}
+                        value={value}
+                        error={message}
                     />
                 </FieldWrapper>
                 <div>
                     <FormButton
                         width="159px"
                         color="#ff8c00"
-                        disabled={!this.state.value}
+                        disabled={!value}
                         onClick={() => {
-                            this.props.redirect(this.state.value);
+                            this.props.redirect(value, true);
                         }}>
                         Продолжить
                     </FormButton>
