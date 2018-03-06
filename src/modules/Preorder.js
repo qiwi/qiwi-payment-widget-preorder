@@ -11,11 +11,13 @@ export default class Preorder {
         return window.location.pathname.match(/([^/]*)\/*$/)[1];
     }
 
-    _getHostName(host = '') {
-        const a = document.createElement('a');
-        a.href = host;
+    _getHostName(url = '') {
+        const hostname = url
+            .split('//')[1]
+            .split('/')[0]
+            .split(':')[0];
 
-        return encodeURIComponent(a.hostname.replace(/\./g, '-'));
+        return encodeURIComponent(hostname.replace(/\./g, '-'));
     }
 
     _makeLinkCheckout(params) {
@@ -72,13 +74,21 @@ export default class Preorder {
     }
 
     redirect = (amount, isDirect) => {
-        const extra_widget_refferer = this._getHostName(document.referrer);
+        /* const extra_widget_refferer = this._getHostName(document.referrer); */
 
-        const public_key = this._merchantInfo.merchant_public_key;
+        const {
+            merchant_info_url,
+            merchant_success_url,
+            merchant_fail_url,
+            merchant_public_key
+        } = this._merchantInfo;
 
-        const success_url = this._merchantInfo.merchant_success_url || '';
+        const public_key = merchant_public_key;
 
-        const fail_url = this._merchantInfo.merchant_fail_url || '';
+        const success_url = encodeURIComponent( merchant_success_url || merchant_info_url || ''
+        );
+
+        const fail_url = encodeURIComponent( merchant_fail_url || merchant_info_url || '');
 
         if (public_key) {
             const checkoutParams = {
@@ -86,7 +96,7 @@ export default class Preorder {
                 amount,
                 success_url,
                 fail_url,
-                extra_widget_refferer
+                extra_widget_refferer: 'my-qiwi-com'
             };
 
             let link = this._makeLinkCheckout(checkoutParams);

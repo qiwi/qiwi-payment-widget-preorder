@@ -86,7 +86,11 @@ class Form extends Component {
         const { value, message } = this.state;
 
         return (
-            <div>
+            <form
+                onSubmit={(e) => {
+                    e.preventDefault();
+                    this.props.redirect(value, true);
+                }}>
                 <FieldWrapper>
                     <Field
                         onChange={this.errorHandler}
@@ -99,13 +103,11 @@ class Form extends Component {
                         width="159px"
                         color="#ff8c00"
                         disabled={!value}
-                        onClick={() => {
-                            this.props.redirect(value, true);
-                        }}>
+                        type="submit">
                         Продолжить
                     </FormButton>
                 </div>
-            </div>
+            </form>
         );
     }
 }
