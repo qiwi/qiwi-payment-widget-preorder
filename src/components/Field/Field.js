@@ -119,7 +119,7 @@ class Field extends Component {
         return (
             <StyledField width={this.props.width}>
                 <input
-                    type="number"
+                    type="text"
                     id="donation-amount"
                     required
                     onChange={this.props.onChange}
