@@ -45,7 +45,7 @@ class Preselect extends Component {
                                 key={index}
                                 width="147px"
                                 onClick={() => {
-                                    this.props.redirect(sum);
+                                    this.props.redirect(sum, true);
                                 }}>
                                 {sum} ₽
                             </PreselectButton>
