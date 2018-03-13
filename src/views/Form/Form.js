@@ -26,50 +26,50 @@ class Form extends Component {
 
         this.state = {
             value: '',
-            message: ''
+            errorMessage: ''
         };
     }
 
     errorMessage(value) {
-        let message = '';
+        let errorMessage = '';
 
         if (!/^[0-9]{1,6}([,.][0-9]{1,2})?$/.test(value)) {
-            message = 'Некорректная сумма';
+            errorMessage = 'Некорректная сумма';
         }
         /* if (!value) {
-            message = 'Введите сумму';
+            errorMessage = 'Введите сумму';
         } */
         if (parseFloat(value) < 1) {
-            message = 'Минимальная сумма 1 ₽';
+            errorMessage = 'Минимальная сумма 1 ₽';
         }
         if (parseFloat(value) > 500000) {
-            message = 'Максимальная сумма 500 000 ₽';
+            errorMessage = 'Максимальная сумма 500 000 ₽';
         }
-        if (message) {
+        if (errorMessage) {
             window.dataLayer.push({
                 event: 'validation.error',
-                eventAction: message
+                eventAction: errorMessage
             });
         }
 
-        return message;
+        return errorMessage;
     }
 
     formattingAmount = (amount) => {
-        let number = amount.replace(/[^0-9,.]/g, '').substring(0, 9);
+        let number = amount.replace(/[^0-9,.]/g, '').substring(0, 7);
 
         return number ? parseFloat(number, 10) : number;
     };
 
     errorHandler = (e) => {
-        let message = '';
+        let errorMessage = '';
 
         const value = this.formattingAmount(e.target.value);
 
-        message = this.errorMessage(value);
+        errorMessage = this.errorMessage(value);
 
         this.setState({
-            message,
+            errorMessage,
             value
         });
     };
@@ -83,7 +83,7 @@ class Form extends Component {
     };
 
     render() {
-        const { value, message } = this.state;
+        const { value, errorMessage } = this.state;
 
         return (
             <form
@@ -93,16 +93,17 @@ class Form extends Component {
                 }}>
                 <FieldWrapper>
                     <Field
+                        type="tel"
                         onChange={this.errorHandler}
                         value={value}
-                        error={message}
+                        error={errorMessage}
                     />
                 </FieldWrapper>
                 <div>
                     <FormButton
                         width="159px"
                         color="#ff8c00"
-                        disabled={!value}
+                        disabled={!value || errorMessage}
                         type="submit">
                         Продолжить
                     </FormButton>
