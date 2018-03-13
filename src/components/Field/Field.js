@@ -56,8 +56,8 @@ const StyledField = styled.div`
         -webkit-appearance: none;
         box-sizing: border-box;
         border: 0;
-        border-bottom: 1px solid ${(props) =>
-            props.error ? '#ff8191' : '#d8d8d8'};
+        border-bottom: 1px solid
+            ${(props) => (props.error ? '#ff8191' : '#d8d8d8')};
         box-shadow: none;
         background-color: transparent;
     }
@@ -115,15 +115,31 @@ const Message = styled.div`
 `;
 
 class Field extends Component {
+    state = {
+        focused: false
+    };
+    _onFocus = () => {
+        if (this.props.onFocus) {
+            this.props.onFocus();
+        }
+    };
+
+    _onBlur = () => {
+        if (this.props.onBlur) {
+            this.props.onBlur();
+        }
+    };
+
     render() {
         return (
             <StyledField width={this.props.width}>
                 <input
-                    type="text"
+                    type={this.props.type}
                     id="donation-amount"
                     required
                     onChange={this.props.onChange}
-                    onBlur={this.props.onBlur}
+                    onBlur={this._onBlur}
+                    onFocus={this._onFocus}
                     value={this.props.value}
                     onInput={this.props.onInput}
                 />
