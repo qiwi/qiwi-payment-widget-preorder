@@ -17,7 +17,7 @@ export default class Preorder {
             .split('/')[0]
             .split(':')[0];
 
-        return encodeURIComponent(hostname.replace(/\./g, '-'));
+        return hostname.replace(/\./g, '-');
     }
 
     _makeLinkCheckout(params) {
@@ -74,8 +74,6 @@ export default class Preorder {
     }
 
     redirect = (amount, isDirect) => {
-        /* const extra_widget_refferer = this._getHostName(document.referrer); */
-
         const {
             merchant_success_url,
             merchant_fail_url,
@@ -84,11 +82,10 @@ export default class Preorder {
 
         const public_key = merchant_public_key;
 
-        const success_url = encodeURIComponent( merchant_success_url || ''
-        );
+        const success_url = merchant_success_url || '';
 
-        const fail_url = encodeURIComponent( merchant_fail_url || '');
-
+        const fail_url = merchant_fail_url || '';
+        
         if (public_key) {
             const checkoutParams = {
                 public_key,
