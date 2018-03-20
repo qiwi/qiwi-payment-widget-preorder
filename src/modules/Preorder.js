@@ -77,7 +77,8 @@ export default class Preorder {
         const {
             merchant_success_url,
             merchant_fail_url,
-            merchant_public_key
+            merchant_public_key,
+            merchant_alias_code
         } = this._merchantInfo;
 
         const public_key = merchant_public_key;
@@ -85,13 +86,16 @@ export default class Preorder {
         const success_url = merchant_success_url || '';
 
         const fail_url = merchant_fail_url || '';
-        
+
+        const extra_widget_alias = merchant_alias_code || '';
+
         if (public_key) {
             const checkoutParams = {
                 public_key,
                 amount,
                 success_url,
                 fail_url,
+                extra_widget_alias,
                 extra_widget_refferer: 'my-qiwi-com'
             };
 

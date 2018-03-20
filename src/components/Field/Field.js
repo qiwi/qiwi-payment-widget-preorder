@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
+import Sign from '../Sign';
+
 const Bar = styled.div`
     position: absolute;
     bottom: 0;
@@ -95,7 +97,7 @@ const Currency = styled.div`
     right: 0;
     width: 12px;
     height: 24px;
-    opacity: 0.7;
+    opacity: 0.6;
     font-size: 20px;
     font-weight: 300;
     text-align: left;
@@ -144,7 +146,9 @@ class Field extends Component {
                     onInput={this.props.onInput}
                 />
                 <label htmlFor="donation-amount">Cумма</label>
-                <Currency>₽</Currency>
+                <Currency>
+                    <Sign height="16"/>
+                </Currency>
                 <Bar />
                 <Message error={this.props.error}>{this.props.error}</Message>
             </StyledField>
