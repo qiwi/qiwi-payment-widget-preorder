@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import Button from '../../components/Button';
+import Sign from '../../components/Sign';
 import styled from 'styled-components';
 
 const PreselectText = styled.div`
@@ -47,7 +48,7 @@ class Preselect extends Component {
                                 onClick={() => {
                                     this.props.redirect(sum, true);
                                 }}>
-                                {sum} ₽
+                                {sum} <Sign height="12" />
                             </PreselectButton>
                         );
                     })}
