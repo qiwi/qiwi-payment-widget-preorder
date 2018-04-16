@@ -108,4 +108,21 @@ export default class Preorder {
             }
         }
     };
+
+    addMetricCounter = (counter) => {
+        if (!counter) {
+            return false;
+        }
+
+        try {
+            const yaCounter = `yaCounter${counter}`;
+            window[yaCounter] = new window.Ya.Metrika({
+                id: counter,
+                clickmap: true,
+                trackLinks: true,
+                accurateTrackBounce: true
+            });
+        } catch (e) {}
+           
+    };
 }
