@@ -26,6 +26,8 @@ class App extends Component {
 
             document.title = merchantInfo.merchant_name;
 
+            preorder.addMetricCounter(merchantInfo.merchant_metric);
+
             this.setState({
                 merchantInfo
             });

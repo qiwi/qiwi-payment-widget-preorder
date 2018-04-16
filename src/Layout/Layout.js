@@ -17,6 +17,22 @@ export default class Layout extends Component {
     render() {
         return (
             <div>
+                {this.props.merchantInfo.merchant_metric && (
+                    <noscript>
+                        <div>
+                            <img
+                                src={`https://mc.yandex.ru/watch/${
+                                    this.props.merchantInfo.merchant_metric
+                                }`}
+                                style={{
+                                    position: 'absolute',
+                                    left: '-9999px'
+                                }}
+                                alt=""
+                            />
+                        </div>
+                    </noscript>
+                )}
                 {this.props.merchantInfo.merchant_alias_code ? (
                     <PreorderCard width="438px">
                         <Card.Header>
