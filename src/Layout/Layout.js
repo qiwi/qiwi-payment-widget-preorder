@@ -54,13 +54,7 @@ export default class Layout extends Component {
                             </MethodPayments>
                         </PreorderCardBody>
                         <PreorderCardFooter>
-                            {merchant_offer && (
-                                <Oferta
-                                    link={
-                                        merchant_offer
-                                    }
-                                />
-                            )}
+                            {merchant_offer && <Oferta link={merchant_offer} />}
                             <TechnologiesPics height="20" />
                             <HelpLink
                                 target="_blank"
