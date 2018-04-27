@@ -123,6 +123,5 @@ export default class Preorder {
                 accurateTrackBounce: true
             });
         } catch (e) {}
-           
     };
 }
