@@ -28,12 +28,12 @@ export default class Preorder {
     }
 
     _makeRequest() {
-        let url = 'https://my.qiwi.com/partners_api/merchant_widget_info';
+        let url = 'https://my.qiwi.com/partners_api/widget_info';
 
-        let param = `merchant_public_key=${this._merchantId}`;
+        let param = `merchant_site_public_key=${this._merchantId}`;
 
-        if (this._merchantAlias && !this._merchantId) {
-            param = `merchant_alias_code=${this._merchantAlias}`;
+        if (this._widgetAliasCode && !this._merchantId) {
+            param = `widget_alias_code=${this._widgetAliasCode}`;
         }
 
         return fetch(`${url}?${param}`, {
@@ -56,9 +56,9 @@ export default class Preorder {
     async getMerchantInfo() {
         this._merchantId = this._getParameterByName('public_key');
 
-        this._merchantAlias = this._getAlias();
+        this._widgetAliasCode = this._getAlias();
 
-        if (this._merchantId || this._merchantAlias) {
+        if (this._merchantId || this._widgetAliasCode) {
             try {
                 const data = await this._makeRequest();
 
@@ -77,17 +77,17 @@ export default class Preorder {
         const {
             merchant_success_url,
             merchant_fail_url,
-            merchant_public_key,
-            merchant_alias_code
+            merchant_site_public_key,
+            widget_alias_code
         } = this._merchantInfo;
 
-        const public_key = merchant_public_key;
+        const public_key = merchant_site_public_key;
 
         const success_url = merchant_success_url || '';
 
         const fail_url = merchant_fail_url || '';
 
-        const extra_widget_alias = merchant_alias_code || '';
+        const extra_widget_alias = widget_alias_code || '';
 
         if (public_key) {
             const checkoutParams = {

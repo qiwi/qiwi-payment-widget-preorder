@@ -17,19 +17,19 @@ import {
 export default class Layout extends Component {
     render() {
         const {
-            merchant_metric,
-            merchant_alias_code,
-            merchant_name,
-            merchant_widget_description,
-            merchant_offer
+            widget_merchant_metric,
+            widget_alias_code,
+            widget_merchant_name,
+            widget_description,
+            widget_merchant_offer
         } = this.props.merchantInfo;
         return (
             <div>
-                {merchant_metric && (
+                {widget_merchant_metric && (
                     <noscript>
                         <div>
                             <img
-                                src={`https://mc.yandex.ru/watch/${merchant_metric}`}
+                                src={`https://mc.yandex.ru/watch/${widget_merchant_metric}`}
                                 style={{
                                     position: 'absolute',
                                     left: '-9999px'
@@ -39,13 +39,13 @@ export default class Layout extends Component {
                         </div>
                     </noscript>
                 )}
-                {merchant_alias_code ? (
+                {widget_alias_code ? (
                     <PreorderCard width="438px">
                         <Card.Header>
                             <Card.Title>
-                                {merchant_name || 'Наименование организации'}
+                                {widget_merchant_name || 'Наименование организации'}
                             </Card.Title>
-                            <Card.Desc>{merchant_widget_description}</Card.Desc>
+                            <Card.Desc>{widget_description}</Card.Desc>
                         </Card.Header>
                         <PreorderCardBody>
                             {this.props.children}
@@ -54,13 +54,7 @@ export default class Layout extends Component {
                             </MethodPayments>
                         </PreorderCardBody>
                         <PreorderCardFooter>
-                            {merchant_offer && (
-                                <Oferta
-                                    link={
-                                        merchant_offer
-                                    }
-                                />
-                            )}
+                            {widget_merchant_offer && <Oferta link={widget_merchant_offer} />}
                             <TechnologiesPics height="20" />
                             <HelpLink
                                 target="_blank"

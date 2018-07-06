@@ -24,9 +24,9 @@ class App extends Component {
         try {
             const merchantInfo = await preorder.getMerchantInfo();
 
-            document.title = merchantInfo.merchant_name;
+            document.title = merchantInfo.widget_merchant_name;
 
-            preorder.addMetricCounter(merchantInfo.merchant_metric);
+            preorder.addMetricCounter(merchantInfo.widget_merchant_metric);
 
             this.setState({
                 merchantInfo
@@ -41,9 +41,9 @@ class App extends Component {
     render() {
         const defaultSum = [100, 200, 300];
 
-        const merhcantAlias = `/${this.state.merchantInfo.merchant_alias_code}`;
+        const widgetAliasCode = `/${this.state.merchantInfo.widget_alias_code}`;
 
-        const toFormPath = `/form${merhcantAlias}`;
+        const toFormPath = `/form${widgetAliasCode}`;
 
         return (
             <Layout
@@ -52,13 +52,13 @@ class App extends Component {
                 <Switch>
                     <Route
                         exact
-                        path={merhcantAlias}
+                        path={widgetAliasCode}
                         render={(props) => (
                             <Preselect
                                 {...props}
                                 sumAmont={
                                     this.state.merchantInfo
-                                        .merchant_payment_sum_amount ||
+                                        .widget_payment_sum_amount ||
                                     defaultSum
                                 }
                                 toFormPath={toFormPath}
@@ -70,7 +70,7 @@ class App extends Component {
                         path={toFormPath}
                         render={() => <Form redirect={preorder.redirect} />}
                     />
-                    <Redirect path="/" to={merhcantAlias} />
+                    <Redirect path="/" to={widgetAliasCode} />
                 </Switch>
             </Layout>
         );
