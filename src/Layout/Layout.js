@@ -17,19 +17,19 @@ import {
 export default class Layout extends Component {
     render() {
         const {
-            widget_merchant_metric,
-            widget_alias_code,
-            widget_merchant_name,
+            widgetMerchantMetric,
+            widgetAliasCode,
+            widgetMerchantName,
             widget_description,
             widget_merchant_offer
         } = this.props.merchantInfo;
         return (
             <div>
-                {widget_merchant_metric && (
+                {widgetMerchantMetric && (
                     <noscript>
                         <div>
                             <img
-                                src={`https://mc.yandex.ru/watch/${widget_merchant_metric}`}
+                                src={`https://mc.yandex.ru/watch/${widgetMerchantMetric}`}
                                 style={{
                                     position: 'absolute',
                                     left: '-9999px'
@@ -39,11 +39,11 @@ export default class Layout extends Component {
                         </div>
                     </noscript>
                 )}
-                {widget_alias_code ? (
+                {widgetAliasCode ? (
                     <PreorderCard width="438px">
                         <Card.Header>
                             <Card.Title>
-                                {widget_merchant_name || 'Наименование организации'}
+                                {widgetMerchantName || 'Наименование организации'}
                             </Card.Title>
                             <Card.Desc>{widget_description}</Card.Desc>
                         </Card.Header>

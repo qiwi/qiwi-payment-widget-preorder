@@ -31,12 +31,12 @@ export default class Preorder {
     }
 
     _makeRequest() {
-        let url = 'http://localhost:9922/partners_api/widget_info';
+        let url = 'http://localhost:9922/api/widgets/widget-info';
 
-        let param = `merchant_site_public_key=${this._merchantId}`;
+        let param = `merchantSitePublicKey=${this._merchantId}`;
 
         if (this._widgetAliasCode && !this._merchantId) {
-            param = `widget_alias_code=${this._widgetAliasCode}`;
+            param = `widgetAliasCode=${this._widgetAliasCode}`;
         }
 
         return fetch(`${url}?${param}`, {
@@ -57,7 +57,7 @@ export default class Preorder {
     }
 
     async getMerchantInfo() {
-        this._merchantId = this._getParameterByName('public_key');
+        this._merchantId = this._getParameterByName('publicKey');
 
         this._widgetAliasCode = this._getAlias();
 
@@ -78,19 +78,19 @@ export default class Preorder {
 
     redirect = (amount, isDirect) => {
         const {
-            widget_success_url,
-            widget_fail_url,
-            merchant_site_public_key,
-            widget_alias_code
+            widgetSuccessUrl,
+            widgetFailUrl,
+            merchantSitePublicKey,
+            widgetAliasCode
         } = this._merchantInfo;
 
-        const publicKey = merchant_site_public_key;
+        const publicKey = merchantSitePublicKey;
 
-        const successUrl = widget_success_url || '';
+        const successUrl = widgetSuccessUrl || '';
 
-        const failUrl = widget_fail_url || '';
+        const failUrl = widgetFailUrl || '';
 
-        const widgetAlias = widget_alias_code || '';
+        const widgetAlias = widgetAliasCode || '';
 
         if (publicKey) {
             const checkoutParams = {
