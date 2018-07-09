@@ -75,28 +75,28 @@ export default class Preorder {
 
     redirect = (amount, isDirect) => {
         const {
-            merchant_success_url,
-            merchant_fail_url,
+            widget_success_url,
+            widget_fail_url,
             merchant_site_public_key,
             widget_alias_code
         } = this._merchantInfo;
 
-        const public_key = merchant_site_public_key;
+        const publicKey = merchant_site_public_key;
 
-        const success_url = merchant_success_url || '';
+        const successUrl = widget_success_url || '';
 
-        const fail_url = merchant_fail_url || '';
+        const failUrl = widget_fail_url || '';
 
-        const extra_widget_alias = widget_alias_code || '';
+        const extra_widgetAlias = widget_alias_code || '';
 
-        if (public_key) {
+        if (publicKey) {
             const checkoutParams = {
-                public_key,
+                publicKey,
                 amount,
-                success_url,
-                fail_url,
-                extra_widget_alias,
-                extra_widget_refferer: 'my-qiwi-com'
+                successUrl,
+                failUrl,
+                extra_widgetAlias,
+                extra_widgetRefferer: 'my-qiwi-com'
             };
 
             let link = this._makeLinkCheckout(checkoutParams);
