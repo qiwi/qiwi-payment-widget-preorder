@@ -20,8 +20,8 @@ export default class Layout extends Component {
             widgetMerchantMetric,
             widgetAliasCode,
             widgetMerchantName,
-            widget_description,
-            widget_merchant_offer
+            widgetDescription,
+            widgetMerchantOffer
         } = this.props.merchantInfo;
         return (
             <div>
@@ -45,7 +45,7 @@ export default class Layout extends Component {
                             <Card.Title>
                                 {widgetMerchantName || 'Наименование организации'}
                             </Card.Title>
-                            <Card.Desc>{widget_description}</Card.Desc>
+                            <Card.Desc>{widgetDescription}</Card.Desc>
                         </Card.Header>
                         <PreorderCardBody>
                             {this.props.children}
@@ -54,7 +54,7 @@ export default class Layout extends Component {
                             </MethodPayments>
                         </PreorderCardBody>
                         <PreorderCardFooter>
-                            {widget_merchant_offer && <Oferta link={widget_merchant_offer} />}
+                            {widgetMerchantOffer && <Oferta link={widgetMerchantOffer} />}
                             <TechnologiesPics height="20" />
                             <HelpLink
                                 target="_blank"
