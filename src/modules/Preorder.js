@@ -20,15 +20,18 @@ export default class Preorder {
         return hostname.replace(/\./g, '-');
     }
 
-    _makeLinkCheckout(params) {
+    _makeLinkCheckout(params, extras) {
         const url = 'https://oplata.qiwi.com/create';
         const parsedParams = new URLSearchParams(params);
+        Object.getOwnPropertyNames(extras).forEach(extraName => {
+            parsedParams.append(`extras[${extraName}]`, `${extras[extraName]}`);
+        });
 
         return `${url}?${parsedParams.toString()}`;
     }
 
     _makeRequest() {
-        let url = 'https://my.qiwi.com/partners_api/widget_info';
+        let url = 'http://localhost:9922/partners_api/widget_info';
 
         let param = `merchant_site_public_key=${this._merchantId}`;
 
@@ -87,19 +90,22 @@ export default class Preorder {
 
         const failUrl = widget_fail_url || '';
 
-        const extra_widgetAlias = widget_alias_code || '';
+        const widgetAlias = widget_alias_code || '';
 
         if (publicKey) {
             const checkoutParams = {
                 publicKey,
                 amount,
                 successUrl,
-                failUrl,
-                extra_widgetAlias,
-                extra_widgetRefferer: 'my-qiwi-com'
+                failUrl
             };
 
-            let link = this._makeLinkCheckout(checkoutParams);
+            const extras = {
+                widgetAlias,
+                widgetRefferer: 'my-qiwi-com'
+            };
+
+            let link = this._makeLinkCheckout(checkoutParams, extras);
 
             if (isDirect) {
                 window.location.href = link;
