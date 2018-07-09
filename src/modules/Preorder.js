@@ -31,7 +31,7 @@ export default class Preorder {
     }
 
     _makeRequest() {
-        let url = 'http://localhost:9922/api/widgets/widget-info';
+        let url = 'https://my.qiwi.com/api/widgets/widget-info';
 
         let param = `merchantSitePublicKey=${this._merchantId}`;
 
