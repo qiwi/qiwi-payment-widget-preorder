@@ -1,4 +1,5 @@
 import 'url-search-params-polyfill';
+import config from '../config/default';
 
 export default class Preorder {
     _getParameterByName(param, urlSearch = window.location.search) {
@@ -21,7 +22,7 @@ export default class Preorder {
     }
 
     _makeLinkCheckout(params, extras) {
-        const url = 'https://oplata.qiwi.com/create';
+        const url = config.oplataUrl;
         const parsedParams = new URLSearchParams(params);
         Object.getOwnPropertyNames(extras).forEach(extraName => {
             parsedParams.append(`extras[${extraName}]`, `${extras[extraName]}`);
@@ -31,7 +32,7 @@ export default class Preorder {
     }
 
     _makeRequest() {
-        let url = 'https://my.qiwi.com/api/widgets/widget-info';
+        let url = config.widgetsApiUrl; // TODO
 
         let param = `merchantSitePublicKey=${this._merchantId}`;
 
