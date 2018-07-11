@@ -12,7 +12,7 @@
     },
     "scripts": {
         "start": "react-scripts start",
-        "build": "react-scripts build && rm build/static/js/*.map",
+        "build": "sh -ac '. ./.env.${NODE_ENV}; react-scripts build && rm build/static/js/*.map'",
         "test": "react-scripts test --env=jsdom",
         "eject": "react-scripts eject"
     },
