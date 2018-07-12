@@ -1,4 +1,5 @@
 import 'url-search-params-polyfill';
+import config from '../config/default';
 
 export default class Preorder {
     _getParameterByName(param, urlSearch = window.location.search) {
@@ -20,20 +21,23 @@ export default class Preorder {
         return hostname.replace(/\./g, '-');
     }
 
-    _makeLinkCheckout(params) {
-        const url = 'https://oplata.qiwi.com/create';
+    _makeLinkCheckout(params, extras) {
+        const url = config.oplataUrl;
         const parsedParams = new URLSearchParams(params);
+        Object.getOwnPropertyNames(extras).forEach(extraName => {
+            parsedParams.append(`extras[${extraName}]`, `${extras[extraName]}`);
+        });
 
         return `${url}?${parsedParams.toString()}`;
     }
 
     _makeRequest() {
-        let url = 'https://my.qiwi.com/partners_api/merchant_widget_info';
+        let url = config.widgetsApiUrl; // TODO
 
-        let param = `merchant_public_key=${this._merchantId}`;
+        let param = `merchantSitePublicKey=${this._merchantId}`;
 
-        if (this._merchantAlias && !this._merchantId) {
-            param = `merchant_alias_code=${this._merchantAlias}`;
+        if (this._widgetAliasCode && !this._merchantId) {
+            param = `widgetAliasCode=${this._widgetAliasCode}`;
         }
 
         return fetch(`${url}?${param}`, {
@@ -54,11 +58,11 @@ export default class Preorder {
     }
 
     async getMerchantInfo() {
-        this._merchantId = this._getParameterByName('public_key');
+        this._merchantId = this._getParameterByName('publicKey');
 
-        this._merchantAlias = this._getAlias();
+        this._widgetAliasCode = this._getAlias();
 
-        if (this._merchantId || this._merchantAlias) {
+        if (this._merchantId || this._widgetAliasCode) {
             try {
                 const data = await this._makeRequest();
 
@@ -75,31 +79,34 @@ export default class Preorder {
 
     redirect = (amount, isDirect) => {
         const {
-            merchant_success_url,
-            merchant_fail_url,
-            merchant_public_key,
-            merchant_alias_code
+            widgetSuccessUrl,
+            widgetFailUrl,
+            merchantSitePublicKey,
+            widgetAliasCode
         } = this._merchantInfo;
 
-        const public_key = merchant_public_key;
+        const publicKey = merchantSitePublicKey;
 
-        const success_url = merchant_success_url || '';
+        const successUrl = widgetSuccessUrl || '';
 
-        const fail_url = merchant_fail_url || '';
+        const failUrl = widgetFailUrl || '';
 
-        const extra_widget_alias = merchant_alias_code || '';
+        const widgetAlias = widgetAliasCode || '';
 
-        if (public_key) {
+        if (publicKey) {
             const checkoutParams = {
-                public_key,
+                publicKey,
                 amount,
-                success_url,
-                fail_url,
-                extra_widget_alias,
-                extra_widget_refferer: 'my-qiwi-com'
+                successUrl,
+                failUrl
             };
 
-            let link = this._makeLinkCheckout(checkoutParams);
+            const extras = {
+                widgetAlias,
+                widgetRefferer: 'my-qiwi-com'
+            };
+
+            let link = this._makeLinkCheckout(checkoutParams, extras);
 
             if (isDirect) {
                 window.location.href = link;

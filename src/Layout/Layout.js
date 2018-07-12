@@ -17,19 +17,19 @@ import {
 export default class Layout extends Component {
     render() {
         const {
-            merchant_metric,
-            merchant_alias_code,
-            merchant_name,
-            merchant_widget_description,
-            merchant_offer
+            widgetMerchantMetric,
+            widgetAliasCode,
+            widgetMerchantName,
+            widgetDescription,
+            widgetMerchantOffer
         } = this.props.merchantInfo;
         return (
             <div>
-                {merchant_metric && (
+                {widgetMerchantMetric && (
                     <noscript>
                         <div>
                             <img
-                                src={`https://mc.yandex.ru/watch/${merchant_metric}`}
+                                src={`https://mc.yandex.ru/watch/${widgetMerchantMetric}`}
                                 style={{
                                     position: 'absolute',
                                     left: '-9999px'
@@ -39,13 +39,13 @@ export default class Layout extends Component {
                         </div>
                     </noscript>
                 )}
-                {merchant_alias_code ? (
+                {widgetAliasCode ? (
                     <PreorderCard width="438px">
                         <Card.Header>
                             <Card.Title>
-                                {merchant_name || 'Наименование организации'}
+                                {widgetMerchantName || 'Наименование организации'}
                             </Card.Title>
-                            <Card.Desc>{merchant_widget_description}</Card.Desc>
+                            <Card.Desc>{widgetDescription}</Card.Desc>
                         </Card.Header>
                         <PreorderCardBody>
                             {this.props.children}
@@ -54,7 +54,7 @@ export default class Layout extends Component {
                             </MethodPayments>
                         </PreorderCardBody>
                         <PreorderCardFooter>
-                            {merchant_offer && <Oferta link={merchant_offer} />}
+                            {widgetMerchantOffer && <Oferta link={widgetMerchantOffer} />}
                             <TechnologiesPics height="20" />
                             <HelpLink
                                 target="_blank"
