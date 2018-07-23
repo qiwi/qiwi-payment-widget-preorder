@@ -5,9 +5,11 @@ import Link from '../Link';
 
 const Container = styled.div`
     font-size: 13px;
-    font-weight: 500;
-    color: rgb(113, 113, 113);
+    font-weight: 300;
+    color: #4a4a4a;
     margin-bottom: 18px;
+    bottom: 24px;
+    position: absolute;
 `;
 
 function Oferta({link}) {

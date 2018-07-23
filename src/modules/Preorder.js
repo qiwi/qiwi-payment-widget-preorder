@@ -1,5 +1,6 @@
 import 'url-search-params-polyfill';
 import config from '../config/default';
+import {stylesArrayToObject} from "../modules/helpers";
 
 export default class Preorder {
     _getParameterByName(param, urlSearch = window.location.search) {
@@ -32,11 +33,11 @@ export default class Preorder {
     }
 
     _makeRequest() {
-        let url = config.widgetsApiUrl; // TODO
+        let url = config.widgetsApiUrl;
 
-        let param = `merchantSitePublicKey=${this._merchantId}`;
+        let param = `merchantSitePublicKey=${this._widgetId}`;
 
-        if (this._widgetAliasCode && !this._merchantId) {
+        if (this._widgetAliasCode && !this._widgetId) {
             param = `widgetAliasCode=${this._widgetAliasCode}`;
         }
 
@@ -57,16 +58,17 @@ export default class Preorder {
             .then((response) => response.json());
     }
 
-    async getMerchantInfo() {
-        this._merchantId = this._getParameterByName('publicKey');
+    async getwidgetInfo() {
+        this._widgetId = this._getParameterByName('publicKey');
 
         this._widgetAliasCode = this._getAlias();
 
-        if (this._merchantId || this._widgetAliasCode) {
+        if (this._widgetId || this._widgetAliasCode) {
             try {
                 const data = await this._makeRequest();
 
-                this._merchantInfo = data.result;
+                data.result.widgetStyles = stylesArrayToObject(data.result.widgetStyles);
+                this._widgetInfo = data.result;
 
                 return data.result;
             } catch (err) {
@@ -83,7 +85,7 @@ export default class Preorder {
             widgetFailUrl,
             merchantSitePublicKey,
             widgetAliasCode
-        } = this._merchantInfo;
+        } = this._widgetInfo;
 
         const publicKey = merchantSitePublicKey;
 

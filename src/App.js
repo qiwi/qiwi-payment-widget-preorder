@@ -15,21 +15,21 @@ class App extends Component {
         super(props);
 
         this.state = {
-            merchantInfo: {},
+            widgetInfo: {},
             errorLoading: false
         };
     }
 
     async componentDidMount() {
         try {
-            const merchantInfo = await preorder.getMerchantInfo();
+            const widgetInfo = await preorder.getwidgetInfo();
 
-            document.title = merchantInfo.widgetMerchantName;
+            document.title = widgetInfo.widgetMerchantName;
 
-            preorder.addMetricCounter(merchantInfo.widgetMerchantMetric);
+            preorder.addMetricCounter(widgetInfo.widgetMerchantMetric);
 
             this.setState({
-                merchantInfo
+                widgetInfo
             });
         } catch (err) {
             this.setState({
@@ -41,16 +41,16 @@ class App extends Component {
     render() {
         const defaultSum = [100, 200, 300];
 
-        const widgetAliasCode = `/${this.state.merchantInfo.widgetAliasCode}`;
+        const widgetAliasCode = `/${this.state.widgetInfo.widgetAliasCode}`;
 
         const toFormPath = `/form${widgetAliasCode}`;
-        this.state.merchantInfo.widgetPaymentSumAmount = this.state.merchantInfo.widgetPaymentSumAmount || [];
-        if(this.state.merchantInfo.widgetPaymentSumAmount.length === 0) {
-            this.state.merchantInfo.widgetPaymentSumAmount = defaultSum;
+        this.state.widgetInfo.widgetPaymentSumAmount = this.state.widgetInfo.widgetPaymentSumAmount || [];
+        if(this.state.widgetInfo.widgetPaymentSumAmount.length === 0) {
+            this.state.widgetInfo.widgetPaymentSumAmount = defaultSum;
         }
         return (
             <Layout
-                merchantInfo={this.state.merchantInfo}
+                widgetInfo={this.state.widgetInfo}
                 errorLoading={this.state.errorLoading}>
                 <Switch>
                     <Route
@@ -60,7 +60,7 @@ class App extends Component {
                             <Preselect
                                 {...props}
                                 sumAmont={
-                                    this.state.merchantInfo.widgetPaymentSumAmount
+                                    this.state.widgetInfo.widgetPaymentSumAmount
                                 }
                                 toFormPath={toFormPath}
                                 redirect={preorder.redirect}

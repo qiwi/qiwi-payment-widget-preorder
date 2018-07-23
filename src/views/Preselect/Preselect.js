@@ -7,24 +7,27 @@ import styled from 'styled-components';
 const PreselectText = styled.div`
     font-family: MuseoSansCyrl;
     font-size: 16px;
-    font-weight: 500;
-    line-height: 1.31;
+    font-weight: 300;
+    line-height: 20px;
     text-align: center;
     color: #000000;
 
-    @media (max-width: 450px) {
+    @media (max-width: 820px) {
         display: none;
     }
 `;
 
 const PreselectButton = styled(Button)`
-    margin-top: 32px;
-
+    margin-top: 24px;
+    font-family: MuseoSansCyrl;
+    font-size: 14px;
+    line-height: 20px;
+    
     &:nth-child(2n + 1) {
-        margin-right: 24px;
+        margin-right: 20px;
     }
 
-    @media (max-width: 450px) {
+    @media (max-width: 820px) {
         margin: 8px 0 0;
         width: 100%;
 

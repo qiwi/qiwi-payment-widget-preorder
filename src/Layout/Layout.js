@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 
 import Loader from '../components/Loader';
 
@@ -7,8 +7,12 @@ import TechnologiesPics from '../components/TechnologiesPics';
 import MethodPayments from '../components/MethodPayments';
 import Oferta from '../components/Oferta';
 
+import {styleCode} from "../styles/index";
+
 import {
-    PreorderCard,
+    CardHolder,
+    MerchantInfoCard,
+    ContentBlock,
     PreorderCardBody,
     PreorderCardFooter,
     HelpLink
@@ -21,8 +25,10 @@ export default class Layout extends Component {
             widgetAliasCode,
             widgetMerchantName,
             widgetDescription,
-            widgetMerchantOffer
-        } = this.props.merchantInfo;
+            widgetMerchantOffer,
+            widgetStyles
+        } = this.props.widgetInfo;
+        const color = (widgetStyles && widgetStyles[styleCode.WIDGET_BACKGROUND])? widgetStyles[styleCode.WIDGET_BACKGROUND] : '';
         return (
             <div>
                 {widgetMerchantMetric && (
@@ -40,22 +46,28 @@ export default class Layout extends Component {
                     </noscript>
                 )}
                 {widgetAliasCode ? (
-                    <PreorderCard width="438px">
-                        <Card.Header>
-                            <Card.Title>
-                                {widgetMerchantName || 'Наименование организации'}
-                            </Card.Title>
-                            <Card.Desc>{widgetDescription}</Card.Desc>
-                        </Card.Header>
-                        <PreorderCardBody>
-                            {this.props.children}
-                            <MethodPayments height="18">
-                                Оплата любым удобным для вас способом
-                            </MethodPayments>
-                        </PreorderCardBody>
+                    <ContentBlock width="820px">
+                        <CardHolder>
+                            <Card width="438px">
+                                <PreorderCardBody>
+                                    {this.props.children}
+                                    <MethodPayments height="18">
+                                        Оплата любым удобным для вас способом
+                                    </MethodPayments>
+                                    {widgetMerchantOffer && <Oferta link={widgetMerchantOffer}/>}
+                                </PreorderCardBody>
+                            </Card>
+                            <MerchantInfoCard width="382px" color={color}>
+                                <Card.Header>
+                                    <Card.Title color={color}>
+                                        {widgetMerchantName || 'Наименование организации'}
+                                    </Card.Title>
+                                    <Card.Desc color={color}>{widgetDescription}</Card.Desc>
+                                </Card.Header>
+                            </MerchantInfoCard>
+                        </CardHolder>
                         <PreorderCardFooter>
-                            {widgetMerchantOffer && <Oferta link={widgetMerchantOffer} />}
-                            <TechnologiesPics height="20" />
+                            <TechnologiesPics height="20"/>
                             <HelpLink
                                 target="_blank"
                                 rel="noopener noreferrer"
@@ -63,9 +75,9 @@ export default class Layout extends Component {
                                 Помощь
                             </HelpLink>
                         </PreorderCardFooter>
-                    </PreorderCard>
+                    </ContentBlock>
                 ) : (
-                    <Loader error={this.props.errorLoading} />
+                    <Loader error={this.props.errorLoading}/>
                 )}
             </div>
         );

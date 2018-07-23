@@ -9,13 +9,13 @@ const FieldWrapper = styled.div`
     position: relative;
     margin: 0 auto 32px;
 
-    @media (max-width: 450px) {
+    @media (max-width: 820px) {
         width: 100%;
     }
 `;
 
 const FormButton = styled(Button)`
-    @media (max-width: 450px) {
+    @media (max-width: 820px) {
         width: 100%;
     }
 `;

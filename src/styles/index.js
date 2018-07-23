@@ -13,11 +13,21 @@ body {
     justify-content: center;
     background-color: #ffffff;
 
-    @media (max-width: 450px) {
+    @media (max-width: 820px) {
         background-color: rgb(247,247,247);
     }
 }
 `;
+
+export const styleCode = {
+    BUTTON_BACKGROUND: 'BUTTON_BACKGROUND',
+    WIDGET_BACKGROUND: 'WIDGET_BACKGROUND'
+};
+
+export const color = {
+    BLACK: '#000000',
+    WHITE: '#FFFFFF'
+};
 
 const styles = `
 ${fonts} 

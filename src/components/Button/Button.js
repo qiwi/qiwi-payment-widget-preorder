@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import {getContrastColorByBackground} from "../../modules/helpers";
 
 const Button = styled.button`
     background-color: ${(props) => props.color || 'transparent'};
@@ -9,7 +10,7 @@ const Button = styled.button`
     font-size: 16px;
     font-weight: 400;
     text-align: center;
-    color: ${(props) => (props.color ? '#ffffff' : '#000')};
+    color: ${(props) => getContrastColorByBackground(props.color)};
     border: 0;
     padding: 0;
     cursor: pointer;
