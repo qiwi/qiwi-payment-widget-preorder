@@ -7,6 +7,7 @@ import Layout from './Layout';
 
 import Preselect from './views/Preselect';
 import Form from './views/Form';
+import {styleCode} from "./styles";
 
 const preorder = new Preorder();
 
@@ -48,6 +49,8 @@ class App extends Component {
         if(this.state.widgetInfo.widgetPaymentSumAmount.length === 0) {
             this.state.widgetInfo.widgetPaymentSumAmount = defaultSum;
         }
+        const widgetStyles = this.state.widgetInfo.widgetStyles;
+        const color = (widgetStyles && widgetStyles[styleCode.WIDGET_BACKGROUND])? widgetStyles[styleCode.WIDGET_BACKGROUND] : '';
         return (
             <Layout
                 widgetInfo={this.state.widgetInfo}
@@ -59,6 +62,7 @@ class App extends Component {
                         render={(props) => (
                             <Preselect
                                 {...props}
+                                color={color}
                                 sumAmont={
                                     this.state.widgetInfo.widgetPaymentSumAmount
                                 }

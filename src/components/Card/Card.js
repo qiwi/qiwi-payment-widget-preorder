@@ -2,10 +2,9 @@ import styled from 'styled-components';
 import {getContrastColorByBackground} from "../../modules/helpers";
 
 const Card = styled.div`
-    border-radius: 10px;
+    border-radius: 10px 0 0 10px;
     background-color: #ffffff;
-    border: solid 1px #e7e7e7;
-    box-shadow: 15px 0px 20px 0px rgba(0, 0, 0, 0.15);
+    box-shadow: 15px 0px 25px -8px rgba(0, 0, 0, 0.15);
     width: ${(props) => props.width || '100%'};
     max-width: 438px;
     text-align: center;
@@ -21,8 +20,11 @@ Card.Header = styled.div`
 `;
 
 Card.Body = styled.div`
-    min-height: 500px;
+    min-height: 560px;
     box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     padding: 30px;
 `;
 

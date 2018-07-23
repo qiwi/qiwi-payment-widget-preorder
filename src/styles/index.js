@@ -11,7 +11,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-color: #ffffff;
+    background-color: #f5f5f5;
 
     @media (max-width: 820px) {
         background-color: rgb(247,247,247);

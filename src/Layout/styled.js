@@ -13,21 +13,25 @@ const show = keyframes`
 `;
 
 export const CardHolder = styled.div`
+    border-radius: 10px;
     display: flex;
     flex-direction: row;
     max-width: 820px;
     max-height: 560px;
+    box-shadow: 0 10px 25px 0 rgba(0, 0, 0, 0.15);
 `;
 
 export const MerchantInfoCard = styled(Card)`
     animation: ${show} 1s linear forwards;
     z-index: -1;
-    border-radius: 0;
+    border-radius: 0 10px 10px 0px;
     opacity: 0;    
+    box-shadow: none;
     max-width: 382px;
     background:
         url(${(props) => props.url || ''}), 
-        linear-gradient(56deg, ${(props) => editColor(props.color, -50)}, ${(props) => editColor(props.color,  30)});
+        linear-gradient(56deg, ${(props) => props.color ? editColor(props.color, -50): '#f9f9f9'},
+         ${(props) => props.color ? editColor(props.color,  30): '#f9f9f9'});
     
     @media (max-width: 820px) {
         display: none;
@@ -61,6 +65,10 @@ export const PreorderCardBody = styled(Card.Body)`
 export const PreorderCardFooter = styled(Card.Footer)`
     position: relative;
     text-align: center;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
 
     @media (max-width: 820px) {
         background-color: rgb(247, 247, 247);

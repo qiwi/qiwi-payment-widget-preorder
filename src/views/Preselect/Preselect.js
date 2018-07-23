@@ -19,7 +19,6 @@ const PreselectText = styled.div`
 
 const PreselectButton = styled(Button)`
     margin-top: 24px;
-    font-family: MuseoSansCyrl;
     font-size: 14px;
     line-height: 20px;
     
@@ -47,18 +46,20 @@ class Preselect extends Component {
                         return (
                             <PreselectButton
                                 key={index}
-                                width="147px"
+                                width="148px"
+                                color={this.props.color}
                                 onClick={() => {
                                     this.props.redirect(sum, true);
                                 }}>
-                                {sum} <Sign height="12" />
-                            </PreselectButton>
+                                {sum}&#x20bd;
+                            </PreselectButton> /*&#x20bd; - ruble sign*/
                         );
                     })}
                     <PreselectButton
                         onClick={() => {
                             this.props.history.push(this.props.toFormPath);
                         }}
+                        color={this.props.color}
                         width="147px">
                         Другая сумма
                     </PreselectButton>
