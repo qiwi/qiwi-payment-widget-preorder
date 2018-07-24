@@ -19,6 +19,12 @@ const Button = styled.button`
     text-overflow: ellipsis;
     border: solid 1px
         ${(props) => (props.color ? props.color : 'rgba(0, 0, 0, 0.14)')};
+        
+    @media (max-width: 820px){
+        background-color: transparent;
+        border: solid 1px rgba(0, 0, 0, 0.14);
+        color: #000000;
+    }
 
     &:focus {
         outline: none;

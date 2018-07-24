@@ -7,9 +7,14 @@ const Container = styled.div`
     font-size: 13px;
     font-weight: 300;
     color: #4a4a4a;
-    margin-bottom: 18px;
-    bottom: 24px;
+    bottom: 36px;
     position: absolute;
+    
+    @media (max-width: 820px){
+        position: relative;
+        bottom: 0;
+        margin-bottom: 20px;
+    }
 `;
 
 function Oferta({link}) {

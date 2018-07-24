@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
 import Button from '../../components/Button';
-import Sign from '../../components/Sign';
 import styled from 'styled-components';
 
 const PreselectText = styled.div`
@@ -22,10 +21,6 @@ const PreselectButton = styled(Button)`
     font-size: 14px;
     line-height: 20px;
     
-    &:nth-child(2n + 1) {
-        margin-right: 20px;
-    }
-
     @media (max-width: 820px) {
         margin: 8px 0 0;
         width: 100%;
@@ -34,6 +29,12 @@ const PreselectButton = styled(Button)`
             margin-right: 0;
         }
     }
+    
+    &:nth-child(2n + 1) {
+        margin-right: 20px;
+    }
+
+    
 `;
 
 class Preselect extends Component {
@@ -52,8 +53,8 @@ class Preselect extends Component {
                                     this.props.redirect(sum, true);
                                 }}>
                                 {sum}&#x20bd;
-                            </PreselectButton> /*&#x20bd; - ruble sign*/
-                        );
+                            </PreselectButton>
+                        ); /*&#x20bd; - ruble sign*/
                     })}
                     <PreselectButton
                         onClick={() => {

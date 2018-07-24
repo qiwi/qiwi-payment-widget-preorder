@@ -49,6 +49,9 @@ class App extends Component {
         if(this.state.widgetInfo.widgetPaymentSumAmount.length === 0) {
             this.state.widgetInfo.widgetPaymentSumAmount = defaultSum;
         }
+        if(this.state.widgetInfo.widgetPaymentSumAmount.length > 3) {
+            this.state.widgetInfo.widgetPaymentSumAmount = this.state.widgetInfo.widgetPaymentSumAmount.slice(0, 4);
+        }
         const widgetStyles = this.state.widgetInfo.widgetStyles;
         const color = (widgetStyles && widgetStyles[styleCode.WIDGET_BACKGROUND])? widgetStyles[styleCode.WIDGET_BACKGROUND] : '';
         return (

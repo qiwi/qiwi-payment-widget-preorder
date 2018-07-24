@@ -19,6 +19,11 @@ export const CardHolder = styled.div`
     max-width: 820px;
     max-height: 560px;
     box-shadow: 0 10px 25px 0 rgba(0, 0, 0, 0.15);
+    
+    @media (max-width: 820px) {
+        box-shadow: none;
+        border:radius: 0;
+    }
 `;
 
 export const MerchantInfoCard = styled(Card)`
@@ -28,10 +33,22 @@ export const MerchantInfoCard = styled(Card)`
     opacity: 0;    
     box-shadow: none;
     max-width: 382px;
-    background:
-        url(${(props) => props.url || ''}), 
-        linear-gradient(56deg, ${(props) => props.color ? editColor(props.color, -50): '#f9f9f9'},
-         ${(props) => props.color ? editColor(props.color,  30): '#f9f9f9'});
+    background-image:
+        linear-gradient(56deg, ${(props) => props.color ? editColor(props.color, -50) + (props.url ? 'BB': ''): '#f9f9f9'},
+         ${(props) => props.color ? editColor(props.color,  30) + (props.url ? 'BB': ''): '#f9f9f9'}),
+        url(${(props) => props.url ? props.url: ''});
+    
+    background-size: 
+        contain,
+        cover;
+    
+    background-repeat: 
+        no-repeat,
+        no-repeat;
+    
+    background-position:
+        center,
+        center; 
     
     @media (max-width: 820px) {
         display: none;
@@ -52,17 +69,18 @@ export const ContentBlock = styled.div`
     }
 `;
 
-export const PreorderCardBody = styled(Card.Body)`
+export const PaymentBody = styled(Card.Body)`
     position: relative;
 
     @media (max-width: 820px) {
         min-height: 270px;
+        align-items: unset;
         box-sizing: border-box;
         padding: 20px;
     }
 `;
 
-export const PreorderCardFooter = styled(Card.Footer)`
+export const Footer = styled(Card.Footer)`
     position: relative;
     text-align: center;
     display: flex;
@@ -73,6 +91,8 @@ export const PreorderCardFooter = styled(Card.Footer)`
     @media (max-width: 820px) {
         background-color: rgb(247, 247, 247);
         padding: 20px;
+        flex-direction: column;
+        max-width: 438px;
     }
 `;
 

@@ -8,6 +8,9 @@ const Card = styled.div`
     width: ${(props) => props.width || '100%'};
     max-width: 438px;
     text-align: center;
+    @media (max-width: 820px) {
+        max-width: 450px;
+    }
 `;
 
 Card.Header = styled.div`
@@ -25,7 +28,7 @@ Card.Body = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 30px;
+    padding: 36px;
 `;
 
 Card.Footer = styled.div`
@@ -38,9 +41,11 @@ Card.Title = styled.h1`
     font-weight: 500;
     color: ${(props) => getContrastColorByBackground(props.color)};
     text-align: left;
-    margin: 0 0 16px 0;
+    margin: 0;
 
     @media (max-width: 820px) {
+        margin: 0;
+        color: #000;
         font-size: 16px;
         font-weight: bold;
         text-align: left;
@@ -52,10 +57,12 @@ Card.Desc = styled.p`
     color: ${(props) => getContrastColorByBackground(props.color)};
     font-size: 16px;
     font-weight: 500;
+    margin: 16px 0 0 0;
     line-height: 1.31;
     text-align: left;
 
     @media (max-width: 820px) {
+        color: #000;
         font-size: 13px;
         line-height: 1.15;
         text-align: left;

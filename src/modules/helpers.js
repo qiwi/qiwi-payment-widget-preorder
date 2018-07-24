@@ -62,3 +62,23 @@ export function getContrastColorByBackground(backgroundColor) {
         return a <= 0.34 ? color.BLACK : color.WHITE;
     } else return null;
 }
+
+export function getImageByUrl(url) {
+    return new Promise(function (resolve) {
+        let testImg = new Image();
+
+        let timedOut = false;
+        let timer;
+        testImg.onload = function () {
+            if (!timedOut) {
+                clearTimeout(timer);
+                resolve(testImg);
+            }
+        };
+        testImg.src = url;
+        timer = setTimeout(function () {
+            timedOut = true;
+            testImg.src = '??/invalidUrl.jpg';
+        }, 5000);
+    })
+}

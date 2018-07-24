@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 
 import Loader from '../components/Loader';
 
+import Logo from '../components/Logo';
 import Card from '../components/Card';
 import TechnologiesPics from '../components/TechnologiesPics';
 import MethodPayments from '../components/MethodPayments';
@@ -13,12 +14,28 @@ import {
     CardHolder,
     MerchantInfoCard,
     ContentBlock,
-    PreorderCardBody,
-    PreorderCardFooter,
+    PaymentBody,
+    Footer,
     HelpLink
 } from './styled';
 
 export default class Layout extends Component {
+    updateDimensions() {
+        this.setState({});
+    }
+
+    componentDidMount() {
+        this.updateDimensions();
+        window.addEventListener("resize", this.updateDimensions.bind(this));
+    }
+
+    /**
+     * Remove event listener
+     */
+    componentWillUnmount() {
+        window.removeEventListener("resize", this.updateDimensions.bind(this));
+    }
+
     render() {
         const {
             widgetMerchantMetric,
@@ -28,7 +45,8 @@ export default class Layout extends Component {
             widgetMerchantOffer,
             widgetStyles
         } = this.props.widgetInfo;
-        const color = (widgetStyles && widgetStyles[styleCode.WIDGET_BACKGROUND])? widgetStyles[styleCode.WIDGET_BACKGROUND] : '';
+        const color = (widgetStyles && widgetStyles[styleCode.WIDGET_BACKGROUND]) ? widgetStyles[styleCode.WIDGET_BACKGROUND] : '';
+        const bgUrl = (widgetStyles && widgetStyles[styleCode.WIDGET_BACKGROUND_PICTURE_URL]) ? widgetStyles[styleCode.WIDGET_BACKGROUND_PICTURE_URL] : '';
         return (
             <div>
                 {widgetMerchantMetric && (
@@ -49,16 +67,25 @@ export default class Layout extends Component {
                     <ContentBlock width="820px">
                         <CardHolder>
                             <Card width="438px">
-                                <PreorderCardBody>
+                                {window.matchMedia('(max-width: 820px)').matches &&
+                                <Card.Header>
+                                    <Card.Title color={color}>
+                                        {widgetMerchantName || 'Наименование организации'}
+                                    </Card.Title>
+                                    <Card.Desc color={color}>{widgetDescription}</Card.Desc>
+                                </Card.Header>
+                                }
+                                <PaymentBody>
                                     {this.props.children}
                                     <MethodPayments height="18">
                                         Оплата любым удобным для вас способом
                                     </MethodPayments>
-                                    {widgetMerchantOffer && <Oferta link={widgetMerchantOffer}/>}
-                                </PreorderCardBody>
+                                    {!window.matchMedia('(max-width: 820px)').matches && widgetMerchantOffer && <Oferta link={widgetMerchantOffer}/>}
+                                </PaymentBody>
                             </Card>
-                            <MerchantInfoCard width="382px" color={color}>
+                            <MerchantInfoCard width="382px" color={color} url={bgUrl}>
                                 <Card.Header>
+                                    <Logo {...this.props}/>
                                     <Card.Title color={color}>
                                         {widgetMerchantName || 'Наименование организации'}
                                     </Card.Title>
@@ -66,7 +93,8 @@ export default class Layout extends Component {
                                 </Card.Header>
                             </MerchantInfoCard>
                         </CardHolder>
-                        <PreorderCardFooter>
+                        <Footer>
+                            {window.matchMedia('(max-width: 820px)').matches && widgetMerchantOffer && <Oferta link={widgetMerchantOffer}/>}
                             <TechnologiesPics height="20"/>
                             <HelpLink
                                 target="_blank"
@@ -74,7 +102,7 @@ export default class Layout extends Component {
                                 href="https://kassa.qiwi.com/support">
                                 Помощь
                             </HelpLink>
-                        </PreorderCardFooter>
+                        </Footer>
                     </ContentBlock>
                 ) : (
                     <Loader error={this.props.errorLoading}/>
