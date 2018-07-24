@@ -83,7 +83,7 @@ export default class Layout extends Component {
                                     {!window.matchMedia('(max-width: 820px)').matches && widgetMerchantOffer && <Oferta link={widgetMerchantOffer}/>}
                                 </PaymentBody>
                             </Card>
-                            <MerchantInfoCard width="382px" color={color} url={bgUrl}>
+                            <MerchantInfoCard width="382px" hexColor={color} url={bgUrl}>
                                 <Card.Header>
                                     <Logo {...this.props}/>
                                     <Card.Title color={color}>
