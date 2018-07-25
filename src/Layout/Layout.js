@@ -96,7 +96,7 @@ export default class Layout extends Component {
                         </CardHolder>
                         <Footer>
                             {window.matchMedia('(max-width: 820px)').matches && widgetMerchantOffer && <Oferta link={widgetMerchantOffer}/>}
-                            <TechnologiesPics height="20"/>
+                            <TechnologiesPics height="20px"/>
                             <HelpLink
                                 target="_blank"
                                 rel="noopener noreferrer"

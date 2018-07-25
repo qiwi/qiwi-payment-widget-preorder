@@ -9,7 +9,7 @@ const FieldWrapper = styled.div`
     position: relative;
     margin: 0 auto 32px;
 
-    @media (max-width: 728px) {
+    @media (max-width: 820px) {
         width: 100%;
     }
 `;

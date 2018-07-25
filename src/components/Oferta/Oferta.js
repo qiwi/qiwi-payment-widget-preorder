@@ -8,6 +8,8 @@ const Container = styled.div`
     font-weight: 300;
     color: #4a4a4a;
     bottom: 36px;
+    left: 0;
+    right: 0;
     position: absolute;
     
     @media (max-width: 820px){

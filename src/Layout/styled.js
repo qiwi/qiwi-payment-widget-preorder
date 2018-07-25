@@ -73,12 +73,14 @@ export const PaymentCard = styled(Card)`
     @media (max-width: 820px) {
         width: 100%;
         max-width: 820px;
+        border-radius: 0;
     }
 `;
 
 export const PaymentBody = styled(Card.Body)`
     position: relative;
-
+    max-width: 100%;
+    
     @media (max-width: 820px) {
         min-height: 270px;
         align-items: unset;

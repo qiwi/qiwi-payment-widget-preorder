@@ -6,7 +6,6 @@ const Card = styled.div`
     background-color: #ffffff;
     box-shadow: 15px 0px 25px -8px rgba(0, 0, 0, 0.15);
     width: ${(props) => props.width || '100%'};
-    max-width: 438px;
     text-align: center;
 `;
 
