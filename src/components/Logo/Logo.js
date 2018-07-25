@@ -25,7 +25,6 @@ class Logo extends Component {
     componentWillMount() {
         try {
             const widgetStyles = this.props.widgetInfo.widgetStyles;
-            console.log('Comp');
             const url = (widgetStyles && widgetStyles[styleCode.WIDGET_HORIZONTAL_LOGO_URL]) ? widgetStyles[styleCode.WIDGET_HORIZONTAL_LOGO_URL] : '';
             getImageByUrl(url).then((img) => {
                 let bgSize = 'auto';
@@ -44,7 +43,6 @@ class Logo extends Component {
     }
 
     render() {
-        console.log('rend');
         return ((this.state.url !== '') ? <StyledLogo bgSize={this.state.bgSize} bgUrl={this.state.url}/>: null)
     }
 }
