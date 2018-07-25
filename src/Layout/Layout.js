@@ -16,7 +16,8 @@ import {
     ContentBlock,
     PaymentBody,
     Footer,
-    HelpLink
+    HelpLink,
+    PaymentCard
 } from './styled';
 
 export default class Layout extends Component {
@@ -66,7 +67,7 @@ export default class Layout extends Component {
                 {widgetAliasCode ? (
                     <ContentBlock width="820px">
                         <CardHolder>
-                            <Card width="438px">
+                            <PaymentCard width="438px">
                                 {window.matchMedia('(max-width: 820px)').matches &&
                                 <Card.Header>
                                     <Card.Title color={color}>
@@ -82,7 +83,7 @@ export default class Layout extends Component {
                                     </MethodPayments>
                                     {!window.matchMedia('(max-width: 820px)').matches && widgetMerchantOffer && <Oferta link={widgetMerchantOffer}/>}
                                 </PaymentBody>
-                            </Card>
+                            </PaymentCard>
                             <MerchantInfoCard width="382px" hexColor={color} url={bgUrl}>
                                 <Card.Header>
                                     <Logo {...this.props}/>

@@ -8,9 +8,6 @@ const Card = styled.div`
     width: ${(props) => props.width || '100%'};
     max-width: 438px;
     text-align: center;
-    @media (max-width: 820px) {
-        max-width: 450px;
-    }
 `;
 
 Card.Header = styled.div`

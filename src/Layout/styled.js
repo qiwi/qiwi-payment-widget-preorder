@@ -22,7 +22,7 @@ export const CardHolder = styled.div`
     
     @media (max-width: 820px) {
         box-shadow: none;
-        border:radius: 0;
+        border-radius: 0;
     }
 `;
 
@@ -69,6 +69,13 @@ export const ContentBlock = styled.div`
     }
 `;
 
+export const PaymentCard = styled(Card)`
+    @media (max-width: 820px) {
+        width: 100%;
+        max-width: 820px;
+    }
+`;
+
 export const PaymentBody = styled(Card.Body)`
     position: relative;
 
@@ -92,7 +99,6 @@ export const Footer = styled(Card.Footer)`
         background-color: rgb(247, 247, 247);
         padding: 20px;
         flex-direction: column;
-        max-width: 438px;
     }
 `;
 
