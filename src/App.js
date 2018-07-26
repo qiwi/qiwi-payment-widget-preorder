@@ -42,9 +42,9 @@ class App extends Component {
     render() {
         const defaultSum = [100, 200, 300];
 
-        const widgetAliasCode = `/${this.state.widgetInfo.widgetAliasCode}`;
+        const widgetAliasCodePath = `/${this.state.widgetInfo.widgetAliasCode}`;
 
-        const toFormPath = `/form${widgetAliasCode}`;
+        const toFormPath = `/form${widgetAliasCodePath}`;
         this.state.widgetInfo.widgetPaymentSumAmount = this.state.widgetInfo.widgetPaymentSumAmount || [];
         if(this.state.widgetInfo.widgetPaymentSumAmount.length === 0) {
             this.state.widgetInfo.widgetPaymentSumAmount = defaultSum;
@@ -61,7 +61,7 @@ class App extends Component {
                 <Switch>
                     <Route
                         exact
-                        path={widgetAliasCode}
+                        path={widgetAliasCodePath}
                         render={(props) => (
                             <Preselect
                                 {...props}
@@ -78,7 +78,7 @@ class App extends Component {
                         path={toFormPath}
                         render={() => <Form redirect={preorder.redirect} />}
                     />
-                    <Redirect path="/" to={widgetAliasCode} />
+                    <Redirect path="/" to={widgetAliasCodePath} />
                 </Switch>
             </Layout>
         );
