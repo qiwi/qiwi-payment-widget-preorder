@@ -34,8 +34,8 @@ export const MerchantInfoCard = styled(Card)`
     box-shadow: none;
     max-width: 382px;
     background-image:
-        linear-gradient(56deg, ${(props) => props.hexColor ? editColor(props.hexColor, -50) + (props.url ? 'BB': ''): '#f9f9f9'},
-         ${(props) => props.hexColor ? editColor(props.hexColor,  30) + (props.url ? 'BB': ''): '#f9f9f9'}),
+        linear-gradient(56deg, ${(props) => props.color ? editColor(props.color, -50) + (props.url ? 'BB': ''): '#f9f9f9'},
+         ${(props) => props.color ? editColor(props.color,  30) + (props.url ? 'BB': ''): '#f9f9f9'}),
         url(${(props) => props.url ? props.url: ''});
     
     background-size: 

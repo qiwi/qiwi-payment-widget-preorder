@@ -46,7 +46,7 @@ export default class Layout extends Component {
             widgetMerchantOffer,
             widgetStyles
         } = this.props.widgetInfo;
-        const bgColor = (widgetStyles && widgetStyles[styleCode.WIDGET_BACKGROUND]) ? widgetStyles[styleCode.WIDGET_BACKGROUND] : '';
+        const color = (widgetStyles && widgetStyles[styleCode.PREORDER_PRIMARY_COLOR]) ? widgetStyles[styleCode.PREORDER_PRIMARY_COLOR] : '';
         const bgUrl = (widgetStyles && widgetStyles[styleCode.WIDGET_BACKGROUND_PICTURE_URL]) ? widgetStyles[styleCode.WIDGET_BACKGROUND_PICTURE_URL] : '';
         return (
             <div>
@@ -70,10 +70,10 @@ export default class Layout extends Component {
                             <PaymentCard width="438px">
                                 {window.matchMedia('(max-width: 820px)').matches &&
                                 <Card.Header>
-                                    <Card.Title color={bgColor}>
+                                    <Card.Title color={color}>
                                         {widgetMerchantName || 'Наименование организации'}
                                     </Card.Title>
-                                    <Card.Desc color={bgColor}>{widgetDescription}</Card.Desc>
+                                    <Card.Desc color={color}>{widgetDescription}</Card.Desc>
                                 </Card.Header>
                                 }
                                 <PaymentBody>
@@ -84,13 +84,13 @@ export default class Layout extends Component {
                                     {!window.matchMedia('(max-width: 820px)').matches && widgetMerchantOffer && <Oferta link={widgetMerchantOffer}/>}
                                 </PaymentBody>
                             </PaymentCard>
-                            <MerchantInfoCard width="382px" hexColor={bgColor} url={bgUrl}>
+                            <MerchantInfoCard width="382px" color={color} url={bgUrl}>
                                 <Card.Header>
                                     <Logo {...this.props}/>
-                                    <Card.Title color={bgColor}>
+                                    <Card.Title color={color}>
                                         {widgetMerchantName || 'Наименование организации'}
                                     </Card.Title>
-                                    <Card.Desc color={bgColor}>{widgetDescription}</Card.Desc>
+                                    <Card.Desc color={color}>{widgetDescription}</Card.Desc>
                                 </Card.Header>
                             </MerchantInfoCard>
                         </CardHolder>
