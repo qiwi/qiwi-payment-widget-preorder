@@ -76,7 +76,9 @@ class App extends Component {
                     />
                     <Route
                         path={toFormPath}
-                        render={() => <Form redirect={preorder.redirect} />}
+                        render={() => <Form
+                            btnColor={btnColor}
+                            redirect={preorder.redirect} />}
                     />
                     <Redirect path="/" to={widgetAliasCodePath} />
                 </Switch>
