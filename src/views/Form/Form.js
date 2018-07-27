@@ -15,6 +15,9 @@ const FieldWrapper = styled.div`
 `;
 
 const FormButton = styled(Button)`
+    font-size: 16px;
+    font-weight: 300;
+    
     @media (max-width: 820px) {
         width: 100%;
     }
@@ -102,7 +105,7 @@ class Form extends Component {
                 <div>
                     <FormButton
                         width="159px"
-                        btnColor="#ff8c00"
+                        btnColor={this.props.btnColor || "#ff8c00"}
                         disabled={!value || errorMessage}
                         type="submit">
                         Продолжить

@@ -35,6 +35,7 @@ const StyledField = styled.div`
         display: block;
         font-size: 20px;
         font-weight: 300;
+        font-family: MuseoSansCyrl;
         text-align: left;
         color: #717171;
         left: 4px;
@@ -49,6 +50,7 @@ const StyledField = styled.div`
         width: 100%;
         font-size: 20px;
         font-weight: 300;
+        font-family: MuseoSansCyrl;
         text-align: left;
         padding: 0 16px 0 0;
         margin: 0;
@@ -75,11 +77,11 @@ const StyledField = styled.div`
 
     & input:focus ~ label,
     & input:valid ~ label {
-        -webkit-transform: scale(0.65, 0.65) translate(-23px, -40px);
-        -moz-transform: scale(0.65, 0.65) translate(-23px, -40px);
-        -ms-transform: scale(0.65, 0.65) translate(-23px, -40px);
-        -o-transform: scale(0.65, 0.65) translate(-23px, -40px);
-        transform: scale(0.65, 0.65) translate(-23px, -40px);
+        -webkit-transform: scale(0.65, 0.65) translate(-24px, -24px);
+        -moz-transform: scale(0.65, 0.65) translate(-24px, -24px);
+        -ms-transform: scale(0.65, 0.65) translate(-24px, -24px);
+        -o-transform: scale(0.65, 0.65) translate(-24px, -24px);
+        transform: scale(0.65, 0.65) translate(-24px, -24px);
         opacity: 0.7;
         color: #000000;
     }
