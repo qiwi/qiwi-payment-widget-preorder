@@ -1,15 +1,17 @@
 import styled from 'styled-components';
+import {getContrastColorByBackground} from "../../modules/helpers";
 
 const Button = styled.button`
     background-color: ${(props) => props.color || 'transparent'};
     width: ${(props) => props.width || '100%'};
-    height: 47px;
+    height: 48px;
     border-radius: 100px;
-    line-height: 47px;
-    font-size: 16px;
-    font-weight: 400;
+    line-height: 20px;
+    font-size: 14px;
+    font-family: MuseoSansCyrl;
+    font-weight: 500;
     text-align: center;
-    color: ${(props) => (props.color ? '#ffffff' : '#000')};
+    color: ${(props) => props.color ? getContrastColorByBackground(props.color): '#000000'};
     border: 0;
     padding: 0;
     cursor: pointer;
@@ -17,6 +19,12 @@ const Button = styled.button`
     text-overflow: ellipsis;
     border: solid 1px
         ${(props) => (props.color ? props.color : 'rgba(0, 0, 0, 0.14)')};
+        
+    @media (max-width: 820px){
+        background-color: transparent;
+        border: solid 1px rgba(0, 0, 0, 0.14);
+        color: #000000;
+    }
 
     &:focus {
         outline: none;

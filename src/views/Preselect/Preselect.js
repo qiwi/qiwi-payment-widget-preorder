@@ -1,30 +1,31 @@
 import React, { Component } from 'react';
 
 import Button from '../../components/Button';
-import Sign from '../../components/Sign';
 import styled from 'styled-components';
+
+const PreselectHolder = styled.div`
+    max-width: 100%;
+`;
 
 const PreselectText = styled.div`
     font-family: MuseoSansCyrl;
     font-size: 16px;
-    font-weight: 500;
-    line-height: 1.31;
+    font-weight: 300;
+    line-height: 20px;
     text-align: center;
     color: #000000;
 
-    @media (max-width: 450px) {
+    @media (max-width: 820px) {
         display: none;
     }
 `;
 
 const PreselectButton = styled(Button)`
-    margin-top: 32px;
-
-    &:nth-child(2n + 1) {
-        margin-right: 24px;
-    }
-
-    @media (max-width: 450px) {
+    margin-top: 24px;
+    font-size: 14px;
+    line-height: 20px;
+    
+    @media (max-width: 820px) {
         margin: 8px 0 0;
         width: 100%;
 
@@ -32,35 +33,47 @@ const PreselectButton = styled(Button)`
             margin-right: 0;
         }
     }
+    
+    &:nth-child(-n + 2) {
+        margin-top: 16px;
+    }
+    
+    &:nth-child(2n + 1) {
+        margin-right: 20px;
+    }
+
+    
 `;
 
 class Preselect extends Component {
     render() {
         return (
-            <div>
+            <PreselectHolder>
                 <PreselectText>Пожалуйста, выберите сумму:</PreselectText>
                 <div>
                     {this.props.sumAmont.map((sum, index) => {
                         return (
                             <PreselectButton
                                 key={index}
-                                width="147px"
+                                width="148px"
+                                color={this.props.color}
                                 onClick={() => {
                                     this.props.redirect(sum, true);
                                 }}>
-                                {sum} <Sign height="12" />
+                                {sum}&#x20bd;
                             </PreselectButton>
-                        );
+                        ); /*&#x20bd; - ruble sign*/
                     })}
                     <PreselectButton
                         onClick={() => {
                             this.props.history.push(this.props.toFormPath);
                         }}
+                        color={this.props.color}
                         width="147px">
                         Другая сумма
                     </PreselectButton>
                 </div>
-            </div>
+            </PreselectHolder>
         );
     }
 }

@@ -1,28 +1,53 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 
 import Loader from '../components/Loader';
 
+import Logo from '../components/Logo';
 import Card from '../components/Card';
 import TechnologiesPics from '../components/TechnologiesPics';
 import MethodPayments from '../components/MethodPayments';
 import Oferta from '../components/Oferta';
 
+import {styleCode} from "../styles/index";
+
 import {
-    PreorderCard,
-    PreorderCardBody,
-    PreorderCardFooter,
-    HelpLink
+    CardHolder,
+    MerchantInfoCard,
+    ContentBlock,
+    PaymentBody,
+    Footer,
+    HelpLink,
+    PaymentCard
 } from './styled';
 
 export default class Layout extends Component {
+    updateDimensions() {
+        this.setState({});
+    }
+
+    componentDidMount() {
+        this.updateDimensions();
+        window.addEventListener("resize", this.updateDimensions.bind(this));
+    }
+
+    /**
+     * Remove event listener
+     */
+    componentWillUnmount() {
+        window.removeEventListener("resize", this.updateDimensions.bind(this));
+    }
+
     render() {
         const {
             widgetMerchantMetric,
             widgetAliasCode,
             widgetMerchantName,
             widgetDescription,
-            widgetMerchantOffer
-        } = this.props.merchantInfo;
+            widgetMerchantOffer,
+            widgetStyles
+        } = this.props.widgetInfo;
+        const color = (widgetStyles && widgetStyles[styleCode.WIDGET_BACKGROUND]) ? widgetStyles[styleCode.WIDGET_BACKGROUND] : '';
+        const bgUrl = (widgetStyles && widgetStyles[styleCode.WIDGET_BACKGROUND_PICTURE_URL]) ? widgetStyles[styleCode.WIDGET_BACKGROUND_PICTURE_URL] : '';
         return (
             <div>
                 {widgetMerchantMetric && (
@@ -40,32 +65,48 @@ export default class Layout extends Component {
                     </noscript>
                 )}
                 {widgetAliasCode ? (
-                    <PreorderCard width="438px">
-                        <Card.Header>
-                            <Card.Title>
-                                {widgetMerchantName || 'Наименование организации'}
-                            </Card.Title>
-                            <Card.Desc>{widgetDescription}</Card.Desc>
-                        </Card.Header>
-                        <PreorderCardBody>
-                            {this.props.children}
-                            <MethodPayments height="18">
-                                Оплата любым удобным для вас способом
-                            </MethodPayments>
-                        </PreorderCardBody>
-                        <PreorderCardFooter>
-                            {widgetMerchantOffer && <Oferta link={widgetMerchantOffer} />}
-                            <TechnologiesPics height="20" />
+                    <ContentBlock width="820px">
+                        <CardHolder>
+                            <PaymentCard width="438px">
+                                {window.matchMedia('(max-width: 820px)').matches &&
+                                <Card.Header>
+                                    <Card.Title color={color}>
+                                        {widgetMerchantName || 'Наименование организации'}
+                                    </Card.Title>
+                                    <Card.Desc color={color}>{widgetDescription}</Card.Desc>
+                                </Card.Header>
+                                }
+                                <PaymentBody>
+                                    {this.props.children}
+                                    <MethodPayments height="18">
+                                        Оплата любым удобным для вас способом
+                                    </MethodPayments>
+                                    {!window.matchMedia('(max-width: 820px)').matches && widgetMerchantOffer && <Oferta link={widgetMerchantOffer}/>}
+                                </PaymentBody>
+                            </PaymentCard>
+                            <MerchantInfoCard width="382px" hexColor={color} url={bgUrl}>
+                                <Card.Header>
+                                    <Logo {...this.props}/>
+                                    <Card.Title color={color}>
+                                        {widgetMerchantName || 'Наименование организации'}
+                                    </Card.Title>
+                                    <Card.Desc color={color}>{widgetDescription}</Card.Desc>
+                                </Card.Header>
+                            </MerchantInfoCard>
+                        </CardHolder>
+                        <Footer>
+                            {window.matchMedia('(max-width: 820px)').matches && widgetMerchantOffer && <Oferta link={widgetMerchantOffer}/>}
+                            <TechnologiesPics height="20px"/>
                             <HelpLink
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 href="https://kassa.qiwi.com/support">
                                 Помощь
                             </HelpLink>
-                        </PreorderCardFooter>
-                    </PreorderCard>
+                        </Footer>
+                    </ContentBlock>
                 ) : (
-                    <Loader error={this.props.errorLoading} />
+                    <Loader error={this.props.errorLoading}/>
                 )}
             </div>
         );

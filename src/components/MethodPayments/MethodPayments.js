@@ -14,7 +14,7 @@ const StyledMethodPayments = styled.div`
     color: #000000;
     margin-top: 32px;
 
-    @media (max-width: 450px) {
+    @media (max-width: 820px) {
         font-size: 13px;
     }
 
@@ -28,7 +28,7 @@ const PicContainer = styled.div`
     text-align: center;
     margin: 0 auto;
 
-    @media (max-width: 450px) {
+    @media (max-width: 820px) {
         width: 100%;
     }
 `;

@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
-import Sign from '../Sign';
-
 const Bar = styled.div`
     position: absolute;
     bottom: 0;
@@ -147,12 +145,12 @@ class Field extends Component {
                 />
                 <label htmlFor="donation-amount">Cумма</label>
                 <Currency>
-                    <Sign height="16"/>
+                    &#x20bd;
                 </Currency>
                 <Bar />
                 <Message error={this.props.error}>{this.props.error}</Message>
             </StyledField>
-        );
+        ); /*&#x20bd; - ruble sign*/
     }
 }
 

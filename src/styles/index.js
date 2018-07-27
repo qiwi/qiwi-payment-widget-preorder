@@ -11,13 +11,25 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-color: #ffffff;
+    background-color: #f5f5f5;
 
-    @media (max-width: 450px) {
+    @media (max-width: 820px) {
         background-color: rgb(247,247,247);
     }
 }
 `;
+
+export const styleCode = {
+    BUTTON_BACKGROUND: 'BUTTON_BACKGROUND',
+    WIDGET_BACKGROUND: 'WIDGET_BACKGROUND',
+    WIDGET_HORIZONTAL_LOGO_URL: 'WIDGET_HORIZONTAL_LOGO_URL',
+    WIDGET_BACKGROUND_PICTURE_URL: 'WIDGET_BACKGROUND_PICTURE_URL'
+};
+
+export const color = {
+    BLACK: '#000000',
+    WHITE: '#FFFFFF'
+};
 
 const styles = `
 ${fonts} 

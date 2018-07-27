@@ -7,6 +7,7 @@ import Layout from './Layout';
 
 import Preselect from './views/Preselect';
 import Form from './views/Form';
+import {styleCode} from "./styles";
 
 const preorder = new Preorder();
 
@@ -15,21 +16,21 @@ class App extends Component {
         super(props);
 
         this.state = {
-            merchantInfo: {},
+            widgetInfo: {},
             errorLoading: false
         };
     }
 
     async componentDidMount() {
         try {
-            const merchantInfo = await preorder.getMerchantInfo();
+            const widgetInfo = await preorder.getwidgetInfo();
 
-            document.title = merchantInfo.widgetMerchantName;
+            document.title = widgetInfo.widgetMerchantName;
 
-            preorder.addMetricCounter(merchantInfo.widgetMerchantMetric);
+            preorder.addMetricCounter(widgetInfo.widgetMerchantMetric);
 
             this.setState({
-                merchantInfo
+                widgetInfo
             });
         } catch (err) {
             this.setState({
@@ -41,26 +42,32 @@ class App extends Component {
     render() {
         const defaultSum = [100, 200, 300];
 
-        const widgetAliasCode = `/${this.state.merchantInfo.widgetAliasCode}`;
+        const widgetAliasCodePath = `/${this.state.widgetInfo.widgetAliasCode}`;
 
-        const toFormPath = `/form${widgetAliasCode}`;
-        this.state.merchantInfo.widgetPaymentSumAmount = this.state.merchantInfo.widgetPaymentSumAmount || [];
-        if(this.state.merchantInfo.widgetPaymentSumAmount.length === 0) {
-            this.state.merchantInfo.widgetPaymentSumAmount = defaultSum;
+        const toFormPath = `/form${widgetAliasCodePath}`;
+        this.state.widgetInfo.widgetPaymentSumAmount = this.state.widgetInfo.widgetPaymentSumAmount || [];
+        if(this.state.widgetInfo.widgetPaymentSumAmount.length === 0) {
+            this.state.widgetInfo.widgetPaymentSumAmount = defaultSum;
         }
+        if(this.state.widgetInfo.widgetPaymentSumAmount.length > 3) {
+            this.state.widgetInfo.widgetPaymentSumAmount = this.state.widgetInfo.widgetPaymentSumAmount.slice(0, 4);
+        }
+        const widgetStyles = this.state.widgetInfo.widgetStyles;
+        const color = (widgetStyles && widgetStyles[styleCode.WIDGET_BACKGROUND])? widgetStyles[styleCode.WIDGET_BACKGROUND] : '';
         return (
             <Layout
-                merchantInfo={this.state.merchantInfo}
+                widgetInfo={this.state.widgetInfo}
                 errorLoading={this.state.errorLoading}>
                 <Switch>
                     <Route
                         exact
-                        path={widgetAliasCode}
+                        path={widgetAliasCodePath}
                         render={(props) => (
                             <Preselect
                                 {...props}
+                                color={color}
                                 sumAmont={
-                                    this.state.merchantInfo.widgetPaymentSumAmount
+                                    this.state.widgetInfo.widgetPaymentSumAmount
                                 }
                                 toFormPath={toFormPath}
                                 redirect={preorder.redirect}
@@ -71,7 +78,7 @@ class App extends Component {
                         path={toFormPath}
                         render={() => <Form redirect={preorder.redirect} />}
                     />
-                    <Redirect path="/" to={widgetAliasCode} />
+                    <Redirect path="/" to={widgetAliasCodePath} />
                 </Switch>
             </Layout>
         );
