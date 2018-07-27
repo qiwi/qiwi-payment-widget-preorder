@@ -53,7 +53,7 @@ class App extends Component {
             this.state.widgetInfo.widgetPaymentSumAmount = this.state.widgetInfo.widgetPaymentSumAmount.slice(0, 4);
         }
         const widgetStyles = this.state.widgetInfo.widgetStyles;
-        const btnColor = (widgetStyles && widgetStyles[styleCode.BUTTON_BACKGROUND])? widgetStyles[styleCode.BUTTON_BACKGROUND] : '';
+        const color = (widgetStyles && widgetStyles[styleCode.PREORDER_PRIMARY_COLOR])? widgetStyles[styleCode.PREORDER_PRIMARY_COLOR] : '';
         return (
             <Layout
                 widgetInfo={this.state.widgetInfo}
@@ -65,7 +65,7 @@ class App extends Component {
                         render={(props) => (
                             <Preselect
                                 {...props}
-                                btnColor={btnColor}
+                                color={color}
                                 sumAmont={
                                     this.state.widgetInfo.widgetPaymentSumAmount
                                 }
@@ -77,7 +77,7 @@ class App extends Component {
                     <Route
                         path={toFormPath}
                         render={() => <Form
-                            btnColor={btnColor}
+                            color={color}
                             redirect={preorder.redirect} />}
                     />
                     <Redirect path="/" to={widgetAliasCodePath} />

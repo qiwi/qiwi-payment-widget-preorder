@@ -77,11 +77,11 @@ const StyledField = styled.div`
 
     & input:focus ~ label,
     & input:valid ~ label {
-        -webkit-transform: scale(0.65, 0.65) translate(-24px, -24px);
-        -moz-transform: scale(0.65, 0.65) translate(-24px, -24px);
-        -ms-transform: scale(0.65, 0.65) translate(-24px, -24px);
-        -o-transform: scale(0.65, 0.65) translate(-24px, -24px);
-        transform: scale(0.65, 0.65) translate(-24px, -24px);
+        -webkit-transform: scale(0.65, 0.65) translate(-24px, -32px);
+        -moz-transform: scale(0.65, 0.65) translate(-24px, -32px);
+        -ms-transform: scale(0.65, 0.65) translate(-24px, -32px);
+        -o-transform: scale(0.65, 0.65) translate(-24px, -32px);
+        transform: scale(0.65, 0.65) translate(-24px, -32px);
         opacity: 0.7;
         color: #000000;
     }
