@@ -56,7 +56,7 @@ class Preselect extends Component {
                             <PreselectButton
                                 key={index}
                                 width="148px"
-                                color={this.props.color}
+                                btnColor={this.props.btnColor}
                                 onClick={() => {
                                     this.props.redirect(sum, true);
                                 }}>
@@ -68,7 +68,7 @@ class Preselect extends Component {
                         onClick={() => {
                             this.props.history.push(this.props.toFormPath);
                         }}
-                        color={this.props.color}
+                        btnColor={this.props.btnColor}
                         width="147px">
                         Другая сумма
                     </PreselectButton>

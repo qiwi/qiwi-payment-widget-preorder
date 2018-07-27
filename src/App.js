@@ -53,7 +53,7 @@ class App extends Component {
             this.state.widgetInfo.widgetPaymentSumAmount = this.state.widgetInfo.widgetPaymentSumAmount.slice(0, 4);
         }
         const widgetStyles = this.state.widgetInfo.widgetStyles;
-        const color = (widgetStyles && widgetStyles[styleCode.WIDGET_BACKGROUND])? widgetStyles[styleCode.WIDGET_BACKGROUND] : '';
+        const btnColor = (widgetStyles && widgetStyles[styleCode.BUTTON_BACKGROUND])? widgetStyles[styleCode.BUTTON_BACKGROUND] : '';
         return (
             <Layout
                 widgetInfo={this.state.widgetInfo}
@@ -65,7 +65,7 @@ class App extends Component {
                         render={(props) => (
                             <Preselect
                                 {...props}
-                                color={color}
+                                btnColor={btnColor}
                                 sumAmont={
                                     this.state.widgetInfo.widgetPaymentSumAmount
                                 }
