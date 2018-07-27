@@ -39,7 +39,7 @@ const StyledField = styled.div`
         text-align: left;
         color: #717171;
         left: 4px;
-        bottom: 8px;
+        bottom: 3px;
         transition: 0.2s ease all;
     }
 
