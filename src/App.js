@@ -23,16 +23,16 @@ class App extends Component {
 
     async componentDidMount() {
         try {
-            const widgetInfo = await preorder.getwidgetInfo();
+            let widgetInfo = await preorder.getwidgetInfo();
 
             document.title = widgetInfo.widgetMerchantName;
 
             preorder.addMetricCounter(widgetInfo.widgetMerchantMetric);
 
+            widgetInfo = this.formatWidgetInfo(widgetInfo);
             this.setState({
                 widgetInfo
             });
-            this.formatState();
         } catch (err) {
             this.setState({
                 errorLoading: true
@@ -40,15 +40,16 @@ class App extends Component {
         }
     }
 
-    formatState(){
+    formatWidgetInfo(widgetInfo){
         const defaultSum = [100, 200, 300];
-        const widgetPaymentSumAmount = this.state.widgetInfo.widgetPaymentSumAmount || [];
-        if(widgetPaymentSumAmount.length === 0) {
-            this.setState({widgetInfo: {widgetPaymentSumAmount: defaultSum}});
+        widgetInfo.widgetPaymentSumAmount = widgetInfo.widgetPaymentSumAmount || [];
+        if(widgetInfo.widgetPaymentSumAmount.length === 0) {
+            widgetInfo.widgetPaymentSumAmount = defaultSum;
         }
-        if(this.state.widgetInfo.widgetPaymentSumAmount.length > 3) {
-            this.setState({widgetInfo: {widgetPaymentSumAmount: this.state.widgetInfo.widgetPaymentSumAmount.slice(0, 4)}});
+        if(widgetInfo.widgetPaymentSumAmount.length > 3) {
+            widgetInfo.widgetPaymentSumAmount = widgetInfo.widgetPaymentSumAmount.slice(0, 4);
         }
+        return widgetInfo;
     }
 
 

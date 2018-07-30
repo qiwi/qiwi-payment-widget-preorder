@@ -30,13 +30,13 @@ class Logo extends Component {
         }
         // png has the highest priority by default
         let url = widgetStyles[styleCode.WIDGET_HORIZONTAL_LOGO_URL_PNG]
-            || widgetStyles[styleCode.WIDGET_HORIZONTAL_LOGO_URL];
+            || widgetStyles[styleCode.WIDGET_HORIZONTAL_LOGO_URL] || '';
 
         try {
             const browserInfo = bowser.getParser(window.navigator.userAgent).getBrowser();
             if (browserInfo.name !== 'Internet Explorer') {
                 // good browsers support svg so it has higher priority
-                url = widgetStyles[styleCode.WIDGET_HORIZONTAL_LOGO_URL] || widgetStyles[styleCode.WIDGET_HORIZONTAL_LOGO_URL_PNG];
+                url = widgetStyles[styleCode.WIDGET_HORIZONTAL_LOGO_URL] || widgetStyles[styleCode.WIDGET_HORIZONTAL_LOGO_URL_PNG] || '';
             }
         } catch (e) {
             console.log('could not know what the browser is');
