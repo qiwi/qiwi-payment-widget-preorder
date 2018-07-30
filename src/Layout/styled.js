@@ -45,10 +45,8 @@ export const CardHolder = styled.div`
 `;
 
 export const MerchantInfoCard = styled(Card)`
-    animation: ${show} 1s linear forwards;
     z-index: -1;
     border-radius: 0 10px 10px 0px;
-    opacity: 0;    
     box-shadow: none;
     max-width: 382px;
     background-image:

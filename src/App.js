@@ -32,6 +32,7 @@ class App extends Component {
             this.setState({
                 widgetInfo
             });
+            this.formatState();
         } catch (err) {
             this.setState({
                 errorLoading: true
@@ -39,19 +40,23 @@ class App extends Component {
         }
     }
 
-    render() {
+    formatState(){
         const defaultSum = [100, 200, 300];
+        const widgetPaymentSumAmount = this.state.widgetInfo.widgetPaymentSumAmount || [];
+        if(widgetPaymentSumAmount.length === 0) {
+            this.setState({widgetInfo: {widgetPaymentSumAmount: defaultSum}});
+        }
+        if(this.state.widgetInfo.widgetPaymentSumAmount.length > 3) {
+            this.setState({widgetInfo: {widgetPaymentSumAmount: this.state.widgetInfo.widgetPaymentSumAmount.slice(0, 4)}});
+        }
+    }
 
+
+    render() {
         const widgetAliasCodePath = `/${this.state.widgetInfo.widgetAliasCode}`;
 
         const toFormPath = `/form${widgetAliasCodePath}`;
-        this.state.widgetInfo.widgetPaymentSumAmount = this.state.widgetInfo.widgetPaymentSumAmount || [];
-        if(this.state.widgetInfo.widgetPaymentSumAmount.length === 0) {
-            this.state.widgetInfo.widgetPaymentSumAmount = defaultSum;
-        }
-        if(this.state.widgetInfo.widgetPaymentSumAmount.length > 3) {
-            this.state.widgetInfo.widgetPaymentSumAmount = this.state.widgetInfo.widgetPaymentSumAmount.slice(0, 4);
-        }
+
         const widgetStyles = this.state.widgetInfo.widgetStyles;
         const color = (widgetStyles && widgetStyles[styleCode.PREORDER_PRIMARY_COLOR])? widgetStyles[styleCode.PREORDER_PRIMARY_COLOR] : '';
         return (
