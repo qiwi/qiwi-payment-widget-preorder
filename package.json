@@ -3,6 +3,8 @@
     "version": "0.11.1",
     "private": true,
     "dependencies": {
+        "bowser": "^2.0.0-alpha.3",
+        "color": "^3.0.0",
         "react": "^16.2.0",
         "react-dom": "^16.2.0",
         "react-router-dom": "^4.2.2",

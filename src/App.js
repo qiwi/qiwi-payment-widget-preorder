@@ -23,12 +23,13 @@ class App extends Component {
 
     async componentDidMount() {
         try {
-            const widgetInfo = await preorder.getwidgetInfo();
+            let widgetInfo = await preorder.getwidgetInfo();
 
             document.title = widgetInfo.widgetMerchantName;
 
             preorder.addMetricCounter(widgetInfo.widgetMerchantMetric);
 
+            widgetInfo = this.formatWidgetInfo(widgetInfo);
             this.setState({
                 widgetInfo
             });
@@ -39,19 +40,24 @@ class App extends Component {
         }
     }
 
-    render() {
+    formatWidgetInfo(widgetInfo){
         const defaultSum = [100, 200, 300];
+        widgetInfo.widgetPaymentSumAmount = widgetInfo.widgetPaymentSumAmount || [];
+        if(widgetInfo.widgetPaymentSumAmount.length === 0) {
+            widgetInfo.widgetPaymentSumAmount = defaultSum;
+        }
+        if(widgetInfo.widgetPaymentSumAmount.length > 3) {
+            widgetInfo.widgetPaymentSumAmount = widgetInfo.widgetPaymentSumAmount.slice(0, 4);
+        }
+        return widgetInfo;
+    }
 
+
+    render() {
         const widgetAliasCodePath = `/${this.state.widgetInfo.widgetAliasCode}`;
 
         const toFormPath = `/form${widgetAliasCodePath}`;
-        this.state.widgetInfo.widgetPaymentSumAmount = this.state.widgetInfo.widgetPaymentSumAmount || [];
-        if(this.state.widgetInfo.widgetPaymentSumAmount.length === 0) {
-            this.state.widgetInfo.widgetPaymentSumAmount = defaultSum;
-        }
-        if(this.state.widgetInfo.widgetPaymentSumAmount.length > 3) {
-            this.state.widgetInfo.widgetPaymentSumAmount = this.state.widgetInfo.widgetPaymentSumAmount.slice(0, 4);
-        }
+
         const widgetStyles = this.state.widgetInfo.widgetStyles;
         const color = (widgetStyles && widgetStyles[styleCode.PREORDER_PRIMARY_COLOR])? widgetStyles[styleCode.PREORDER_PRIMARY_COLOR] : '';
         return (

@@ -1,6 +1,6 @@
 import styled, { keyframes } from 'styled-components';
 import Card from '../components/Card';
-import {editColor} from "../modules/helpers";
+import Color from 'color';
 
 const show = keyframes`
     from {
@@ -11,6 +11,24 @@ const show = keyframes`
         opacity: 1;
     }
 `;
+
+function getColor(bgColor, url, ratio, needLighter) {
+    if(needLighter){
+        bgColor = Color(bgColor);
+        bgColor = bgColor.lighten(ratio);
+    } else {
+        bgColor = Color(bgColor);
+        bgColor = bgColor.darken(ratio);
+    }
+    if(url) {
+        let rgbColor = Color(bgColor.rgbNumber()).array();
+        console.log(bgColor);
+        console.log(rgbColor);
+        rgbColor = `rgba(${rgbColor[0]}, ${rgbColor[1]}, ${rgbColor[2]}, 0.7)`; // adding alpha channel (rgb for ie11 support)
+        return rgbColor;
+    }
+    return bgColor.hex();
+}
 
 export const CardHolder = styled.div`
     border-radius: 10px;
@@ -27,15 +45,13 @@ export const CardHolder = styled.div`
 `;
 
 export const MerchantInfoCard = styled(Card)`
-    animation: ${show} 1s linear forwards;
     z-index: -1;
     border-radius: 0 10px 10px 0px;
-    opacity: 0;    
     box-shadow: none;
     max-width: 382px;
     background-image:
-        linear-gradient(56deg, ${(props) => props.color ? editColor(props.color, -50) + (props.url ? 'BB': ''): '#f9f9f9'},
-         ${(props) => props.color ? editColor(props.color,  30) + (props.url ? 'BB': ''): '#f9f9f9'}),
+        linear-gradient(56deg, ${(props) => props.color ? getColor(props.color, props.url, 0.3, false): '#f9f9f9'},
+         ${(props) => props.color ? getColor(props.color, props.url, 0.3, true): '#f9f9f9'}),
         url(${(props) => props.url ? props.url: ''});
     
     background-size: 
