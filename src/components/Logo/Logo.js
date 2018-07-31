@@ -23,7 +23,7 @@ class Logo extends Component {
         };
     }
 
-    componentWillMount() {
+    componentDidMount() {
         const widgetStyles = this.props.widgetInfo.widgetStyles;
         if (!widgetStyles) {
             return;
