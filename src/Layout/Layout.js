@@ -46,8 +46,12 @@ export default class Layout extends Component {
             widgetMerchantOffer,
             widgetStyles
         } = this.props.widgetInfo;
-        const color = (widgetStyles && widgetStyles[styleCode.PREORDER_PRIMARY_COLOR]) ? widgetStyles[styleCode.PREORDER_PRIMARY_COLOR] : '';
+        let color = (widgetStyles && widgetStyles[styleCode.PREORDER_PRIMARY_COLOR]) ? widgetStyles[styleCode.PREORDER_PRIMARY_COLOR] : '';
         const bgUrl = (widgetStyles && widgetStyles[styleCode.WIDGET_BACKGROUND_PICTURE_URL]) ? widgetStyles[styleCode.WIDGET_BACKGROUND_PICTURE_URL] : '';
+        const enableGradient = (widgetStyles && widgetStyles[styleCode.PREORDER_ENABLE_GRADIENT]) ? widgetStyles[styleCode.PREORDER_ENABLE_GRADIENT] === 'true' : true;
+        if(!enableGradient){
+            color = "#ffffff";
+        }
         return (
             <div>
                 {widgetMerchantMetric && (
@@ -84,7 +88,7 @@ export default class Layout extends Component {
                                     {!window.matchMedia('(max-width: 820px)').matches && widgetMerchantOffer && <Oferta link={widgetMerchantOffer}/>}
                                 </PaymentBody>
                             </PaymentCard>
-                            <MerchantInfoCard width="382px" color={color} url={bgUrl}>
+                            <MerchantInfoCard width="382px" color={color} url={bgUrl} enableGradient={enableGradient}>
                                 <Card.Header>
                                     <Logo {...this.props}/>
                                     <Card.Title color={color}>

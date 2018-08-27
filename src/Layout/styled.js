@@ -18,8 +18,6 @@ function getColor(bgColor, url, ratio, needLighter) {
 
     if(url) {
         let rgbColor = Color(bgColor.rgbNumber()).array();
-        console.log(bgColor);
-        console.log(rgbColor);
         rgbColor = `rgba(${rgbColor[0]}, ${rgbColor[1]}, ${rgbColor[2]}, 0.7)`; // adding alpha channel (rgb for ie11 support)
         return rgbColor;
     }
@@ -46,7 +44,7 @@ export const MerchantInfoCard = styled(Card)`
     box-shadow: none;
     max-width: 382px;
     background-image:
-        ${(props) => props.color ? `linear-gradient(56deg, ${getColor(props.color, props.url, 0.3, false)}, ${getColor(props.color, props.url, 0.3, true)}),` : ''}
+        ${(props) => (props.color && props.enableGradient) ? `linear-gradient(56deg, ${getColor(props.color, props.url, 0.3, false)}, ${getColor(props.color, props.url, 0.3, true)}),` : ''}
         url(${(props) => props.url ? props.url: ''});
     
     background-size: 
