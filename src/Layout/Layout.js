@@ -46,9 +46,14 @@ export default class Layout extends Component {
             widgetMerchantOffer,
             widgetStyles
         } = this.props.widgetInfo;
-        let color = (widgetStyles && widgetStyles[styleCode.PREORDER_PRIMARY_COLOR]) ? widgetStyles[styleCode.PREORDER_PRIMARY_COLOR] : '';
-        const bgUrl = (widgetStyles && widgetStyles[styleCode.WIDGET_BACKGROUND_PICTURE_URL]) ? widgetStyles[styleCode.WIDGET_BACKGROUND_PICTURE_URL] : '';
-        const enableGradient = (widgetStyles && widgetStyles[styleCode.PREORDER_ENABLE_GRADIENT]) ? widgetStyles[styleCode.PREORDER_ENABLE_GRADIENT] === 'true' : true;
+        let color = '';
+        let bgUrl = '';
+        let enableGradient = true;
+        if (widgetStyles){
+            color = widgetStyles[styleCode.PREORDER_PRIMARY_COLOR] || color;
+            bgUrl = widgetStyles[styleCode.WIDGET_BACKGROUND_PICTURE_URL] || bgUrl;
+            enableGradient = widgetStyles[styleCode.PREORDER_ENABLE_GRADIENT] === 'true' || enableGradient;
+        }
         if(!enableGradient){
             color = "#ffffff";
         }
