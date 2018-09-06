@@ -52,7 +52,7 @@ export default class Layout extends Component {
         if (widgetStyles){
             color = widgetStyles[styleCode.PREORDER_PRIMARY_COLOR] || color;
             bgUrl = widgetStyles[styleCode.WIDGET_BACKGROUND_PICTURE_URL] || bgUrl;
-            enableGradient = widgetStyles[styleCode.PREORDER_ENABLE_GRADIENT] === '1' || enableGradient;
+            enableGradient = widgetStyles[styleCode.PREORDER_ENABLE_GRADIENT] === '1' && enableGradient;
         }
         if(!enableGradient){
             color = "#ffffff";
