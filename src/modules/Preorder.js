@@ -13,6 +13,10 @@ export default class Preorder {
         return window.location.pathname.match(/([^/]*)\/*$/)[1];
     }
 
+    _getNoCacheFlag () {
+        return this._getParameterByName('noCache');
+    }
+
     _getHostName(url = '') {
         const hostname = url
             .split('//')[1]
@@ -35,13 +39,17 @@ export default class Preorder {
     _makeRequest() {
         let url = config.widgetsApiUrl;
 
-        let param = `merchantSitePublicKey=${this._widgetId}`;
+        let params = `merchantSitePublicKey=${this._widgetId}`;
 
         if (this._widgetAliasCode && !this._widgetId) {
-            param = `widgetAliasCode=${this._widgetAliasCode}`;
+            params = `widgetAliasCode=${this._widgetAliasCode}`;
+        }
+        const noCacheFlag = this._getNoCacheFlag();
+        if (noCacheFlag) {
+            params += `&noCache=${noCacheFlag}`;
         }
 
-        return fetch(`${url}?${param}`, {
+        return fetch(`${url}?${params}`, {
             mode: 'cors'
         })
             .then((response) => {

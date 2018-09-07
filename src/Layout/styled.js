@@ -13,17 +13,11 @@ const show = keyframes`
 `;
 
 function getColor(bgColor, url, ratio, needLighter) {
-    if(needLighter){
-        bgColor = Color(bgColor);
-        bgColor = bgColor.lighten(ratio);
-    } else {
-        bgColor = Color(bgColor);
-        bgColor = bgColor.darken(ratio);
-    }
+    bgColor = Color(bgColor);
+    bgColor = needLighter ? bgColor.lighten(ratio): bgColor.darken(ratio);
+
     if(url) {
         let rgbColor = Color(bgColor.rgbNumber()).array();
-        console.log(bgColor);
-        console.log(rgbColor);
         rgbColor = `rgba(${rgbColor[0]}, ${rgbColor[1]}, ${rgbColor[2]}, 0.7)`; // adding alpha channel (rgb for ie11 support)
         return rgbColor;
     }
@@ -50,8 +44,7 @@ export const MerchantInfoCard = styled(Card)`
     box-shadow: none;
     max-width: 382px;
     background-image:
-        linear-gradient(56deg, ${(props) => props.color ? getColor(props.color, props.url, 0.3, false): '#f9f9f9'},
-         ${(props) => props.color ? getColor(props.color, props.url, 0.3, true): '#f9f9f9'}),
+        ${(props) => (props.color && props.enableGradient) ? `linear-gradient(56deg, ${getColor(props.color, props.url, 0.3, false)}, ${getColor(props.color, props.url, 0.3, true)}),` : ''}
         url(${(props) => props.url ? props.url: ''});
     
     background-size: 
