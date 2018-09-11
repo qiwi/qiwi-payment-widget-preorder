@@ -1,6 +1,6 @@
 import 'url-search-params-polyfill';
 import config from '../config/default';
-import {stylesArrayToObject} from "../modules/helpers";
+import {stylesArrayToObject, formatReferrer} from "../modules/helpers";
 
 export default class Preorder {
     _getParameterByName(param, urlSearch = window.location.search) {
@@ -112,8 +112,8 @@ export default class Preorder {
             };
 
             const extras = {
-                widgetAlias,
-                widgetRefferer: 'my-qiwi-com'
+                widgetAlias: widgetAlias.toLowerCase(),
+                widgetRefferer: formatReferrer(document.referrer)
             };
 
             let link = this._makeLinkCheckout(checkoutParams, extras);

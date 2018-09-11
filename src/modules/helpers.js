@@ -16,6 +16,16 @@ export function convertHexToRgb(hex) {
     }
 }
 
+export function formatReferrer(rawReferrer) {
+    let newReferrer = rawReferrer;
+
+    if((rawReferrer.match(/\./g) || []).length >= 2) {
+        newReferrer = newReferrer.replace('www.', '');
+    }
+
+    return newReferrer;
+}
+
 export function stylesArrayToObject(styles) {
     if (!styles) return {};
 
