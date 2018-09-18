@@ -46,19 +46,19 @@ export default class Layout extends Component {
             widgetMerchantOffer,
             widgetStyles
         } = this.props.widgetInfo;
-        let color = '';
+        let primaryColor = '';
         let gradientColor = '';
         let bgUrl = '';
         let enableGradient = true;
         if (widgetStyles) {
-            color = widgetStyles[styleCode.PREORDER_PRIMARY_COLOR] || color;
+            primaryColor = widgetStyles[styleCode.PREORDER_PRIMARY_COLOR] || primaryColor;
             bgUrl = widgetStyles[styleCode.WIDGET_BACKGROUND_PICTURE_URL] || bgUrl;
             if (widgetStyles[styleCode.PREORDER_ENABLE_GRADIENT]) {
                 enableGradient = widgetStyles[styleCode.PREORDER_ENABLE_GRADIENT] === '1';
             }
         }
         if(enableGradient){
-            gradientColor = color;
+            gradientColor = primaryColor;
         }
         return (
             <div>
@@ -82,10 +82,10 @@ export default class Layout extends Component {
                             <PaymentCard width="438px">
                                 {window.matchMedia('(max-width: 820px)').matches &&
                                 <Card.Header>
-                                    <Card.Title color={color}>
+                                    <Card.Title color={primaryColor}>
                                         {widgetMerchantName || 'Наименование организации'}
                                     </Card.Title>
-                                    <Card.Desc color={color}>{widgetDescription}</Card.Desc>
+                                    <Card.Desc color={primaryColor}>{widgetDescription}</Card.Desc>
                                 </Card.Header>
                                 }
                                 <PaymentBody>
