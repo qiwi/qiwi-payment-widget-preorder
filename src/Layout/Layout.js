@@ -46,16 +46,19 @@ export default class Layout extends Component {
             widgetMerchantOffer,
             widgetStyles
         } = this.props.widgetInfo;
-        let color = '';
+        let primaryColor = '';
+        let gradientColor = '';
         let bgUrl = '';
         let enableGradient = true;
-        if (widgetStyles){
-            color = widgetStyles[styleCode.PREORDER_PRIMARY_COLOR] || color;
+        if (widgetStyles) {
+            primaryColor = widgetStyles[styleCode.PREORDER_PRIMARY_COLOR] || primaryColor;
             bgUrl = widgetStyles[styleCode.WIDGET_BACKGROUND_PICTURE_URL] || bgUrl;
-            enableGradient = widgetStyles[styleCode.PREORDER_ENABLE_GRADIENT] === '1' && enableGradient;
+            if (widgetStyles[styleCode.PREORDER_ENABLE_GRADIENT]) {
+                enableGradient = widgetStyles[styleCode.PREORDER_ENABLE_GRADIENT] === '1';
+            }
         }
-        if(!enableGradient){
-            color = "#ffffff";
+        if(enableGradient){
+            gradientColor = primaryColor;
         }
         return (
             <div>
@@ -79,10 +82,10 @@ export default class Layout extends Component {
                             <PaymentCard width="438px">
                                 {window.matchMedia('(max-width: 820px)').matches &&
                                 <Card.Header>
-                                    <Card.Title color={color}>
+                                    <Card.Title color={primaryColor}>
                                         {widgetMerchantName || 'Наименование организации'}
                                     </Card.Title>
-                                    <Card.Desc color={color}>{widgetDescription}</Card.Desc>
+                                    <Card.Desc color={primaryColor}>{widgetDescription}</Card.Desc>
                                 </Card.Header>
                                 }
                                 <PaymentBody>
@@ -93,13 +96,13 @@ export default class Layout extends Component {
                                     {!window.matchMedia('(max-width: 820px)').matches && widgetMerchantOffer && <Oferta link={widgetMerchantOffer}/>}
                                 </PaymentBody>
                             </PaymentCard>
-                            <MerchantInfoCard width="382px" color={color} url={bgUrl} enableGradient={enableGradient}>
+                            <MerchantInfoCard width="382px" color={gradientColor} url={bgUrl} enableGradient={enableGradient}>
                                 <Card.Header>
                                     <Logo {...this.props}/>
-                                    <Card.Title color={color}>
+                                    <Card.Title color={gradientColor}>
                                         {widgetMerchantName || 'Наименование организации'}
                                     </Card.Title>
-                                    <Card.Desc color={color}>{widgetDescription}</Card.Desc>
+                                    <Card.Desc color={gradientColor}>{widgetDescription}</Card.Desc>
                                 </Card.Header>
                             </MerchantInfoCard>
                         </CardHolder>
