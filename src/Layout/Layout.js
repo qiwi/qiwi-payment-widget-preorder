@@ -57,9 +57,7 @@ export default class Layout extends Component {
                 enableGradient = widgetStyles[styleCode.PREORDER_ENABLE_GRADIENT] === '1';
             }
         }
-        if(enableGradient){
-            gradientColor = primaryColor;
-        }
+        gradientColor = primaryColor;
         return (
             <div>
                 {widgetMerchantMetric && (
