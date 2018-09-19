@@ -113,7 +113,7 @@ export default class Preorder {
 
             const extras = {
                 widgetAlias: widgetAlias.toLowerCase(),
-                widgetRefferer: formatReferrer(document.referrer)
+                widgetReferrer: formatReferrer(document.referrer)
             };
 
             let link = this._makeLinkCheckout(checkoutParams, extras);
