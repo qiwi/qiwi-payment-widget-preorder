@@ -19,8 +19,8 @@ export function convertHexToRgb(hex) {
 export function formatReferrer(rawReferrer) {
     let newReferrer = rawReferrer;
 
-    newReferrer = rawReferrer.replace(/^https:\/\//, '');
-    newReferrer = rawReferrer.replace(/^http:\/\//, '');
+    newReferrer = newReferrer.replace(/^https:\/\//, '');
+    newReferrer = newReferrer.replace(/^http:\/\//, '');
     newReferrer = newReferrer.replace(/^www\./, '');
 
     return newReferrer;
