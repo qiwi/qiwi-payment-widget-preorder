@@ -26,11 +26,11 @@ export default class Preorder {
         return hostname.replace(/\./g, '-');
     }
 
-    _makeLinkCheckout(params, extras) {
+    _makeLinkCheckout(params, customFields) {
         const url = config.oplataUrl;
         const parsedParams = new URLSearchParams(params);
-        Object.getOwnPropertyNames(extras).forEach(extraName => {
-            parsedParams.append(`extras[${extraName}]`, `${extras[extraName]}`);
+        Object.getOwnPropertyNames(customFields).forEach(customFieldName => {
+            parsedParams.append(`customFields[${customFieldName}]`, `${customFields[customFieldName]}`);
         });
 
         return `${url}?${parsedParams.toString()}`;
@@ -111,12 +111,12 @@ export default class Preorder {
                 failUrl
             };
 
-            const extras = {
+            const customFields = {
                 widgetAlias: widgetAlias.toLowerCase(),
-                widgetRefferer: formatReferrer(document.referrer)
+                widgetReferrer: formatReferrer(document.referrer) || 'my.qiwi.com'
             };
 
-            let link = this._makeLinkCheckout(checkoutParams, extras);
+            let link = this._makeLinkCheckout(checkoutParams, customFields);
 
             if (isDirect) {
                 window.location.href = link;

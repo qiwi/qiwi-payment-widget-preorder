@@ -43,9 +43,10 @@ export const MerchantInfoCard = styled(Card)`
     border-radius: 0 10px 10px 0px;
     box-shadow: none;
     max-width: 382px;
-    background-image:
+    background:
         ${(props) => (props.color && props.enableGradient) ? `linear-gradient(56deg, ${getColor(props.color, props.url, 0.3, false)}, ${getColor(props.color, props.url, 0.3, true)}),` : ''}
-        url(${(props) => props.url ? props.url: ''});
+        url(${(props) => props.url ? props.url: ''})
+        ${(props) => props.color && !props.enableGradient ? ` ${props.color} `: ''};
     
     background-size: 
         contain,
