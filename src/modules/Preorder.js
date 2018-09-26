@@ -13,6 +13,10 @@ export default class Preorder {
         return window.location.pathname.match(/([^/]*)\/*$/)[1];
     }
 
+    _getWidgetReferrerFromUrl() {
+        return this._getParameterByName('widgetReferrer');
+    }
+
     _getNoCacheFlag () {
         return this._getParameterByName('noCache');
     }
@@ -103,6 +107,8 @@ export default class Preorder {
 
         const widgetAlias = widgetAliasCode || '';
 
+        const widgetReferrer = formatReferrer(this._getWidgetReferrerFromUrl() || document.referrer) || 'my.qiwi.com';
+
         if (publicKey) {
             const checkoutParams = {
                 publicKey,
@@ -113,7 +119,7 @@ export default class Preorder {
 
             const customFields = {
                 widgetAlias: widgetAlias.toLowerCase(),
-                widgetReferrer: formatReferrer(document.referrer) || 'my.qiwi.com'
+                widgetReferrer
             };
 
             let link = this._makeLinkCheckout(checkoutParams, customFields);
