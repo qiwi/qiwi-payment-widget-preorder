@@ -1,4 +1,4 @@
 export default {
     oplataUrl: 'https://oplata.qiwi.com/create',
-    widgetsApiUrl: 'https://my.qiwi.com/api/widgets/widget-info'
+    widgetsApiUrl: 'http://localhost:9922/api/widgets/widget-info',
 }
