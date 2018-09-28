@@ -139,6 +139,7 @@ class Field extends Component {
                     type={this.props.type}
                     id="donation-amount"
                     required
+                    autoFocus={true}
                     onChange={this.props.onChange}
                     onBlur={this._onBlur}
                     onFocus={this._onFocus}

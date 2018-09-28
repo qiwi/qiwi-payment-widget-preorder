@@ -110,7 +110,7 @@ export default class Layout extends Component {
                             <HelpLink
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                href="https://kassa.qiwi.com/support">
+                                href="https://qiwi.com/support.action">
                                 Помощь
                             </HelpLink>
                         </Footer>
