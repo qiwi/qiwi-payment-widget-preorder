@@ -60,7 +60,7 @@ class Preselect extends Component {
                                 onClick={() => {
                                     this.props.redirect(sum, true);
                                 }}>
-                                {sum}&#x20bd;
+                                {sum} &#x20bd;
                             </PreselectButton>
                         ); /*&#x20bd; - ruble sign*/
                     })}
