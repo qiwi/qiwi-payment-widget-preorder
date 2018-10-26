@@ -43,7 +43,7 @@ const Pic = styled.img`
     }
 `;
 
-function MethodPayments({ ...props }) {
+function MethodPaymentsIcons({ ...props }) {
     const methods = [
         {
             pic: visa,
@@ -85,4 +85,4 @@ function MethodPayments({ ...props }) {
     );
 }
 
-export default MethodPayments;
+export default MethodPaymentsIcons;

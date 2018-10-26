@@ -5,7 +5,6 @@ import Loader from '../components/Loader';
 import Logo from '../components/Logo';
 import Card from '../components/Card';
 import TechnologiesPics from '../components/TechnologiesPics';
-import MethodPayments from '../components/MethodPayments';
 import Oferta from '../components/Oferta';
 
 import {styleCode} from "../styles/index";
@@ -14,14 +13,12 @@ import {
     CardHolder,
     MerchantInfoCard,
     ContentBlock,
-    PaymentBody,
     Footer,
-    HelpLink,
-    PaymentCard
+    HelpLink
 } from './styled';
 import OptionalRenderer from "../components/OptionalRenderer";
 import Mobile from "../components/Mobile/Modile";
-import Desktop from "../components/Desktop/Desktop";
+import CheckoutTypeSwitcher from "../components/CheckoutTypeSwitcher";
 
 export default class Layout extends Component {
     updateDimensions() {
@@ -41,26 +38,20 @@ export default class Layout extends Component {
     }
 
     render() {
+        const props = Object.assign({}, this.props.widgetInfo);
         const {
             widgetMerchantMetric,
             widgetAliasCode,
             widgetMerchantName,
             widgetDescription,
             widgetMerchantOffer,
-            widgetStyles
+            widgetStyles,
+            primaryColor,
+            gradientColor,
+            bgUrl,
+            enableGradient
         } = this.props.widgetInfo;
-        let primaryColor = '';
-        let gradientColor = '';
-        let bgUrl = '';
-        let enableGradient = true;
-        if (widgetStyles) {
-            primaryColor = widgetStyles[styleCode.PREORDER_PRIMARY_COLOR] || primaryColor;
-            bgUrl = widgetStyles[styleCode.WIDGET_BACKGROUND_PICTURE_URL] || bgUrl;
-            if (widgetStyles[styleCode.PREORDER_ENABLE_GRADIENT]) {
-                enableGradient = widgetStyles[styleCode.PREORDER_ENABLE_GRADIENT] === '1';
-            }
-        }
-        gradientColor = primaryColor;
+
         return (
             <div>
                 <OptionalRenderer when={widgetMerchantMetric}>
@@ -80,27 +71,7 @@ export default class Layout extends Component {
                 {widgetAliasCode ? (
                     <ContentBlock width="820px">
                         <CardHolder>
-                            <PaymentCard width="438px">
-                                <Mobile>
-                                    <Card.Header>
-                                        <Card.Title color={primaryColor}>
-                                            {widgetMerchantName || 'Наименование организации'}
-                                        </Card.Title>
-                                        <Card.Desc color={primaryColor}>{widgetDescription}</Card.Desc>
-                                    </Card.Header>
-                                </Mobile>
-                                <PaymentBody>
-                                    {this.props.children}
-                                    <MethodPayments height="18">
-                                        Оплата любым удобным для вас способом
-                                    </MethodPayments>
-                                    <OptionalRenderer when={widgetMerchantOffer}>
-                                        <Desktop>
-                                            <Oferta link={widgetMerchantOffer}/>
-                                        </Desktop>
-                                    </OptionalRenderer>
-                                </PaymentBody>
-                            </PaymentCard>
+                            <CheckoutTypeSwitcher {...props}/>
                             <MerchantInfoCard width="382px" color={gradientColor} url={bgUrl} enableGradient={enableGradient}>
                                 <Card.Header>
                                     <Logo {...this.props}/>
