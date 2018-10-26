@@ -19,6 +19,9 @@ import {
     HelpLink,
     PaymentCard
 } from './styled';
+import OptionalRenderer from "../components/OptionalRenderer";
+import Mobile from "../components/Mobile/Modile";
+import Desktop from "../components/Desktop/Desktop";
 
 export default class Layout extends Component {
     updateDimensions() {
@@ -60,7 +63,7 @@ export default class Layout extends Component {
         gradientColor = primaryColor;
         return (
             <div>
-                {widgetMerchantMetric && (
+                <OptionalRenderer when={widgetMerchantMetric}>
                     <noscript>
                         <div>
                             <img
@@ -73,25 +76,29 @@ export default class Layout extends Component {
                             />
                         </div>
                     </noscript>
-                )}
+                </OptionalRenderer>
                 {widgetAliasCode ? (
                     <ContentBlock width="820px">
                         <CardHolder>
                             <PaymentCard width="438px">
-                                {window.matchMedia('(max-width: 820px)').matches &&
-                                <Card.Header>
-                                    <Card.Title color={primaryColor}>
-                                        {widgetMerchantName || 'Наименование организации'}
-                                    </Card.Title>
-                                    <Card.Desc color={primaryColor}>{widgetDescription}</Card.Desc>
-                                </Card.Header>
-                                }
+                                <Mobile>
+                                    <Card.Header>
+                                        <Card.Title color={primaryColor}>
+                                            {widgetMerchantName || 'Наименование организации'}
+                                        </Card.Title>
+                                        <Card.Desc color={primaryColor}>{widgetDescription}</Card.Desc>
+                                    </Card.Header>
+                                </Mobile>
                                 <PaymentBody>
                                     {this.props.children}
                                     <MethodPayments height="18">
                                         Оплата любым удобным для вас способом
                                     </MethodPayments>
-                                    {!window.matchMedia('(max-width: 820px)').matches && widgetMerchantOffer && <Oferta link={widgetMerchantOffer}/>}
+                                    <OptionalRenderer when={widgetMerchantOffer}>
+                                        <Desktop>
+                                            <Oferta link={widgetMerchantOffer}/>
+                                        </Desktop>
+                                    </OptionalRenderer>
                                 </PaymentBody>
                             </PaymentCard>
                             <MerchantInfoCard width="382px" color={gradientColor} url={bgUrl} enableGradient={enableGradient}>
@@ -105,7 +112,11 @@ export default class Layout extends Component {
                             </MerchantInfoCard>
                         </CardHolder>
                         <Footer>
-                            {window.matchMedia('(max-width: 820px)').matches && widgetMerchantOffer && <Oferta link={widgetMerchantOffer}/>}
+                            <OptionalRenderer when={widgetMerchantOffer}>
+                                <Mobile>
+                                    <Oferta link={widgetMerchantOffer}/>
+                                </Mobile>
+                            </OptionalRenderer>
                             <TechnologiesPics height="20px"/>
                             <HelpLink
                                 target="_blank"
