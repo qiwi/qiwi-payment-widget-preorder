@@ -3,6 +3,7 @@ import {getContrastColorByBackground} from "../../modules/helpers";
 import {color} from '../../styles/index'
 
 const Card = styled.div`
+    height: 100%;
     border-radius: 10px 0 0 10px;
     background-color: #ffffff;
     box-shadow: 15px 0px 25px -8px rgba(0, 0, 0, 0.15);
@@ -20,7 +21,7 @@ Card.Header = styled.div`
 `;
 
 Card.Body = styled.div`
-    min-height: 560px;
+    height: 100%;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;

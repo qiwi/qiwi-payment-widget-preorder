@@ -36,7 +36,7 @@ export default class Layout extends Component {
     }
 
     render() {
-        const propsToTransfer = Object.assign({}, this.props.widgetInfo);
+        const widgetInfo = Object.assign({}, this.props.widgetInfo);
         const {
             widgetMerchantMetric,
             widgetAliasCode,
@@ -64,7 +64,7 @@ export default class Layout extends Component {
                 {widgetAliasCode ? (
                     <ContentBlock width="820px">
                         <CardHolder>
-                            <CheckoutTypeSwitcher {...propsToTransfer}/>
+                            <CheckoutTypeSwitcher {...widgetInfo}/>
                             <MerchantInfoCard width="382px">
                                 <Card.Header>
                                     <Logo {...this.props}/>
@@ -73,6 +73,9 @@ export default class Layout extends Component {
                                     </Card.Title>
                                     <Card.Desc>{widgetDescription}</Card.Desc>
                                 </Card.Header>
+                                <OptionalRenderer when={widgetMerchantOffer}>
+                                    <Oferta link={widgetMerchantOffer}/>
+                                </OptionalRenderer>
                             </MerchantInfoCard>
                         </CardHolder>
                         <Footer>

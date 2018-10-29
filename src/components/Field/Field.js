@@ -14,7 +14,7 @@ const Bar = styled.div`
         width: 0;
         bottom: 0;
         position: absolute;
-        background: ${(props) => (props.error ? '#ff8191' : '#ff8c00')};
+        background: ${(props) => (props.error ? '#ff8191' : props.theme.primaryColor || '#ff8c00')};
         transition: 0.2s ease all;
     }
     &::before {

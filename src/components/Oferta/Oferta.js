@@ -2,11 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 
 import Link from '../Link';
+import {getContrastColorByBackground} from "../../modules/helpers";
 
 const Container = styled.div`
     font-size: 13px;
     font-weight: 300;
-    color: #4a4a4a;
+    color: ${(props) => getContrastColorByBackground(props.theme.primaryColor) || '#4a4a4a'};
     bottom: 36px;
     left: 0;
     right: 0;

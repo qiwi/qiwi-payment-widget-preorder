@@ -29,9 +29,10 @@ export const CardHolder = styled.div`
     display: flex;
     flex-direction: row;
     max-width: 820px;
+    height: 560px;
     max-height: 560px;
     box-shadow: 0 10px 25px 0 rgba(0, 0, 0, 0.15);
-    
+
     @media (max-width: 820px) {
         box-shadow: none;
         border-radius: 0;
@@ -41,6 +42,7 @@ export const CardHolder = styled.div`
 export const MerchantInfoCard = styled(Card)`
     z-index: -1;
     border-radius: 0 10px 10px 0px;
+    position: relative;
     box-shadow: none;
     max-width: 382px;
     background:
