@@ -7,8 +7,6 @@ import Card from '../components/Card';
 import TechnologiesPics from '../components/TechnologiesPics';
 import Oferta from '../components/Oferta';
 
-import {styleCode} from "../styles/index";
-
 import {
     CardHolder,
     MerchantInfoCard,
@@ -38,18 +36,13 @@ export default class Layout extends Component {
     }
 
     render() {
-        const props = Object.assign({}, this.props.widgetInfo);
+        const propsToTransfer = Object.assign({}, this.props.widgetInfo);
         const {
             widgetMerchantMetric,
             widgetAliasCode,
             widgetMerchantName,
             widgetDescription,
-            widgetMerchantOffer,
-            widgetStyles,
-            primaryColor,
-            gradientColor,
-            bgUrl,
-            enableGradient
+            widgetMerchantOffer
         } = this.props.widgetInfo;
 
         return (
@@ -71,14 +64,14 @@ export default class Layout extends Component {
                 {widgetAliasCode ? (
                     <ContentBlock width="820px">
                         <CardHolder>
-                            <CheckoutTypeSwitcher {...props}/>
-                            <MerchantInfoCard width="382px" color={gradientColor} url={bgUrl} enableGradient={enableGradient}>
+                            <CheckoutTypeSwitcher {...propsToTransfer}/>
+                            <MerchantInfoCard width="382px">
                                 <Card.Header>
                                     <Logo {...this.props}/>
-                                    <Card.Title color={gradientColor}>
+                                    <Card.Title>
                                         {widgetMerchantName || 'Наименование организации'}
                                     </Card.Title>
-                                    <Card.Desc color={gradientColor}>{widgetDescription}</Card.Desc>
+                                    <Card.Desc>{widgetDescription}</Card.Desc>
                                 </Card.Header>
                             </MerchantInfoCard>
                         </CardHolder>

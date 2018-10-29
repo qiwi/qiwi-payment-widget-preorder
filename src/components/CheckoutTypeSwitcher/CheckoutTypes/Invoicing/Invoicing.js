@@ -10,10 +10,7 @@ import styled from "styled-components";
 import Preselect from '../../../../views/Preselect';
 import Form from '../../../../views/Form';
 import {media} from "../../../../modules/helpers";
-import Preorder from '../../../../modules/Preorder';
-
-const preorder = new Preorder();
-
+import {preorder} from '../../../../App'
 
 export const PaymentBody = styled(Card.Body)`
     position: relative;
@@ -37,20 +34,11 @@ export const PaymentCard = styled(Card)`
 
 
 export default function Invoicing(props) {
-
-    const propsPure = Object.assign({}, props);
-
     const {
-        widgetMerchantMetric,
         widgetAliasCode,
         widgetMerchantName,
         widgetDescription,
         widgetMerchantOffer,
-        widgetStyles,
-        primaryColor,
-        gradientColor,
-        bgUrl,
-        enableGradient,
         widgetPaymentSumAmount
     } = props;
     const widgetAliasCodePath = `/${widgetAliasCode}`;
@@ -60,10 +48,10 @@ export default function Invoicing(props) {
         <PaymentCard width="438px">
             <Mobile>
                 <Card.Header>
-                    <Card.Title color={primaryColor}>
+                    <Card.Title>
                         {widgetMerchantName || 'Наименование организации'}
                     </Card.Title>
-                    <Card.Desc color={primaryColor}>{widgetDescription}</Card.Desc>
+                    <Card.Desc>{widgetDescription}</Card.Desc>
                 </Card.Header>
             </Mobile>
             <PaymentBody>
@@ -74,7 +62,6 @@ export default function Invoicing(props) {
                         render={(props) => (
                             <Preselect
                                 {...props}
-                                color={primaryColor}
                                 sumAmont={
                                     widgetPaymentSumAmount
                                 }
@@ -86,7 +73,6 @@ export default function Invoicing(props) {
                     <Route
                         path={toFormPath}
                         render={() => <Form
-                            color={primaryColor}
                             redirect={preorder.redirect}/>}
                     />
                     <Redirect path="/" to={widgetAliasCodePath}/>

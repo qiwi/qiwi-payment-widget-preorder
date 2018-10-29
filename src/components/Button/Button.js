@@ -3,7 +3,7 @@ import {getContrastColorByBackground} from "../../modules/helpers";
 import {color} from '../../styles/index'
 
 const Button = styled.button`
-    background-color: ${(props) => props.color || 'transparent'};
+    background-color: ${(props) => props.theme.primaryColor || 'transparent'};
     width: ${(props) => props.width || '100%'};
     height: 48px;
     border-radius: 100px;
@@ -12,7 +12,7 @@ const Button = styled.button`
     font-family: MuseoSansCyrl;
     font-weight: 500;
     text-align: center;
-    color: ${(props) => props.color ? getContrastColorByBackground(props.color): color.BLACK};
+    color: ${(props) => props.theme.primaryColor ? getContrastColorByBackground(props.theme.primaryColor): color.BLACK};
     border: 0;
     padding: 0;
     cursor: pointer;

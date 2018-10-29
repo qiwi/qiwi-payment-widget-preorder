@@ -105,7 +105,6 @@ class Form extends Component {
                 <div>
                     <FormButton
                         width="159px"
-                        color={this.props.color || "#ff8c00"}
                         disabled={!value || errorMessage}
                         type="submit">
                         Продолжить
