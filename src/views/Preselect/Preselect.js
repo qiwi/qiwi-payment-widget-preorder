@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import Button from '../../components/Button';
 import styled from 'styled-components';
+import {media} from "../../modules/helpers";
 
 const PreselectHolder = styled.div`
     max-width: 100%;
@@ -15,7 +16,7 @@ const PreselectText = styled.div`
     text-align: center;
     color: #000000;
 
-    @media (max-width: 820px) {
+    @media ${media.mobile} {
         display: none;
     }
 `;
@@ -25,7 +26,7 @@ const PreselectButton = styled(Button)`
     font-size: 14px;
     line-height: 20px;
     
-    @media (max-width: 820px) {
+    @media ${media.mobile} {
         margin: 8px 0 0;
         width: 100%;
 

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import {getContrastColorByBackground} from "../../modules/helpers";
+import {getContrastColorByBackground, media} from "../../modules/helpers";
 import {color} from '../../styles/index'
 
 const Card = styled.div`
@@ -14,8 +14,8 @@ const Card = styled.div`
 Card.Header = styled.div`
     padding: 36px;
 
-    @media (max-width: 820px) {
-        padding: 24px 20px 0;
+    @media ${media.mobile} {
+        padding: 24px 20px 5px;
         border: 0;
     }
 `;
@@ -41,7 +41,7 @@ Card.Title = styled.h1`
     text-align: left;
     margin: 0;
 
-    @media (max-width: 820px) {
+    @media ${media.mobile} {
         margin: 0;
         color: #000;
         font-size: 16px;
@@ -59,7 +59,7 @@ Card.Desc = styled.p`
     line-height: 1.31;
     text-align: left;
 
-    @media (max-width: 820px) {
+    @media ${media.mobile} {
         color: #000;
         font-size: 13px;
         line-height: 1.15;

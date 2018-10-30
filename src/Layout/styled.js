@@ -1,6 +1,7 @@
 import styled, { keyframes } from 'styled-components';
 import Card from '../components/Card';
 import Color from 'color';
+import {media} from "../modules/helpers";
 
 const show = keyframes`
     from {
@@ -33,9 +34,10 @@ export const CardHolder = styled.div`
     max-height: 560px;
     box-shadow: 0 10px 25px 0 rgba(0, 0, 0, 0.15);
 
-    @media (max-width: 820px) {
+    @media ${media.mobile} {
         box-shadow: none;
         border-radius: 0;
+        height: auto;
     }
 `;
 
@@ -63,7 +65,7 @@ export const MerchantInfoCard = styled(Card)`
         center,
         center; 
     
-    @media (max-width: 820px) {
+    @media ${media.mobile} {
         display: none;
     }
 `;
@@ -74,7 +76,7 @@ export const ContentBlock = styled.div`
     opacity: 0;
     max-width: 820px;
 
-    @media (max-width: 820px) {
+    @media ${media.mobile} {
         margin: 0 auto;
         width: 100%;
         border: 0;
@@ -90,7 +92,7 @@ export const Footer = styled(Card.Footer)`
     align-items: center;
     justify-content: center;
 
-    @media (max-width: 820px) {
+    @media ${media.mobile} {
         background-color: rgb(247, 247, 247);
         padding: 20px;
         flex-direction: column;
@@ -104,7 +106,7 @@ export const HelpLink = styled.a`
     color: #717171;
     text-decoration: none;
 
-    @media (max-width: 820px) {
+    @media ${media.mobile} {
         display: block;
         right: 0;
         top: 0;

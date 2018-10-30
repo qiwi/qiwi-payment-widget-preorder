@@ -79,11 +79,11 @@ export default class Layout extends Component {
                             </MerchantInfoCard>
                         </CardHolder>
                         <Footer>
-                            <OptionalRenderer when={widgetMerchantOffer}>
-                                <Mobile>
+                            <Mobile>
+                                <OptionalRenderer when={widgetMerchantOffer}>
                                     <Oferta link={widgetMerchantOffer}/>
-                                </Mobile>
-                            </OptionalRenderer>
+                                </OptionalRenderer>
+                            </Mobile>
                             <TechnologiesPics height="20px"/>
                             <HelpLink
                                 target="_blank"

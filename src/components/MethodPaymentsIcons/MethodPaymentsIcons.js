@@ -5,6 +5,7 @@ import masterCard from './assets/master-card.svg';
 import mir from './assets/mir.svg';
 import qiwi from './assets/qiwi.svg';
 import visa from './assets/visa.svg';
+import {media} from "../../modules/helpers";
 
 const StyledMethodPayments = styled.div`
     font-size: 16px;
@@ -14,7 +15,7 @@ const StyledMethodPayments = styled.div`
     color: #000000;
     margin-top: 32px;
 
-    @media (max-width: 820px) {
+    @media ${media.mobile} {
         font-size: 13px;
     }
 
@@ -28,7 +29,7 @@ const PicContainer = styled.div`
     text-align: center;
     margin: 0 auto;
 
-    @media (max-width: 820px) {
+    @media ${media.mobile} {
         width: 100%;
     }
 `;

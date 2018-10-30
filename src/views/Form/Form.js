@@ -3,13 +3,14 @@ import React, { Component } from 'react';
 import Button from '../../components/Button';
 import Field from '../../components/Field';
 import styled from 'styled-components';
+import {media} from "../../modules/helpers";
 
 const FieldWrapper = styled.div`
     width: 170px;
     position: relative;
     margin: 0 auto 32px;
 
-    @media (max-width: 820px) {
+    @media ${media.mobile} {
         width: 100%;
     }
 `;
@@ -18,7 +19,7 @@ const FormButton = styled(Button)`
     font-size: 16px;
     font-weight: 300;
     
-    @media (max-width: 820px) {
+    @media ${media.mobile} {
         width: 100%;
     }
 `;

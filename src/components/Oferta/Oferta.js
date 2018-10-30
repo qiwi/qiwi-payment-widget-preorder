@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import Link from '../Link';
-import {getContrastColorByBackground} from "../../modules/helpers";
+import {getContrastColorByBackground, media} from "../../modules/helpers";
 
 const Container = styled.div`
     font-size: 13px;
@@ -13,9 +13,10 @@ const Container = styled.div`
     right: 0;
     position: absolute;
     
-    @media (max-width: 820px){
+    @media  ${media.mobile}{
         position: relative;
         bottom: 0;
+        color: #4a4a4a;
         margin-bottom: 20px;
     }
 `;

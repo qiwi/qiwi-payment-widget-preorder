@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import {getContrastColorByBackground} from "../../modules/helpers";
+import {getContrastColorByBackground, media} from "../../modules/helpers";
 import {color} from '../../styles/index'
 
 const Button = styled.button`
@@ -20,10 +20,8 @@ const Button = styled.button`
     text-overflow: ellipsis;
     border: solid 1px rgba(0, 0, 0, 0.14);
         
-    @media (max-width: 820px){
-        background-color: transparent;
+    @media ${media.mobile}{
         border: solid 1px rgba(0, 0, 0, 0.14);
-        color: #000000;
     }
 
     &:focus {

@@ -41,7 +41,7 @@ export default class CheckoutTypeSwitcher extends React.Component {
         }
     }
 
-    onTypeClick(typeName) {
+    onTypeChange(typeName) {
         const type = this.state.types.find(type => type.typeName === typeName);
 
         if (!((type.typeName === this.state.currentType) || type.disabled)) {
@@ -63,39 +63,37 @@ export default class CheckoutTypeSwitcher extends React.Component {
         }
 
         return (
-            <div>
-                <PaymentCard width="438px">
-                    <Mobile>
-                        <Card.Header>
-                            <Card.Title>
-                                {this.props.widgetMerchantName || 'Наименование организации'}
-                            </Card.Title>
-                            <Card.Desc>{this.props.widgetDescription}</Card.Desc>
-                        </Card.Header>
-                    </Mobile>
+            <PaymentCard width="438px">
+                <Mobile>
+                    <Card.Header>
+                        <Card.Title>
+                            {this.props.widgetMerchantName || 'Наименование организации'}
+                        </Card.Title>
+                        <Card.Desc>{this.props.widgetDescription}</Card.Desc>
+                    </Card.Header>
+                </Mobile>
 
-                    {this.props && this.props.kubWidgetId ?
-                        <div>
-                            <Desktop>
-                                <DesktopCheckoutTypeSwitcher onTypeChange={this.onTypeClick.bind(this)}
-                                                             types={this.state.types}
-                                                             currentType={this.state.currentType}/>
+                {this.props && this.props.kubWidgetId ?
+                    <div>
+                        <Desktop>
+                            <DesktopCheckoutTypeSwitcher onTypeChange={this.onTypeChange.bind(this)}
+                                                         types={this.state.types}
+                                                         currentType={this.state.currentType}/>
 
-                                <Divider/>
-                            </Desktop>
-                            <Mobile>
+                            <Divider/>
+                        </Desktop>
+                        <Mobile>
 
-                                <MobileCheckoutTypeSwitcher onTypeChange={this.onTypeClick.bind(this)}
-                                                            types={this.state.types}
-                                                            currentType={this.state.currentType}/>
-                            </Mobile>
-                        </div> : null}
+                            <MobileCheckoutTypeSwitcher onTypeChange={this.onTypeChange.bind(this)}
+                                                        types={this.state.types}
+                                                        currentType={this.state.currentType}/>
+                        </Mobile>
+                    </div> : null}
 
-                    <PaymentBody>
-                        {checkoutType}
-                    </PaymentBody>
-                </PaymentCard>
-            </div>
+                <PaymentBody>
+                    {checkoutType}
+                </PaymentBody>
+            </PaymentCard>
         )
     }
 }
