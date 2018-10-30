@@ -21,7 +21,6 @@ Card.Header = styled.div`
 `;
 
 Card.Body = styled.div`
-    height: 100%;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;

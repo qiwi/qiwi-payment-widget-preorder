@@ -83,7 +83,6 @@ export default class CheckoutTypeSwitcher extends React.Component {
                             <Divider/>
                         </Desktop>
                         <Mobile>
-
                             <MobileCheckoutTypeSwitcher onTypeChange={this.onTypeChange.bind(this)}
                                                         types={this.state.types}
                                                         currentType={this.state.currentType}/>

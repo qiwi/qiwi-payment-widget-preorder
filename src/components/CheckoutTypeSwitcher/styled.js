@@ -48,7 +48,6 @@ const PaymentBody = styled(Card.Body)`
     max-width: 100%;
     
     @media ${media.mobile} {
-    
         max-width: 100%;
         min-height: 270px;
         align-items: unset;
