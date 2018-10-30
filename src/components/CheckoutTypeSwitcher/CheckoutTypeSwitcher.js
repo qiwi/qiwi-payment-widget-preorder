@@ -2,20 +2,13 @@ import React from 'react'
 import Invoicing from './CheckoutTypes/Invoicing'
 import KUB from './CheckoutTypes/KUB'
 import Mobile from "../Mobile"
-import capitalize from 'lodash/capitalize'
+import MobileCheckoutTypeSwitcher from './MobileCheckoutTypeSwitcher'
+import DesktopCheckoutTypeSwitcher from './DesktopCheckoutTypeSwitcher'
 import Card from "../Card";
 import {
-    Container,
     Divider,
     PaymentCard,
-    PaymentBody,
-    Item,
-    ItemActive,
-    IconWrapper,
-    Label,
-    SelectedWrapper,
-    Selected,
-    IconComponents
+    PaymentBody
 } from "./styled";
 import Desktop from "../Desktop/Desktop";
 
@@ -24,9 +17,6 @@ const ECheckoutTypes = {
     KUB_B2B: 'KUB_B2B'
 };
 
-function getItemIconComponent(iconName, isSelected) {
-    return IconComponents[`Icon${capitalize(iconName)}${isSelected ? 'Selected' : ''}`]
-}
 
 export default class CheckoutTypeSwitcher extends React.Component {
     constructor(props) {
@@ -51,10 +41,15 @@ export default class CheckoutTypeSwitcher extends React.Component {
         }
     }
 
+    onTypeClick(typeName) {
+        const type = this.state.types.find(type => type.typeName === typeName);
+
+        if (!((type.typeName === this.state.currentType) || type.disabled)) {
+            this.setState({currentType: type.typeName});
+        }
+    };
 
     render() {
-        const cursorOffset = this.state.types.findIndex(item => this.state.currentType === item.typeName) * 100;
-
         let checkoutType;
         switch (this.state.currentType) {
             case ECheckoutTypes.INVOICING:
@@ -81,47 +76,26 @@ export default class CheckoutTypeSwitcher extends React.Component {
 
                     {this.props && this.props.kubWidgetId ?
                         <div>
-                            <Container>
-                                {this.state.types.map((type) => {
-                                    let ItemComponent = Item;
-                                    if (type.typeName === this.state.currentType) ItemComponent = ItemActive;
-
-                                    const IconComponent = getItemIconComponent(type.icon, type.typeName === this.state.currentType);
-
-                                    return (
-                                        <ItemComponent
-                                            key={`type-${type.typeName}`}
-                                            onClick={((type.type === this.state.currentType) || type.disabled) ? null : () => this.setState({currentType: type.typeName})}
-                                        >
-                                            <IconWrapper>
-                                                {IconComponent && <IconComponent/>}
-                                            </IconWrapper>
-                                            <Label>
-                                                {type.label.split('\n').map((line, index) => (
-                                                    <span key={`type-${type.typeName}-${index}`}>{line}<br/></span>
-                                                ))}
-                                            </Label>
-
-                                        </ItemComponent>
-                                    )
-                                })
-                                }
-                                <SelectedWrapper>
-                                    <Selected width={100 / this.state.types.length}
-                                              transform={`translateX(${cursorOffset}%)`}/>
-                                </SelectedWrapper>
-                            </Container>
-
                             <Desktop>
+                                <DesktopCheckoutTypeSwitcher onTypeChange={this.onTypeClick.bind(this)}
+                                                             types={this.state.types}
+                                                             currentType={this.state.currentType}/>
+
                                 <Divider/>
                             </Desktop>
+                            <Mobile>
+
+                                <MobileCheckoutTypeSwitcher onTypeChange={this.onTypeClick.bind(this)}
+                                                            types={this.state.types}
+                                                            currentType={this.state.currentType}/>
+                            </Mobile>
                         </div> : null}
 
                     <PaymentBody>
                         {checkoutType}
                     </PaymentBody>
                 </PaymentCard>
-            </div>)
-
+            </div>
+        )
     }
 }

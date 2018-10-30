@@ -48,6 +48,8 @@ const PaymentBody = styled(Card.Body)`
     max-width: 100%;
     
     @media ${media.mobile} {
+    
+        max-width: 100%;
         min-height: 270px;
         align-items: unset;
         box-sizing: border-box;
@@ -97,7 +99,7 @@ const DefaultStyledIcon = styled.span`
 `
 
 const IconInvoicing = styled(DefaultStyledIcon)`
-    background: url("data:image/svg+xml;utf8,${getInvoicingIcon()}") no-repeat;
+    background: url("data:image/svg+xml,${getInvoicingIcon()}") no-repeat;
     width: 45px;
     ${media.mobile} {
         width: 33px;
@@ -106,11 +108,11 @@ const IconInvoicing = styled(DefaultStyledIcon)`
 `;
 
 const IconInvoicingSelected = styled(IconInvoicing)`
-    background: url("data:image/svg+xml;utf8,${(props) => getInvoicingIcon(props.theme.primaryColor)}") no-repeat;
+    background: url("data:image/svg+xml,${(props) => getInvoicingIcon(props.theme.primaryColor)}") no-repeat;
 `;
 
 const IconKub = styled(DefaultStyledIcon)`
-    background: url("data:image/svg+xml;utf8,${getKUBIcon()}") no-repeat;
+    background: url("data:image/svg+xml,${getKUBIcon()}") no-repeat;
     
     ${media.mobile} {
         width: 33px;
@@ -119,7 +121,7 @@ const IconKub = styled(DefaultStyledIcon)`
 `;
 
 const IconKubSelected = styled(IconKub)`
-    background: url("data:image/svg+xml;utf8,${(props) => getKUBIcon(props.theme.primaryColor)}") no-repeat;
+    background: url("data:image/svg+xml,${(props) => getKUBIcon(props.theme.primaryColor)}") no-repeat;
     
 `;
 
