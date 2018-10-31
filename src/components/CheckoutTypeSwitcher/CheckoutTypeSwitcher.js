@@ -41,7 +41,7 @@ export default class CheckoutTypeSwitcher extends React.Component {
         }
     }
 
-    onTypeChange(typeName) {
+    changeCurrentType(typeName) {
         const type = this.state.types.find(type => type.typeName === typeName);
 
         if (!((type.typeName === this.state.currentType) || type.disabled)) {
@@ -76,14 +76,14 @@ export default class CheckoutTypeSwitcher extends React.Component {
                 {this.props && this.props.kubWidgetId ?
                     <div>
                         <Desktop>
-                            <DesktopCheckoutTypeSwitcher onTypeChange={this.onTypeChange.bind(this)}
+                            <DesktopCheckoutTypeSwitcher onTypeChange={this.changeCurrentType.bind(this)}
                                                          types={this.state.types}
                                                          currentType={this.state.currentType}/>
 
                             <Divider/>
                         </Desktop>
                         <Mobile>
-                            <MobileCheckoutTypeSwitcher onTypeChange={this.onTypeChange.bind(this)}
+                            <MobileCheckoutTypeSwitcher onTypeChange={this.changeCurrentType.bind(this)}
                                                         types={this.state.types}
                                                         currentType={this.state.currentType}/>
                         </Mobile>

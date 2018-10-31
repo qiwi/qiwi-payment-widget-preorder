@@ -40,7 +40,7 @@ export default function Invoicing(props) {
                 />
                 <Redirect path="/" to={widgetAliasCodePath}/>
             </Switch>
-            <MethodPaymentsIcons height="18">
+            <MethodPaymentsIcons>
                 Оплата любым удобным для вас способом
             </MethodPaymentsIcons>
         </div>
