@@ -1,0 +1,2 @@
+import MobileCheckoutTypeSwitcher from './MobileCheckoutTypeSwitcher'
+export default MobileCheckoutTypeSwitcher;

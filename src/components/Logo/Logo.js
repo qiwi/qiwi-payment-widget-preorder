@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
-import styled from 'styled-components';
+import styled, {withTheme} from 'styled-components';
 import {getImageByUrl} from "../../modules/helpers";
-import {styleCode} from "../../styles";
 import * as bowser from 'bowser/bundled';
 
 const StyledLogo = styled.div`
@@ -9,7 +8,7 @@ const StyledLogo = styled.div`
     height: 36px;
     width: 100%;
     margin-bottom: 16px;
-    background: url(${(props) => props.bgUrl ? props.bgUrl : ''}) no-repeat top left;
+    background: url(${(props) => props.url ? props.url : ''}) no-repeat top left;
     background-size: ${(props) => props.bgSize ? props.bgSize : '100%'};
 `;
 
@@ -29,14 +28,15 @@ class Logo extends Component {
             return;
         }
         // png has the highest priority by default
-        let url = widgetStyles[styleCode.WIDGET_HORIZONTAL_LOGO_URL_PNG]
-            || widgetStyles[styleCode.WIDGET_HORIZONTAL_LOGO_URL] || '';
+        let url = this.props.theme.logoPngUrl
+            || this.props.theme.logoUrl || '';
 
         try {
             const browserInfo = bowser.getParser(window.navigator.userAgent).getBrowser();
             if (browserInfo.name !== 'Internet Explorer') {
                 // good browsers support svg so it has higher priority
-                url = widgetStyles[styleCode.WIDGET_HORIZONTAL_LOGO_URL] || widgetStyles[styleCode.WIDGET_HORIZONTAL_LOGO_URL_PNG] || '';
+                url = this.props.theme.logoUrl ||
+                    this.props.theme.logoPngUrl || '';
             }
         } catch (e) {
             console.log('could not know what the browser is');
@@ -59,8 +59,8 @@ class Logo extends Component {
     }
 
     render() {
-        return ((this.state.url !== '') ? <StyledLogo bgSize={this.state.bgSize} bgUrl={this.state.url}/> : null)
+        return ((this.props.theme.logoUrl || this.props.theme.logoPngUrl) ? <StyledLogo url={this.state.url} bgSize={this.state.bgSize}/> : null)
     }
 }
 
-export default Logo;
+export default withTheme(Logo);

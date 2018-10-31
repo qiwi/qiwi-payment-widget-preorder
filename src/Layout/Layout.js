@@ -5,20 +5,18 @@ import Loader from '../components/Loader';
 import Logo from '../components/Logo';
 import Card from '../components/Card';
 import TechnologiesPics from '../components/TechnologiesPics';
-import MethodPayments from '../components/MethodPayments';
 import Oferta from '../components/Oferta';
-
-import {styleCode} from "../styles/index";
 
 import {
     CardHolder,
     MerchantInfoCard,
     ContentBlock,
-    PaymentBody,
     Footer,
-    HelpLink,
-    PaymentCard
+    HelpLink
 } from './styled';
+import OptionalRenderer from "../components/OptionalRenderer";
+import Mobile from "../components/Mobile/Modile";
+import CheckoutTypeSwitcher from "../components/CheckoutTypeSwitcher";
 
 export default class Layout extends Component {
     updateDimensions() {
@@ -43,24 +41,12 @@ export default class Layout extends Component {
             widgetAliasCode,
             widgetMerchantName,
             widgetDescription,
-            widgetMerchantOffer,
-            widgetStyles
+            widgetMerchantOffer
         } = this.props.widgetInfo;
-        let primaryColor = '';
-        let gradientColor = '';
-        let bgUrl = '';
-        let enableGradient = true;
-        if (widgetStyles) {
-            primaryColor = widgetStyles[styleCode.PREORDER_PRIMARY_COLOR] || primaryColor;
-            bgUrl = widgetStyles[styleCode.WIDGET_BACKGROUND_PICTURE_URL] || bgUrl;
-            if (widgetStyles[styleCode.PREORDER_ENABLE_GRADIENT]) {
-                enableGradient = widgetStyles[styleCode.PREORDER_ENABLE_GRADIENT] === '1';
-            }
-        }
-        gradientColor = primaryColor;
+
         return (
             <div>
-                {widgetMerchantMetric && (
+                <OptionalRenderer when={widgetMerchantMetric}>
                     <noscript>
                         <div>
                             <img
@@ -73,39 +59,30 @@ export default class Layout extends Component {
                             />
                         </div>
                     </noscript>
-                )}
+                </OptionalRenderer>
                 {widgetAliasCode ? (
                     <ContentBlock width="820px">
                         <CardHolder>
-                            <PaymentCard width="438px">
-                                {window.matchMedia('(max-width: 820px)').matches &&
-                                <Card.Header>
-                                    <Card.Title color={primaryColor}>
-                                        {widgetMerchantName || 'Наименование организации'}
-                                    </Card.Title>
-                                    <Card.Desc color={primaryColor}>{widgetDescription}</Card.Desc>
-                                </Card.Header>
-                                }
-                                <PaymentBody>
-                                    {this.props.children}
-                                    <MethodPayments height="18">
-                                        Оплата любым удобным для вас способом
-                                    </MethodPayments>
-                                    {!window.matchMedia('(max-width: 820px)').matches && widgetMerchantOffer && <Oferta link={widgetMerchantOffer}/>}
-                                </PaymentBody>
-                            </PaymentCard>
-                            <MerchantInfoCard width="382px" color={gradientColor} url={bgUrl} enableGradient={enableGradient}>
+                            <CheckoutTypeSwitcher {...this.props.widgetInfo}/>
+                            <MerchantInfoCard width="382px">
                                 <Card.Header>
                                     <Logo {...this.props}/>
-                                    <Card.Title color={gradientColor}>
+                                    <Card.Title>
                                         {widgetMerchantName || 'Наименование организации'}
                                     </Card.Title>
-                                    <Card.Desc color={gradientColor}>{widgetDescription}</Card.Desc>
+                                    <Card.Desc>{widgetDescription}</Card.Desc>
                                 </Card.Header>
+                                <OptionalRenderer when={widgetMerchantOffer}>
+                                    <Oferta link={widgetMerchantOffer}/>
+                                </OptionalRenderer>
                             </MerchantInfoCard>
                         </CardHolder>
                         <Footer>
-                            {window.matchMedia('(max-width: 820px)').matches && widgetMerchantOffer && <Oferta link={widgetMerchantOffer}/>}
+                            <Mobile>
+                                <OptionalRenderer when={widgetMerchantOffer}>
+                                    <Oferta link={widgetMerchantOffer}/>
+                                </OptionalRenderer>
+                            </Mobile>
                             <TechnologiesPics height="20px"/>
                             <HelpLink
                                 target="_blank"
