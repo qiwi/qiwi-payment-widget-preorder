@@ -7,8 +7,7 @@ import DesktopCheckoutTypeSwitcher from './DesktopCheckoutTypeSwitcher'
 import Card from "../Card";
 import {
     Divider,
-    PaymentCard,
-    PaymentBody
+    PaymentCard
 } from "./styled";
 import Desktop from "../Desktop/Desktop";
 
@@ -89,9 +88,7 @@ export default class CheckoutTypeSwitcher extends React.Component {
                         </Mobile>
                     </div> : null}
 
-                <PaymentBody>
-                    {checkoutType}
-                </PaymentBody>
+                {checkoutType}
             </PaymentCard>
         )
     }

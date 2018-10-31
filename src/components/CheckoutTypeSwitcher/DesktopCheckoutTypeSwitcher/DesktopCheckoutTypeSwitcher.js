@@ -9,7 +9,7 @@ import {
     Selected,
     IconComponents
 } from "../styled";
-import capitalize from "lodash/capitalize";
+import capitalize from "lodash.capitalize";
 
 function getItemIconComponent(iconName, isSelected) {
     return IconComponents[`Icon${capitalize(iconName)}${isSelected ? 'Selected' : ''}`]

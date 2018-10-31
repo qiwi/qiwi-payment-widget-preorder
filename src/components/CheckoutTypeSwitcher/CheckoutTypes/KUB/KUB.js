@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import Button from '../../../Button'
 import Text from '../../../Text'
+import {PaymentBody} from '../../styled'
 
 const Container = styled.div`
     position: relative;
@@ -19,13 +20,17 @@ const StyledButton = styled(Button)`
 `
 
 export default function KUB({kubWidgetId}) {
-    return (<Container>
-        <Text weight={300}>
-            Выставьте счет на вашу фирму — все документы будут сформированы автоматически.<br/><br/>Вам останется только провести платеж по реквизитам.
-        </Text>
-        <StyledButton
-            onClick={() => window.open(`https://lk.kub-24.ru/out/invoice/${kubWidgetId}`)}>
-            Выставить счет
-        </StyledButton>
-    </Container>)
+    return (
+        <PaymentBody>
+            <Container>
+                <Text weight={300}>
+                    Выставьте счет на вашу фирму — все документы будут сформированы автоматически.<br/><br/>Вам
+                    останется только провести платеж по реквизитам.
+                </Text>
+                <StyledButton
+                    onClick={() => window.open(`https://lk.kub-24.ru/out/invoice/${kubWidgetId}`)}>
+                    Выставить счет
+                </StyledButton>
+            </Container>
+        </PaymentBody>)
 }
