@@ -1,8 +1,9 @@
 import styled from 'styled-components';
-import {getContrastColorByBackground} from "../../modules/helpers";
+import {getContrastColorByBackground, media} from "../../modules/helpers";
 import {color} from '../../styles/index'
 
 const Card = styled.div`
+    height: 100%;
     border-radius: 10px 0 0 10px;
     background-color: #ffffff;
     box-shadow: 15px 0px 25px -8px rgba(0, 0, 0, 0.15);
@@ -13,14 +14,13 @@ const Card = styled.div`
 Card.Header = styled.div`
     padding: 36px;
 
-    @media (max-width: 820px) {
-        padding: 24px 20px 0;
+    @media ${media.mobile} {
+        padding: 24px 20px 5px;
         border: 0;
     }
 `;
 
 Card.Body = styled.div`
-    min-height: 560px;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
@@ -36,11 +36,11 @@ Card.Footer = styled.div`
 Card.Title = styled.h1`
     font-size: 24px;
     font-weight: 500;
-    color: ${(props) => props.color ? getContrastColorByBackground(props.color): color.BLACK};
+    color: ${(props) => props.theme.primaryColor ? getContrastColorByBackground(props.theme.primaryColor): color.BLACK};
     text-align: left;
     margin: 0;
 
-    @media (max-width: 820px) {
+    @media ${media.mobile} {
         margin: 0;
         color: #000;
         font-size: 16px;
@@ -51,14 +51,14 @@ Card.Title = styled.h1`
 
 Card.Desc = styled.p`
     margin: 0;
-    color: ${(props) => props.color ? getContrastColorByBackground(props.color): color.BLACK};
+    color: ${(props) => props.theme.primaryColor ? getContrastColorByBackground(props.theme.primaryColor): color.BLACK};
     font-size: 16px;
     font-weight: 500;
     margin: 16px 0 0 0;
     line-height: 1.31;
     text-align: left;
 
-    @media (max-width: 820px) {
+    @media ${media.mobile} {
         color: #000;
         font-size: 13px;
         line-height: 1.15;

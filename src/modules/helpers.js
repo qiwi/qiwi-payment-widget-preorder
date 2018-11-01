@@ -1,5 +1,9 @@
 import {color} from '../styles/index'
 
+export const media = {
+    mobile: '(max-width: 820px)'
+}
+
 export function convertHexToRgb(hex) {
     if (hex) {
         let shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
