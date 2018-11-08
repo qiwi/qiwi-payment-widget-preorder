@@ -7,7 +7,6 @@ import {preorder} from '../../../../App'
 import {PaymentBody} from '../../styled'
 
 
-
 export default function Invoicing(props) {
     const {
         widgetAliasCode,
@@ -22,16 +21,22 @@ export default function Invoicing(props) {
                 <Route
                     exact
                     path={widgetAliasCodePath}
-                    render={(props) => (
-                        <Preselect
-                            {...props}
-                            sumAmont={
-                                widgetPaymentSumAmount
-                            }
-                            toFormPath={toFormPath}
-                            redirect={preorder.redirect}
-                        />
-                    )}
+                    render={(props) => {
+                        if (widgetPaymentSumAmount.length > 0) {
+                            return (<Preselect
+                                {...props}
+                                sumAmont={
+                                    widgetPaymentSumAmount
+                                }
+                                toFormPath={toFormPath}
+                                redirect={preorder.redirect}
+                            />)
+                        } else {
+                            return (<Form
+                                redirect={preorder.redirect}/>)
+                        }
+                    }
+                    }
                 />
                 <Route
                     path={toFormPath}
