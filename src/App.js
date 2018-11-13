@@ -49,7 +49,6 @@ class App extends Component {
             formatted.widgetPaymentSumAmount = formatted.widgetPaymentSumAmount.slice(0, 4);
         }
         formatted.primaryColor = '';
-        formatted.gradientColor = '';
         formatted.bgUrl = '';
         formatted.logoUrl = '';
         formatted.logoPngUrl = '';
@@ -57,6 +56,7 @@ class App extends Component {
         const widgetStyles = formatted.widgetStyles;
         if (widgetStyles) {
             formatted.primaryColor = widgetStyles[styleCode.PREORDER_PRIMARY_COLOR] || formatted.primaryColor;
+            formatted.secondaryColor = widgetStyles[styleCode.SECONDARY_COLOR] || formatted.primaryColor;
             formatted.bgUrl = widgetStyles[styleCode.WIDGET_BACKGROUND_PICTURE_URL] || formatted.bgUrl;
 
             formatted.logoUrl = widgetStyles[styleCode.WIDGET_HORIZONTAL_LOGO_URL] || formatted.logoUrl;
@@ -65,16 +65,15 @@ class App extends Component {
                 formatted.enableGradient = widgetStyles[styleCode.PREORDER_ENABLE_GRADIENT] === '1';
             }
         }
-        formatted.gradientColor = formatted.primaryColor;
         return formatted;
     }
 
     getThemeFromWidgetInfo() {
         return {
             primaryColor: this.state.widgetInfo.primaryColor,
+            secondaryColor: this.state.widgetInfo.secondaryColor,
             bgUrl: this.state.widgetInfo.bgUrl,
             enableGradient: this.state.widgetInfo.enableGradient,
-            gradientColor: this.state.widgetInfo.gradientColor,
             logoUrl: this.state.widgetInfo.logoUrl,
             logoPngUrl: this.state.widgetInfo.logoPngUrl,
         }

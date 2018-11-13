@@ -13,17 +13,17 @@ const show = keyframes`
     }
 `;
 
-function getColor(bgColor, url, ratio, needLighter) {
-    bgColor = Color(bgColor);
-    bgColor = needLighter ? bgColor.lighten(ratio): bgColor.darken(ratio);
+export function getModifiedColorOnRatio(bgColor, url, ratio, modificationFunc) {
+    bgColor = modificationFunc.call(bgColor, ratio)
 
     if(url) {
         let rgbColor = Color(bgColor.rgbNumber()).array();
         rgbColor = `rgba(${rgbColor[0]}, ${rgbColor[1]}, ${rgbColor[2]}, 0.7)`; // adding alpha channel (rgb for ie11 support)
         return rgbColor;
     }
-    return bgColor.hex();
+    return bgColor.hex()
 }
+
 
 export const CardHolder = styled.div`
     border-radius: 10px;
@@ -47,11 +47,16 @@ export const MerchantInfoCard = styled(Card)`
     position: relative;
     box-shadow: none;
     max-width: 382px;
-    background:
-        ${(props) => (props.theme.primaryColor && props.theme.enableGradient) ? 
-            `linear-gradient(56deg, ${getColor(props.theme.primaryColor, props.theme.bgUrl, 0.3, false)}, ${getColor(props.theme.primaryColor, props.theme.bgUrl, 0.3, true)}),` : ''}
-        url(${(props) => props.theme.bgUrl ? props.theme.bgUrl: ''})
-        ${(props) => props.theme.primaryColor && !props.theme.enableGradient ? ` ${props.theme.primaryColor} `: ''};
+
+    background: ${(props) => (props.theme.secondaryColor && props.theme.enableGradient) ?
+            `linear-gradient(
+                56deg, 
+                ${getModifiedColorOnRatio(Color(props.theme.secondaryColor), props.theme.bgUrl, 0.3, Color.prototype.darken)}, 
+                ${getModifiedColorOnRatio(Color(props.theme.secondaryColor), props.theme.bgUrl, 0.3, Color.prototype.lighten)}),` : ''}
+
+            url(${(props) => props.theme.bgUrl ? props.theme.bgUrl: ''})
+
+            ${props => props.theme.secondaryColor && !props.theme.enableGradient ? ` ${props.theme.secondaryColor}`: ''};
     
     background-size: 
         contain,
