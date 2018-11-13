@@ -36,7 +36,7 @@ Card.Footer = styled.div`
 Card.Title = styled.h1`
     font-size: 24px;
     font-weight: 500;
-    color: ${(props) => props.theme.primaryColor ? getContrastColorByBackground(props.theme.primaryColor): commonColors.BLACK};
+    color: ${(props) => props.theme.secondaryColor ? getContrastColorByBackground(props.theme.secondaryColor): commonColors.BLACK};
     text-align: left;
     margin: 0;
 
@@ -51,7 +51,7 @@ Card.Title = styled.h1`
 
 Card.Desc = styled.p`
     margin: 0;
-    color: ${(props) => props.theme.primaryColor ? getContrastColorByBackground(props.theme.primaryColor): commonColors.BLACK};
+    color: ${(props) => props.theme.secondaryColor ? getContrastColorByBackground(props.theme.secondaryColor): commonColors.BLACK};
     font-size: 16px;
     font-weight: 500;
     margin: 16px 0 0 0;
