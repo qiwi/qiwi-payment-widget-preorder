@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import {getContrastColorByBackground, media} from "../../modules/helpers";
-import {color} from '../../styles/index'
+import {commonColors} from '../../styles/index'
 
 const Card = styled.div`
     height: 100%;
@@ -36,7 +36,7 @@ Card.Footer = styled.div`
 Card.Title = styled.h1`
     font-size: 24px;
     font-weight: 500;
-    color: ${(props) => props.theme.primaryColor ? getContrastColorByBackground(props.theme.primaryColor): color.BLACK};
+    color: ${(props) => props.theme.primaryColor ? getContrastColorByBackground(props.theme.primaryColor): commonColors.BLACK};
     text-align: left;
     margin: 0;
 
@@ -51,7 +51,7 @@ Card.Title = styled.h1`
 
 Card.Desc = styled.p`
     margin: 0;
-    color: ${(props) => props.theme.primaryColor ? getContrastColorByBackground(props.theme.primaryColor): color.BLACK};
+    color: ${(props) => props.theme.primaryColor ? getContrastColorByBackground(props.theme.primaryColor): commonColors.BLACK};
     font-size: 16px;
     font-weight: 500;
     margin: 16px 0 0 0;

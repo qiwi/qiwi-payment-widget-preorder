@@ -29,7 +29,7 @@ export const styleCode = {
     PREORDER_ENABLE_GRADIENT: 'PREORDER_ENABLE_GRADIENT'
 };
 
-export const color = {
+export const commonColors = {
     BLACK: '#000000',
     WHITE: '#FFFFFF'
 };

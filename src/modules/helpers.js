@@ -1,4 +1,4 @@
-import {color} from '../styles/index'
+import {commonColors} from '../styles/index'
 
 export const media = {
     mobile: '(max-width: 820px)'
@@ -43,7 +43,7 @@ export function getContrastColorByBackground(backgroundColor) {
     const rgbBackgroundColor = convertHexToRgb(backgroundColor);
     if (rgbBackgroundColor) {
         let a = 1 - (0.299 * rgbBackgroundColor.r + 0.587 * rgbBackgroundColor.g + 0.114 * rgbBackgroundColor.b) / 255;
-        return a <= 0.34 ? color.BLACK : color.WHITE;
+        return a <= 0.34 ? commonColors.BLACK : commonColors.WHITE;
     } else return null;
 }
 

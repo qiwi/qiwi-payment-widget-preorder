@@ -1,7 +1,7 @@
-import {color} from "../../../styles";
+import {commonColors} from "../../../styles";
 import Color from'color';
 
-export function getInvoicingIcon(backgroundColor = color.BLACK) {
+export function getInvoicingIcon(backgroundColor) {
     const rgbCssColor = getRgbCssColor(backgroundColor);
 
     return encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="43" height="43" viewBox="0 0 43 43">
@@ -12,7 +12,7 @@ export function getInvoicingIcon(backgroundColor = color.BLACK) {
 </svg>`);
 }
 
-export function getKUBIcon(backgroundColor = color.BLACK) {
+export function getKUBIcon(backgroundColor) {
     const rgbCssColor = getRgbCssColor(backgroundColor);
 
     return encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="43" height="43" viewBox="0 0 43 43">
@@ -21,6 +21,6 @@ export function getKUBIcon(backgroundColor = color.BLACK) {
 }
 
 function getRgbCssColor(color){
-    const rgbNumbers = new Color(color).array();
+    const rgbNumbers = new Color(color || commonColors.BLACK).array();
     return `rgb(${rgbNumbers[0]}, ${rgbNumbers[1]}, ${rgbNumbers[2]})`;
 }
