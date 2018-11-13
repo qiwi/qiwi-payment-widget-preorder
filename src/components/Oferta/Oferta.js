@@ -7,7 +7,7 @@ import {getContrastColorByBackground, media} from "../../modules/helpers";
 const Container = styled.div`
     font-size: 13px;
     font-weight: 300;
-    color: ${(props) => getContrastColorByBackground(props.theme.primaryColor) || '#4a4a4a'};
+    color: ${(props) => getContrastColorByBackground(props.theme.secondaryColor) || '#4a4a4a'};
     bottom: 36px;
     left: 0;
     right: 0;
