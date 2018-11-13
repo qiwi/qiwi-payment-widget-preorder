@@ -48,15 +48,15 @@ export const MerchantInfoCard = styled(Card)`
     box-shadow: none;
     max-width: 382px;
 
-    background: ${
-    (props) => (props.theme.secondaryColor && props.theme.enableGradient) ?
+    background: ${(props) => (props.theme.secondaryColor && props.theme.enableGradient) ?
             `linear-gradient(
                 56deg, 
                 ${getModifiedColorOnRatio(Color(props.theme.secondaryColor), props.theme.bgUrl, 0.3, Color.prototype.darken)}, 
                 ${getModifiedColorOnRatio(Color(props.theme.secondaryColor), props.theme.bgUrl, 0.3, Color.prototype.lighten)}),` : ''}
+
             url(${(props) => props.theme.bgUrl ? props.theme.bgUrl: ''})
-            ${props => props.theme.secondaryColor && !props.theme.enableGradient ? ` ${props.theme.primaryColor}`: ''}
-            ${(props => props.theme.secondaryColor || 'none')};
+
+            ${props => props.theme.secondaryColor && !props.theme.enableGradient ? ` ${props.theme.secondaryColor}`: ''};
     
     background-size: 
         contain,
