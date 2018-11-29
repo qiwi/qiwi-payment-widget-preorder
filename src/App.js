@@ -40,8 +40,8 @@ class App extends Component {
     formatWidgetInfo(widgetInfo){
         let formatted = Object.assign({}, widgetInfo);
 
-        const defaultSum = [100, 200, 300];
-        formatted.widgetPaymentSumAmount = formatted.widgetPaymentSumAmount || [];
+        const defaultSum = [];
+        formatted.widgetPaymentSumAmount = formatted.widgetPaymentSumAmount || defaultSum;
         if(formatted.widgetPaymentSumAmount.length === 0) {
             formatted.widgetPaymentSumAmount = defaultSum;
         }

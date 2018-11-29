@@ -15,11 +15,12 @@ export default function Invoicing(props) {
     } = props;
     const widgetAliasCodePath = `/${widgetAliasCode}`;
     const toFormPath = `/form${widgetAliasCodePath}`;
+    const defaultPath = widgetPaymentSumAmount.length > 0 ? widgetAliasCodePath: toFormPath;
 
     return (
         <PaymentBody>
             <Switch>
-                <Route
+                {widgetPaymentSumAmount.length > 0 ? <Route
                     exact
                     path={widgetAliasCodePath}
                     render={(props) => (
@@ -32,13 +33,13 @@ export default function Invoicing(props) {
                             redirect={preorder.redirect}
                         />
                     )}
-                />
+                />: null}
                 <Route
                     path={toFormPath}
                     render={() => <Form
                         redirect={preorder.redirect}/>}
                 />
-                <Redirect path="/" to={widgetAliasCodePath}/>
+                <Redirect path="/" to={defaultPath}/>
             </Switch>
             <MethodPaymentsIcons>
                 Оплата любым удобным для вас способом

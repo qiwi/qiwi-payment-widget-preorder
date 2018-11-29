@@ -96,7 +96,8 @@ export default class Preorder {
             widgetSuccessUrl,
             widgetFailUrl,
             merchantSitePublicKey,
-            widgetAliasCode
+            widgetAliasCode,
+            themeCode
         } = this._widgetInfo;
 
         const publicKey = merchantSitePublicKey;
@@ -119,7 +120,8 @@ export default class Preorder {
 
             const customFields = {
                 widgetAlias: widgetAlias.toLowerCase(),
-                widgetReferrer
+                widgetReferrer,
+                themeCode
             };
 
             let link = this._makeLinkCheckout(checkoutParams, customFields);
