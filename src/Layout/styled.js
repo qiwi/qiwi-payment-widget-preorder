@@ -26,6 +26,7 @@ export function getModifiedColorOnRatio(bgColor, url, ratio, modificationFunc) {
 
 
 export const CardHolder = styled.div`
+    z-index: 1;
     border-radius: 10px;
     display: flex;
     flex-direction: row;
@@ -42,7 +43,6 @@ export const CardHolder = styled.div`
 `;
 
 export const MerchantInfoCard = styled(Card)`
-    z-index: -1;
     border-radius: 0 10px 10px 0px;
     position: relative;
     box-shadow: none;
