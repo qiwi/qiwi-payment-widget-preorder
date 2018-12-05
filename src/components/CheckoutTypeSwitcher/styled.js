@@ -36,6 +36,8 @@ const Divider = styled.hr`
 `;
 
 const PaymentCard = styled(Card)`
+    z-index: 1;
+    
     @media ${media.mobile} {
         width: 100%;
         max-width: 820px;
