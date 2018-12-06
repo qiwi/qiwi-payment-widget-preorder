@@ -64,7 +64,7 @@ function MethodPaymentsIcons({ ...props }) {
         {
             pic: qiwi,
             width: 45,
-            height: 17
+            height: 13
         }
     ];
 
