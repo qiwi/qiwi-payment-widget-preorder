@@ -6,6 +6,7 @@ import Logo from '../components/Logo';
 import Card from '../components/Card';
 import TechnologiesPics from '../components/TechnologiesPics';
 import Oferta from '../components/Oferta';
+import ThemedHelmet from '../components/ThemedHelmet';
 
 import {
     CardHolder,
@@ -46,6 +47,7 @@ export default class Layout extends Component {
 
         return (
             <div>
+                <ThemedHelmet/>
                 <OptionalRenderer when={widgetMerchantMetric}>
                     <noscript>
                         <div>
