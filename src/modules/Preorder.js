@@ -53,6 +53,8 @@ export default class Preorder {
             params += `&noCache=${noCacheFlag}`;
         }
 
+        params += `&widgetTypeCode=PREORDER`;
+
         return fetch(`${url}?${params}`, {
             mode: 'cors'
         })
