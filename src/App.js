@@ -52,11 +52,12 @@ class App extends Component {
         formatted.bgUrl = '';
         formatted.logoUrl = '';
         formatted.logoPngUrl = '';
+        formatted.secondaryColor = '';
         formatted.enableGradient = true;
         const widgetStyles = formatted.widgetStyles;
         if (widgetStyles) {
             formatted.primaryColor = widgetStyles[styleCode.PREORDER_PRIMARY_COLOR] || formatted.primaryColor;
-            formatted.secondaryColor = widgetStyles[styleCode.SECONDARY_COLOR] || formatted.primaryColor;
+            formatted.secondaryColor = widgetStyles[styleCode.SECONDARY_COLOR] || formatted.secondaryColor;
             formatted.bgUrl = widgetStyles[styleCode.WIDGET_BACKGROUND_PICTURE_URL] || formatted.bgUrl;
 
             formatted.logoUrl = widgetStyles[styleCode.WIDGET_HORIZONTAL_LOGO_URL] || formatted.logoUrl;
