@@ -8,16 +8,11 @@ import TechnologiesPics from '../components/TechnologiesPics';
 import Oferta from '../components/Oferta';
 import ThemedHelmet from '../components/ThemedHelmet';
 
-import {
-    CardHolder,
-    MerchantInfoCard,
-    ContentBlock,
-    Footer,
-    HelpLink
-} from './styled';
+import {CardHolder, ContentBlock, Footer, HelpLink, MerchantInfoCard} from './styled';
 import OptionalRenderer from "../components/OptionalRenderer";
 import Mobile from "../components/Mobile/Modile";
 import CheckoutTypeSwitcher from "../components/CheckoutTypeSwitcher";
+import Desktop from "../components/Desktop/Desktop";
 
 export default class Layout extends Component {
     updateDimensions() {
@@ -86,12 +81,14 @@ export default class Layout extends Component {
                                 </OptionalRenderer>
                             </Mobile>
                             <TechnologiesPics height="20px"/>
-                            <HelpLink
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                href="https://qiwi.com/support.action">
-                                Помощь
-                            </HelpLink>
+                            <Desktop>
+                                <HelpLink
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    href="https://qiwi.com/support.action">
+                                    Помощь
+                                </HelpLink>
+                            </Desktop>
                         </Footer>
                     </ContentBlock>
                 ) : (
