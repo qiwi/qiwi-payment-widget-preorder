@@ -53,6 +53,7 @@ class App extends Component {
         formatted.logoUrl = '';
         formatted.logoPngUrl = '';
         formatted.secondaryColor = '';
+        formatted.hideMerchantName = false;
         formatted.enableGradient = true;
         const widgetStyles = formatted.widgetStyles;
         if (widgetStyles) {
@@ -62,8 +63,12 @@ class App extends Component {
 
             formatted.logoUrl = widgetStyles[styleCode.WIDGET_HORIZONTAL_LOGO_URL] || formatted.logoUrl;
             formatted.logoPngUrl = widgetStyles[styleCode.WIDGET_HORIZONTAL_LOGO_URL_PNG] || formatted.logoPngUrl;
+            formatted.logoPngUrl = widgetStyles[styleCode.WIDGET_HORIZONTAL_LOGO_URL_PNG] || formatted.logoPngUrl;
             if (widgetStyles[styleCode.PREORDER_ENABLE_GRADIENT]) {
                 formatted.enableGradient = widgetStyles[styleCode.PREORDER_ENABLE_GRADIENT] === '1';
+            }
+            if (widgetStyles[styleCode.PREORDER_HIDE_MERCHANT_NAME]) {
+                formatted.hideMerchantName = widgetStyles[styleCode.PREORDER_HIDE_MERCHANT_NAME] === '1';
             }
         }
         return formatted;

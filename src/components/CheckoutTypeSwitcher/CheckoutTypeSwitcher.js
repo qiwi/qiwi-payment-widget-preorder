@@ -4,6 +4,7 @@ import KUB from './CheckoutTypes/KUB'
 import Mobile from "../Mobile"
 import MobileCheckoutTypeSwitcher from './MobileCheckoutTypeSwitcher'
 import DesktopCheckoutTypeSwitcher from './DesktopCheckoutTypeSwitcher'
+import Logo from '../Logo'
 import Card from "../Card";
 import {
     Divider,
@@ -66,7 +67,8 @@ export default class CheckoutTypeSwitcher extends React.Component {
                 <Mobile>
                     <Card.Header>
                         <Card.Title>
-                            {this.props.widgetMerchantName || 'Наименование организации'}
+                            {this.props.hideMerchantName ? <Logo widgetInfo={this.props}/>
+                                : (this.props.widgetMerchantName || 'Наименование организации')}
                         </Card.Title>
                         <Card.Desc>{this.props.widgetDescription}</Card.Desc>
                     </Card.Header>
