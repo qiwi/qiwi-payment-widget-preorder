@@ -37,7 +37,8 @@ export default class Layout extends Component {
             widgetAliasCode,
             widgetMerchantName,
             widgetDescription,
-            widgetMerchantOffer
+            widgetMerchantOffer,
+            hideMerchantName
         } = this.props.widgetInfo;
 
         return (
@@ -64,9 +65,9 @@ export default class Layout extends Component {
                             <MerchantInfoCard width="382px">
                                 <Card.Header>
                                     <Logo {...this.props}/>
-                                    <Card.Title>
+                                    {!hideMerchantName && <Card.Title>
                                         {widgetMerchantName || 'Наименование организации'}
-                                    </Card.Title>
+                                    </Card.Title>}
                                     <Card.Desc>{widgetDescription}</Card.Desc>
                                 </Card.Header>
                                 <OptionalRenderer when={widgetMerchantOffer}>
