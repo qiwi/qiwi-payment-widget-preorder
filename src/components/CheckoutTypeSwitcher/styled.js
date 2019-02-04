@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import {media} from "../../modules/helpers";
-import {getInvoicingIcon, getKUBIcon} from "./icons/iconsGenerator";
+import yandexMoneyLogo from './assets/yandex.svg';
+import qiwiLogo from './assets/qiwi.svg';
+import {getKUBIcon} from "./icons/iconsGenerator";
 import Card from "../Card";
 
 const SelectedWrapper = styled.div`
@@ -81,7 +83,7 @@ const ItemActive = styled(Item)`
 `;
 
 const IconWrapper = styled.div`
-    margin-bottom: 5px;
+    margin-bottom: 10px;
     
     ${media.mobile} {
         display: inline-block;
@@ -95,25 +97,20 @@ const DefaultStyledIcon = styled.span`
     display: inline-block;
     background-position: center;
     vertical-align: middle;
-    width: 44px;
-    height: 44px;
-`
+    width: 37px;
+    height: 37px;
+`;
 
 const IconInvoicing = styled(DefaultStyledIcon)`
-    background: url("data:image/svg+xml,${getInvoicingIcon()}") no-repeat;
-    width: 45px;
-    ${media.mobile} {
-        width: 33px;
-        height: 24px;
-    }
+    background: url(${qiwiLogo}) no-repeat;
 `;
 
-const IconInvoicingSelected = styled(IconInvoicing)`
-    background: url("data:image/svg+xml,${(props) => getInvoicingIcon(props.theme.primaryColor)}") no-repeat;
-`;
+const IconInvoicingSelected = IconInvoicing;
 
 const IconKub = styled(DefaultStyledIcon)`
     background: url("data:image/svg+xml,${getKUBIcon()}") no-repeat;
+    width: 44px;
+    height: 44px;
     
     ${media.mobile} {
         width: 33px;
@@ -123,8 +120,13 @@ const IconKub = styled(DefaultStyledIcon)`
 
 const IconKubSelected = styled(IconKub)`
     background: url("data:image/svg+xml,${(props) => getKUBIcon(props.theme.primaryColor)}") no-repeat;
-    
 `;
+
+const IconYandexMoney = styled(DefaultStyledIcon)`
+    background: url(${yandexMoneyLogo}) no-repeat;
+`;
+
+const IconYandexMoneySelected = IconYandexMoney;
 
 const Label = styled.div`
     font-size: 14px;
@@ -154,6 +156,8 @@ export {
 export const IconComponents = {
     IconInvoicing,
     IconInvoicingSelected,
+    IconYandexMoney,
+    IconYandexMoneySelected,
     IconKub,
     IconKubSelected
 }
