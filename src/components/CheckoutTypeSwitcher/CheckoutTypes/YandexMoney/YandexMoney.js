@@ -30,7 +30,7 @@ export default class YandexMoney extends React.Component {
                     Яндекс Кошелека для дальнейшей оплаты
                 </Text>
                 <StyledButton
-                    onClick={() => window.open(`https://money.yandex.ru/to/${paymentMethodData}`)}>
+                    onClick={() => window.open(`https://money.yandex.ru/to/${paymentMethodData.yandexMoneyId}`)}>
                     Продолжить
                 </StyledButton>
             </Container>

@@ -28,7 +28,7 @@ export default function KUB({paymentMethodData}) {
                     останется только провести платеж по реквизитам.
                 </Text>
                 <StyledButton
-                    onClick={() => window.open(`https://lk.kub-24.ru/out/invoice/${paymentMethodData}`)}>
+                    onClick={() => window.open(`https://lk.kub-24.ru/out/invoice/${paymentMethodData.kubWidgetId}`)}>
                     Выставить счет
                 </StyledButton>
             </Container>
