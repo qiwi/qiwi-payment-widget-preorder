@@ -16,7 +16,7 @@ const Container = styled.div`
 
 const StyledButton = styled(Button)`
     margin-top: 20px;
-    max-width: 200px;
+    max-width: 168px;
 `
 
 export default class YandexMoney extends React.Component {
@@ -26,7 +26,7 @@ export default class YandexMoney extends React.Component {
         return <PaymentBody>
             <Container>
                 <Text weight={300}>
-                    Вы будете перенаправлены на страницу<br/><br/>
+                    Вы будете перенаправлены на страницу<br/>
                     Яндекс Кошелека для дальнейшей оплаты
                 </Text>
                 <StyledButton

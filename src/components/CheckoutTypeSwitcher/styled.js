@@ -122,11 +122,14 @@ const IconKubSelected = styled(IconKub)`
     background: url("data:image/svg+xml,${(props) => getKUBIcon(props.theme.primaryColor)}") no-repeat;
 `;
 
-const IconYandexMoney = styled(DefaultStyledIcon)`
+const IconYandex = styled(DefaultStyledIcon)`
     background: url(${yandexMoneyLogo}) no-repeat;
+    width: 42px;
+    height: 41px;
+    background-size: contain;
 `;
 
-const IconYandexMoneySelected = IconYandexMoney;
+const IconYandexSelected = IconYandex;
 
 const Label = styled.div`
     font-size: 14px;
@@ -156,8 +159,8 @@ export {
 export const IconComponents = {
     IconInvoicing,
     IconInvoicingSelected,
-    IconYandexMoney,
-    IconYandexMoneySelected,
+    IconYandex,
+    IconYandexSelected,
     IconKub,
     IconKubSelected
 }

@@ -41,7 +41,7 @@ export default class CheckoutTypeSwitcher extends React.Component {
                 {
                     typeName: ECheckoutTypes.YANDEX_MONEY,
                     disabled: true,
-                    icon: 'yandex_money',
+                    icon: 'yandex',
                     label: 'Яндекс Кошелек'
                 }
             ]
