@@ -19,7 +19,7 @@ const StyledButton = styled(Button)`
     max-width: 200px;
 `
 
-export default function KUB({kubWidgetId}) {
+export default function KUB({paymentMethodData}) {
     return (
         <PaymentBody>
             <Container>
@@ -28,7 +28,7 @@ export default function KUB({kubWidgetId}) {
                     останется только провести платеж по реквизитам.
                 </Text>
                 <StyledButton
-                    onClick={() => window.open(`https://lk.kub-24.ru/out/invoice/${kubWidgetId}`)}>
+                    onClick={() => window.open(`https://lk.kub-24.ru/out/invoice/${paymentMethodData.kubWidgetId}`)}>
                     Выставить счет
                 </StyledButton>
             </Container>

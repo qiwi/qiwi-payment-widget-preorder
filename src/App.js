@@ -48,6 +48,8 @@ class App extends Component {
         if(formatted.widgetPaymentSumAmount.length > 3) {
             formatted.widgetPaymentSumAmount = formatted.widgetPaymentSumAmount.slice(0, 4);
         }
+        formatted.paymentMethodsData = formatted.paymentMethodsData || [];
+
         formatted.primaryColor = '';
         formatted.bgUrl = '';
         formatted.logoUrl = '';
