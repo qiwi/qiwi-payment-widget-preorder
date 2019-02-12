@@ -1,6 +1,7 @@
 import React from 'react'
 import Invoicing from './CheckoutTypes/Invoicing'
 import KUB from './CheckoutTypes/KUB'
+import YandexMoney from './CheckoutTypes/YandexMoney'
 import Mobile from "../Mobile"
 import MobileCheckoutTypeSwitcher from './MobileCheckoutTypeSwitcher'
 import DesktopCheckoutTypeSwitcher from './DesktopCheckoutTypeSwitcher'
@@ -13,7 +14,8 @@ import Desktop from "../Desktop/Desktop";
 
 const ECheckoutTypes = {
     INVOICING: 'INVOICING',
-    KUB_B2B: 'KUB_B2B'
+    KUB: 'KUB',
+    YANDEX_MONEY: 'YANDEX_MONEY'
 };
 
 
@@ -28,16 +30,26 @@ export default class CheckoutTypeSwitcher extends React.Component {
                     typeName: ECheckoutTypes.INVOICING,
                     disabled: false,
                     icon: 'invoicing',
-                    label: 'Оплата\nонлайн'
+                    label: 'QIWI Касса'
                 },
                 {
-                    typeName: ECheckoutTypes.KUB_B2B,
-                    disabled: false,
+                    typeName: ECheckoutTypes.KUB,
+                    disabled: true,
                     icon: 'kub',
                     label: 'Выставление\nсчета юрлицу'
+                },
+                {
+                    typeName: ECheckoutTypes.YANDEX_MONEY,
+                    disabled: true,
+                    icon: 'yandex',
+                    label: 'Яндекс Кошелек'
                 }
             ]
         }
+    }
+
+    getEnabledTypes() {
+        return this.state.types.filter(type => !type.disabled)
     }
 
     changeCurrentType(typeName) {
@@ -48,14 +60,31 @@ export default class CheckoutTypeSwitcher extends React.Component {
         }
     };
 
+    getPaymentMethodData(methodTypeName) {
+        return this.props.paymentMethodsData.find(paymentMethod => paymentMethod.paymentMethodCode === methodTypeName)
+    }
+
+    componentDidMount() {
+        this.props.paymentMethodsData.forEach((paymentMethod) => {
+            const newTypes = [...this.state.types];
+            const typeInd = this.state.types.findIndex((type) => type.typeName === paymentMethod.paymentMethodCode);
+
+            newTypes[typeInd].disabled = false;
+            this.setState({types: newTypes});
+        })
+    }
+
     render() {
         let checkoutType;
         switch (this.state.currentType) {
             case ECheckoutTypes.INVOICING:
                 checkoutType = <Invoicing {...this.props}/>;
                 break;
-            case ECheckoutTypes.KUB_B2B:
-                checkoutType = <KUB {...this.props}/>;
+            case ECheckoutTypes.KUB:
+                checkoutType = <KUB {...this.getPaymentMethodData(ECheckoutTypes.KUB)}/>;
+                break;
+            case ECheckoutTypes.YANDEX_MONEY:
+                checkoutType = <YandexMoney {...this.getPaymentMethodData(ECheckoutTypes.YANDEX_MONEY)}/>;
                 break;
             default:
                 checkoutType = <Invoicing {...this.props}/>;
@@ -72,18 +101,18 @@ export default class CheckoutTypeSwitcher extends React.Component {
                     </Card.Header>
                 </Mobile>
 
-                {this.props && this.props.kubWidgetId ?
+                {this.props && this.props.paymentMethodsData.length > 0 ?
                     <div>
                         <Desktop>
                             <DesktopCheckoutTypeSwitcher onTypeChange={this.changeCurrentType.bind(this)}
-                                                         types={this.state.types}
+                                                         types={this.getEnabledTypes()}
                                                          currentType={this.state.currentType}/>
 
                             <Divider/>
                         </Desktop>
                         <Mobile>
                             <MobileCheckoutTypeSwitcher onTypeChange={this.changeCurrentType.bind(this)}
-                                                        types={this.state.types}
+                                                        types={this.getEnabledTypes()}
                                                         currentType={this.state.currentType}/>
                         </Mobile>
                     </div> : null}
