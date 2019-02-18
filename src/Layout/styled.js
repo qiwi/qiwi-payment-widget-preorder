@@ -32,7 +32,7 @@ export const CardHolder = styled.div`
     max-width: 820px;
     height: 560px;
     max-height: 560px;
-    box-shadow: 0 10px 25px 0 rgba(0, 0, 0, 0.15);
+    ${props => props.isShadowActive ? `box-shadow: 0 10px 25px 0 rgba(0, 0, 0, 0.15);` : ""}
 
     @media ${media.mobile} {
         box-shadow: none;
@@ -75,7 +75,8 @@ export const MerchantInfoCard = styled(Card)`
 `;
 
 export const ContentBlock = styled.div`
-    margin: 2% auto;
+    ${props => props.isEmbedded ? "margin: 0;" : "margin: 2% auto;"}
+
     animation: ${show} 1s linear forwards;
     opacity: 0;
     max-width: 820px;
@@ -91,7 +92,7 @@ export const ContentBlock = styled.div`
 export const Footer = styled(Card.Footer)`
     position: relative;
     text-align: center;
-    display: flex;
+    display: ${props=> props.isActive ? "flex" : "none"};
     flex-direction: row;
     align-items: center;
     justify-content: center;

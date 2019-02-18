@@ -14,13 +14,15 @@ class App extends Component {
 
         this.state = {
             widgetInfo: {},
-            errorLoading: false
+            errorLoading: false,
+            isEmbedded: false
         };
     }
 
     async componentDidMount() {
         try {
             let widgetInfo = await preorder.getwidgetInfo();
+            const isEmbedded = await preorder.isEmbedded();
 
             document.title = widgetInfo.widgetMerchantName;
 
@@ -28,7 +30,8 @@ class App extends Component {
 
             widgetInfo = this.formatWidgetInfo(widgetInfo);
             this.setState({
-                widgetInfo
+                widgetInfo,
+                isEmbedded
             });
         } catch (err) {
             this.setState({
@@ -88,9 +91,9 @@ class App extends Component {
             <ThemeProvider theme={this.getThemeFromWidgetInfo()}>
                 <Layout
                     widgetInfo={this.state.widgetInfo}
-                    errorLoading={this.state.errorLoading}>
-
-                </Layout>
+                    errorLoading={this.state.errorLoading}
+                    isEmbedded={this.state.isEmbedded}
+                />
             </ThemeProvider>
         );
     }

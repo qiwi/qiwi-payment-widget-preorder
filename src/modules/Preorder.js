@@ -32,7 +32,13 @@ export default class Preorder {
 
     _makeLinkCheckout(params, customFields) {
         const url = config.oplataUrl;
-        const parsedParams = new URLSearchParams(params);
+
+        const parsedParams = new URLSearchParams();
+
+        Object.getOwnPropertyNames(params)
+            .filter(key => params[key])
+            .forEach(key => parsedParams.append(key, params[key]))
+
         Object.getOwnPropertyNames(customFields).forEach(customFieldName => {
             parsedParams.append(`customFields[${customFieldName}]`, `${customFields[customFieldName]}`);
         });
@@ -112,12 +118,15 @@ export default class Preorder {
 
         const widgetReferrer = formatReferrer(this._getWidgetReferrerFromUrl() || document.referrer) || 'my.qiwi.com';
 
+        const embedded = this.isEmbedded()
+
         if (publicKey) {
             const checkoutParams = {
                 publicKey,
                 amount,
                 successUrl,
-                failUrl
+                failUrl,
+                embedded
             };
 
             const customFields = {
@@ -150,5 +159,9 @@ export default class Preorder {
                 accurateTrackBounce: true
             });
         } catch (e) {}
+    };
+
+    isEmbedded () {
+        return this._getParameterByName('embedded');
     };
 }

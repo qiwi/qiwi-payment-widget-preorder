@@ -45,6 +45,8 @@ export default class Layout extends Component {
             widgetMerchantOffer
         } = this.props.widgetInfo;
 
+        const {isEmbedded} = this.props; 
+
         return (
             <div>
                 <ThemedHelmet/>
@@ -63,8 +65,8 @@ export default class Layout extends Component {
                     </noscript>
                 </OptionalRenderer>
                 {widgetAliasCode ? (
-                    <ContentBlock width="820px">
-                        <CardHolder>
+                    <ContentBlock width="820px" isEmbedded={isEmbedded} >
+                        <CardHolder isShadowActive={!isEmbedded}>
                             <CheckoutTypeSwitcher {...this.props.widgetInfo}/>
                             <MerchantInfoCard width="382px">
                                 <Card.Header>
@@ -79,7 +81,7 @@ export default class Layout extends Component {
                                 </OptionalRenderer>
                             </MerchantInfoCard>
                         </CardHolder>
-                        <Footer>
+                        <Footer isActive={!isEmbedded}>
                             <Mobile>
                                 <OptionalRenderer when={widgetMerchantOffer}>
                                     <Oferta link={widgetMerchantOffer}/>

@@ -1,7 +1,7 @@
 import {commonColors} from '../styles/index'
 
 export const media = {
-    mobile: '(max-width: 820px)'
+    mobile: '(max-width: 819px)'
 }
 
 export function convertHexToRgb(hex) {
