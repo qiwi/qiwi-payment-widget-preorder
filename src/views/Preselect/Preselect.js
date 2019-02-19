@@ -66,7 +66,10 @@ class Preselect extends Component {
                     })}
                     <PreselectButton
                         onClick={() => {
-                            this.props.history.push(this.props.toFormPath);
+                            this.props.history.push({
+                                pathname: this.props.toFormPath,
+                                search: window.location.search,
+                            });
                         }}
                         width="147px">
                         Другая сумма
