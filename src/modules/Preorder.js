@@ -36,7 +36,7 @@ export default class Preorder {
         const parsedParams = new URLSearchParams();
 
         Object.getOwnPropertyNames(params)
-            .filter(key => params[key])
+            .filter(key => !!params[key])
             .forEach(key => parsedParams.append(key, params[key]))
 
         Object.getOwnPropertyNames(customFields).forEach(customFieldName => {

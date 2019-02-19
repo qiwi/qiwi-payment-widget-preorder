@@ -82,6 +82,7 @@ class App extends Component {
             enableGradient: this.state.widgetInfo.enableGradient,
             logoUrl: this.state.widgetInfo.logoUrl,
             logoPngUrl: this.state.widgetInfo.logoPngUrl,
+            isEmbedded: this.state.isEmbedded
         }
     }
 
@@ -92,7 +93,6 @@ class App extends Component {
                 <Layout
                     widgetInfo={this.state.widgetInfo}
                     errorLoading={this.state.errorLoading}
-                    isEmbedded={this.state.isEmbedded}
                 />
             </ThemeProvider>
         );
