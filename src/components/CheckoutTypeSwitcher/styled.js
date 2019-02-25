@@ -1,9 +1,10 @@
 import styled from 'styled-components';
-import {media} from "../../modules/helpers";
 import yandexMoneyLogo from './assets/yandex.svg';
 import qiwiLogo from './assets/qiwi.svg';
 import {getKUBIcon} from "./icons/iconsGenerator";
 import Card from "../Card";
+import {commonColors} from '../../styles/index'
+import {getContrastColorByBackground, media} from "../../modules/helpers";
 
 const SelectedWrapper = styled.div`
     width: 100%;
@@ -58,6 +59,20 @@ const PaymentBody = styled(Card.Body)`
         box-sizing: border-box;
         padding: 20px;
     }
+`;
+
+export const MobileCardHeader = styled(Card.Header)`
+    ${(props) => props.theme.secondaryColor ? `background-color: ${props.theme.secondaryColor};`: ''}
+    padding: 12px 20px;
+    border: 0;
+    height: 60px;
+    box-sizing: border-box;
+    color: ${(props) => props.theme.secondaryColor ? getContrastColorByBackground(props.theme.secondaryColor): commonColors.BLACK};
+`;
+
+export const MobileCardDescription = styled(Card.Desc)`
+    color: #000;
+    margin: 10px 20px;
 `;
 
 const Item = styled.div`

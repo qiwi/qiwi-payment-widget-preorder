@@ -10,7 +10,7 @@ import ThemedHelmet from '../components/ThemedHelmet';
 
 import {CardHolder, ContentBlock, Footer, HelpLink, MerchantInfoCard} from './styled';
 import OptionalRenderer from "../components/OptionalRenderer";
-import Mobile from "../components/Mobile/Modile";
+import Mobile from "../components/Mobile/Mobile";
 import CheckoutTypeSwitcher from "../components/CheckoutTypeSwitcher";
 import Desktop from "../components/Desktop/Desktop";
 

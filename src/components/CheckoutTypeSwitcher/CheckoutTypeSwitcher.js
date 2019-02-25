@@ -7,10 +7,7 @@ import MobileCheckoutTypeSwitcher from './MobileCheckoutTypeSwitcher'
 import DesktopCheckoutTypeSwitcher from './DesktopCheckoutTypeSwitcher'
 import Logo from '../Logo'
 import Card from "../Card";
-import {
-    Divider,
-    PaymentCard
-} from "./styled";
+import {Divider, PaymentCard, MobileCardDescription, MobileCardHeader} from "./styled";
 import Desktop from "../Desktop/Desktop";
 
 const ECheckoutTypes = {
@@ -94,13 +91,14 @@ export default class CheckoutTypeSwitcher extends React.Component {
         return (
             <PaymentCard width="438px">
                 <Mobile>
-                    <Card.Header>
-                        <Card.Title>
-                            {this.props.hideMerchantName ? <Logo widgetInfo={this.props}/>
-                                : (this.props.widgetMerchantName || 'Наименование организации')}
-                        </Card.Title>
-                        <Card.Desc>{this.props.widgetDescription}</Card.Desc>
-                    </Card.Header>
+                    <div>
+                        <MobileCardHeader>
+                            {this.props.hideMerchantName ? <Logo widgetInfo={this.props}/> : <Card.Title>
+                                    {(this.props.widgetMerchantName || 'Наименование организации')}
+                            </Card.Title>}
+                        </MobileCardHeader>
+                        <MobileCardDescription>{this.props.widgetDescription}</MobileCardDescription>
+                    </div>
                 </Mobile>
 
                 {this.props && this.props.paymentMethodsData.length > 0 ?

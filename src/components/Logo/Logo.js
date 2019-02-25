@@ -1,15 +1,19 @@
 import React, {Component} from 'react';
 import styled, {withTheme} from 'styled-components';
-import {getImageByUrl} from "../../modules/helpers";
+import {getImageByUrl, media} from "../../modules/helpers";
 import * as bowser from 'bowser/bundled';
 
 const StyledLogo = styled.div`
-    max-width: 310px;
+    max-width: 200px;
     height: 36px;
     width: 100%;
     margin-bottom: 16px;
     background: url(${(props) => props.url ? props.url : ''}) no-repeat top left;
     background-size: ${(props) => props.bgSize ? props.bgSize : '100%'};
+    
+    @media${media.mobile} {
+        margin-bottom: 0px;
+    }
 `;
 
 class Logo extends Component {

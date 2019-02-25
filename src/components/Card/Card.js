@@ -13,11 +13,6 @@ const Card = styled.div`
 
 Card.Header = styled.div`
     padding: 36px;
-
-    @media ${media.mobile} {
-        padding: 24px 20px 5px;
-        border: 0;
-    }
 `;
 
 Card.Body = styled.div`
