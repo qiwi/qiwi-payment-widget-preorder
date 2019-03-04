@@ -13,11 +13,6 @@ const Card = styled.div`
 
 Card.Header = styled.div`
     padding: 36px;
-
-    @media ${media.mobile} {
-        padding: 24px 20px 5px;
-        border: 0;
-    }
 `;
 
 Card.Body = styled.div`
@@ -42,7 +37,6 @@ Card.Title = styled.h1`
 
     @media ${media.mobile} {
         margin: 0;
-        color: #000;
         font-size: 16px;
         font-weight: bold;
         text-align: left;

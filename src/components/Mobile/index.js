@@ -1,2 +1,2 @@
-import Mobile from './Modile'
+import Mobile from './Mobile'
 export default Mobile;
