@@ -65,6 +65,9 @@ export const MobileCardHeader = styled(Card.Header)`
     ${(props) => props.theme.secondaryColor ? `background-color: ${props.theme.secondaryColor};`: ''}
     padding: 12px 20px;
     border: 0;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
     height: 60px;
     box-sizing: border-box;
     color: ${(props) => props.theme.secondaryColor ? getContrastColorByBackground(props.theme.secondaryColor): commonColors.BLACK};

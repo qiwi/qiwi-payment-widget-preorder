@@ -37,7 +37,6 @@ Card.Title = styled.h1`
 
     @media ${media.mobile} {
         margin: 0;
-        color: #000;
         font-size: 16px;
         font-weight: bold;
         text-align: left;
