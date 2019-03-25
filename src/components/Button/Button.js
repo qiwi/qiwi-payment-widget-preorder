@@ -18,7 +18,6 @@ const Button = styled.button`
     cursor: pointer;
     overflow: hidden;
     text-overflow: ellipsis;
-    border: solid 1px rgba(0, 0, 0, 0.14);
         
     @media ${media.mobile}{
         border: solid 1px rgba(0, 0, 0, 0.14);
