@@ -3,7 +3,7 @@ import {getContrastColorByBackground, media} from "../../modules/helpers";
 import {commonColors} from '../../styles/index'
 
 function getBorder(buttonBackgroundColor) {
-    buttonBackgroundColor.toString().toLowerCase();
+    buttonBackgroundColor = buttonBackgroundColor.toString().toLowerCase();
     if(!['#fff', '#ffffff', 'transparent'].includes(buttonBackgroundColor)){
         return 'none'
     }
