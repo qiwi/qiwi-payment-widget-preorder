@@ -3,6 +3,7 @@ import {getContrastColorByBackground, media} from "../../modules/helpers";
 import {commonColors} from '../../styles/index'
 
 function getBorder(buttonBackgroundColor) {
+    buttonBackgroundColor.toString().toLowerCase();
     if(!['#fff', '#ffffff', 'transparent'].includes(buttonBackgroundColor)){
         return 'none'
     }
@@ -10,7 +11,7 @@ function getBorder(buttonBackgroundColor) {
 }
 
 function getBackgroundColor() {
-    return ((props) => props.theme.primaryColor.toLowerCase() || 'transparent')
+    return ((props) => props.theme.primaryColor || 'transparent')
 }
 
 const Button = styled.button`
