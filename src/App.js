@@ -34,6 +34,7 @@ class App extends Component {
                 isEmbedded
             });
         } catch (err) {
+            console.log(err);
             this.setState({
                 errorLoading: true
             });
