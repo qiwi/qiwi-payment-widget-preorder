@@ -33,11 +33,12 @@ export default class Preorder {
     _makeLinkCheckout(params, customFields) {
         const url = config.oplataUrl;
 
-        const parsedParams = new URLSearchParams();
+        const parsedParams = new URLSearchParams(window.location.search);
+        parsedParams.delete('noCache');
 
         Object.getOwnPropertyNames(params)
             .filter(key => !!params[key])
-            .forEach(key => parsedParams.append(key, params[key]))
+            .forEach(key => parsedParams.append(key, params[key]));
 
         Object.getOwnPropertyNames(customFields).forEach(customFieldName => {
             parsedParams.append(`customFields[${customFieldName}]`, `${customFields[customFieldName]}`);
