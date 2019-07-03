@@ -105,7 +105,8 @@ export default class Preorder {
             widgetFailUrl,
             merchantSitePublicKey,
             widgetAliasCode,
-            themeCode
+            themeCode,
+            widgetDescription
         } = this._widgetInfo;
 
         const publicKey = merchantSitePublicKey;
@@ -120,13 +121,16 @@ export default class Preorder {
 
         const embedded = this.isEmbedded()
 
+        const comment = widgetDescription || ''
+
         if (publicKey) {
             const checkoutParams = {
                 publicKey,
                 amount,
                 successUrl,
                 failUrl,
-                embedded
+                embedded,
+                comment
             };
 
             const customFields = {

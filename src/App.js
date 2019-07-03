@@ -24,8 +24,6 @@ class App extends Component {
             let widgetInfo = await preorder.getwidgetInfo();
             const isEmbedded = await preorder.isEmbedded();
 
-            document.title = widgetInfo.widgetMerchantName;
-
             preorder.addMetricCounter(widgetInfo.widgetMerchantMetric);
 
             widgetInfo = this.formatWidgetInfo(widgetInfo);
