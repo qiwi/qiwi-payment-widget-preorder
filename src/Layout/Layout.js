@@ -13,6 +13,7 @@ import OptionalRenderer from "../components/OptionalRenderer";
 import Mobile from "../components/Mobile/Mobile";
 import CheckoutTypeSwitcher from "../components/CheckoutTypeSwitcher";
 import Desktop from "../components/Desktop/Desktop";
+import {styleCode} from '../styles'
 
 export default class Layout extends Component {
     updateDimensions() {
@@ -67,7 +68,7 @@ export default class Layout extends Component {
                                 <Card.Header>
                                     <Logo {...this.props}/>
                                     {!hideMerchantName && <Card.Title>
-                                        {widgetStyles['PAY_FORM_MERCHANT_NAME'] || widgetMerchantName || 'Наименование организации'}
+                                        {widgetStyles[styleCode.PAY_FORM_MERCHANT_NAME] || widgetMerchantName || 'Наименование организации'}
                                     </Card.Title>}
                                     <Card.Desc>{widgetDescription}</Card.Desc>
                                 </Card.Header>

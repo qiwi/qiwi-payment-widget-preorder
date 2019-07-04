@@ -121,7 +121,7 @@ export default class Preorder {
 
         const embedded = this.isEmbedded()
 
-        const comment = widgetDescription || ''
+        const comment = widgetDescription
 
         if (publicKey) {
             const checkoutParams = {
