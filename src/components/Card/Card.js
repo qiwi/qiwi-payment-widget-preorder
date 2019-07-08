@@ -14,6 +14,11 @@ const Card = styled.div`
 Card.Header = styled.div`
     margin: 36px;
     max-width: 100%;
+
+    @media ${media.mobile} {
+        margin: 0;
+        padding: 36px;
+    }
 `;
 
 Card.Body = styled.div`
