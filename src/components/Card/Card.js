@@ -12,7 +12,9 @@ const Card = styled.div`
 `;
 
 Card.Header = styled.div`
-    padding: 36px;
+    margin: 36px;
+    max-width: 100%;
+    overflow: hidden;
 `;
 
 Card.Body = styled.div`
