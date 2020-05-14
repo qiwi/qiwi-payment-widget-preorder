@@ -37,7 +37,7 @@ class SingleChoiceForm extends Component {
     render() {
         return (
             <Container>
-                <Amount>10000 &#x20bd;</Amount> {/*&#x20bd; - ruble sign*/}
+                <Amount>{this.props.amount} &#x20bd;</Amount> {/*&#x20bd; - ruble sign*/}
                 <div>
                     <PayButton
                         onClick={() => {

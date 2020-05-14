@@ -14,7 +14,7 @@ class Preselect extends Component {
             history,
         } = this.props
 
-        return theme.fixedAmount ? (
+        return theme.fixedAmount && sumAmount[0] ? (
             <SingleChoiceForm
                 amount={sumAmount[0]}
                 redirect={redirect}
