@@ -76,8 +76,8 @@ class App extends Component {
             if (widgetStyles[styleCode.PREORDER_HIDE_MERCHANT_NAME]) {
                 formatted.hideMerchantName = widgetStyles[styleCode.PREORDER_HIDE_MERCHANT_NAME] === '1';
             }
-            if (widgetStyles[styleCode.FIXED_AMOUNT]) {
-                formatted.fixedAmount = widgetStyles[styleCode.FIXED_AMOUNT] === '1';
+            if (formatted.widgetPaymentSumAmount.length === 1) {
+                formatted.fixedAmount = true;
             }
         }
         return formatted;
