@@ -30,8 +30,8 @@ export const CardHolder = styled.div`
     display: flex;
     flex-direction: row;
     max-width: 820px;
-    height: 560px;
-    max-height: 560px;
+    height: 590px;
+    max-height: 590px;
     ${props => props.theme.isEmbedded ? "" : `box-shadow: 0 10px 25px 0 rgba(0, 0, 0, 0.15);`}
 
     @media ${media.mobile} {
