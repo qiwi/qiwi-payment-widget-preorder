@@ -61,6 +61,9 @@ export default class Preorder {
 
         params += `&widgetTypeCode=PREORDER`;
 
+        require('es6-promise').polyfill();
+        require('isomorphic-fetch');
+
         return fetch(`${url}?${params}`, {
             mode: 'cors'
         })
