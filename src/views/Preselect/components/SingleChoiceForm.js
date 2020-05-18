@@ -35,9 +35,10 @@ const PayButton = styled(Button)`
 
 class SingleChoiceForm extends Component {
     render() {
+        const amount = new Intl.NumberFormat('ru-RU').format(this.props.amount);
         return (
             <Container>
-                <Amount>{this.props.amount} &#x20bd;</Amount> {/*&#x20bd; - ruble sign*/}
+                <Amount>{amount} &#x20bd;</Amount> {/*&#x20bd; - ruble sign*/}
                 <div>
                     <PayButton
                         onClick={() => {
