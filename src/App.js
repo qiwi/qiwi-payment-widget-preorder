@@ -58,6 +58,7 @@ class App extends Component {
         formatted.secondaryColor = '';
         formatted.hideMerchantName = false;
         formatted.enableGradient = true;
+        formatted.fixedAmount = false;
         const widgetStyles = formatted.widgetStyles;
         if (widgetStyles) {
             formatted.primaryColor = widgetStyles[styleCode.PREORDER_PRIMARY_COLOR] || formatted.primaryColor;
@@ -73,6 +74,9 @@ class App extends Component {
             if (widgetStyles[styleCode.PREORDER_HIDE_MERCHANT_NAME]) {
                 formatted.hideMerchantName = widgetStyles[styleCode.PREORDER_HIDE_MERCHANT_NAME] === '1';
             }
+            if (formatted.widgetPaymentSumAmount.length === 1) {
+                formatted.fixedAmount = true;
+            }
         }
         return formatted;
     }
@@ -85,7 +89,8 @@ class App extends Component {
             enableGradient: this.state.widgetInfo.enableGradient,
             logoUrl: this.state.widgetInfo.logoUrl,
             logoPngUrl: this.state.widgetInfo.logoPngUrl,
-            isEmbedded: this.state.isEmbedded
+            isEmbedded: this.state.isEmbedded,
+            fixedAmount: this.state.widgetInfo.fixedAmount
         }
     }
 

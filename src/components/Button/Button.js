@@ -2,8 +2,20 @@ import styled from 'styled-components';
 import {getContrastColorByBackground, media} from "../../modules/helpers";
 import {commonColors} from '../../styles/index'
 
+function getBorder(buttonBackgroundColor) {
+    buttonBackgroundColor = buttonBackgroundColor.toString().toLowerCase();
+    if(!['#fff', '#ffffff', 'transparent'].includes(buttonBackgroundColor)){
+        return 'none'
+    }
+    return 'solid 1px rgba(0, 0, 0, 0.14)'
+}
+
+function getBackgroundColor() {
+    return ((props) => props.theme.primaryColor || 'transparent')
+}
+
 const Button = styled.button`
-    background-color: ${(props) => props.theme.primaryColor || 'transparent'};
+    background-color: ${getBackgroundColor()};
     width: ${(props) => props.width || '100%'};
     height: 48px;
     border-radius: 100px;
@@ -18,7 +30,7 @@ const Button = styled.button`
     cursor: pointer;
     overflow: hidden;
     text-overflow: ellipsis;
-    border: solid 1px rgba(0, 0, 0, 0.14);
+    border: ${getBorder(getBackgroundColor())};
         
     @media ${media.mobile}{
         border: solid 1px rgba(0, 0, 0, 0.14);

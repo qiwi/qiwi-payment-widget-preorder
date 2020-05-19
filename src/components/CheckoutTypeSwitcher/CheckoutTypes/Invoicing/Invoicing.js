@@ -26,7 +26,7 @@ export default function Invoicing(props) {
                     render={(props) => (
                         <Preselect
                             {...props}
-                            sumAmont={
+                            sumAmount={
                                 widgetPaymentSumAmount
                             }
                             toFormPath={toFormPath}
