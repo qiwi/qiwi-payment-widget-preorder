@@ -12,7 +12,13 @@ const Card = styled.div`
 `;
 
 Card.Header = styled.div`
-    padding: 36px;
+    margin: 36px;
+    max-width: 100%;
+
+    @media ${media.mobile} {
+        margin: 0;
+        padding: 36px;
+    }
 `;
 
 Card.Body = styled.div`
@@ -34,6 +40,8 @@ Card.Title = styled.h1`
     color: ${(props) => props.theme.secondaryColor ? getContrastColorByBackground(props.theme.secondaryColor): commonColors.BLACK};
     text-align: left;
     margin: 0;
+    text-overflow: ellipsis;
+    overflow: hidden;
 
     @media ${media.mobile} {
         margin: 0;
@@ -51,6 +59,8 @@ Card.Desc = styled.p`
     margin: 16px 0 0 0;
     line-height: 1.31;
     text-align: left;
+    text-overflow: ellipsis;
+    overflow: hidden;
 
     @media ${media.mobile} {
         color: #000;

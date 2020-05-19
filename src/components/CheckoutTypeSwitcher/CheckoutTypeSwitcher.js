@@ -9,6 +9,7 @@ import Logo from '../Logo'
 import Card from "../Card";
 import {Divider, PaymentCard, MobileCardDescription, MobileCardHeader} from "./styled";
 import Desktop from "../Desktop/Desktop";
+import {styleCode} from '../../styles'
 
 const ECheckoutTypes = {
     INVOICING: 'INVOICING',
@@ -94,7 +95,7 @@ export default class CheckoutTypeSwitcher extends React.Component {
                     <div>
                         <MobileCardHeader>
                             {this.props.hideMerchantName ? <Logo widgetInfo={this.props}/> : <Card.Title>
-                                    {(this.props.widgetMerchantName || 'Наименование организации')}
+                                    {(this.props.widgetStyles[styleCode.PAY_FORM_MERCHANT_NAME] || this.props.widgetMerchantName || 'Наименование организации')}
                             </Card.Title>}
                         </MobileCardHeader>
                         <MobileCardDescription>{this.props.widgetDescription}</MobileCardDescription>
