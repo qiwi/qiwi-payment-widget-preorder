@@ -27,10 +27,15 @@ class App extends Component {
             preorder.addMetricCounter(widgetInfo.widgetMerchantMetric);
 
             widgetInfo = this.formatWidgetInfo(widgetInfo);
-            this.setState({
-                widgetInfo,
-                isEmbedded
-            });
+            if (widgetInfo.widgetPaymentSumAmount.length === 1 &&
+                widgetInfo.widgetPaymentSumAmount[0]) {
+                preorder.redirect(widgetInfo.widgetPaymentSumAmount[0], true)
+            } else {
+                this.setState({
+                    widgetInfo,
+                    isEmbedded
+                });
+            }
         } catch (err) {
             this.setState({
                 errorLoading: true
